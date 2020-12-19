@@ -1,4 +1,4 @@
-package com.sql_calendar.web;
+package com.sql_calendar.server;
 
 import java.net.*;
 import java.io.*;

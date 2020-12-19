@@ -1,4 +1,4 @@
-package com.sql_calendar.web;
+package com.sql_calendar.server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,7 +11,7 @@ public class Webserver extends Thread {
 
     public Webserver() throws IOException {
         serverSocket = new ServerSocket(port);
-        serverSocket.setSoTimeout(10000);
+        // serverSocket.setSoTimeout(10000);
     }
     
     public void run() {
