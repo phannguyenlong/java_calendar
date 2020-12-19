@@ -1,3 +1,5 @@
+package api;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -13,7 +15,7 @@ public class TestServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("RUNNN");
         String requestUrl = request.getRequestURI();
-        String name = requestUrl.substring("/people/".length());
+        String name = requestUrl.substring("/test/".length());
         
         response.getOutputStream().print("hello");
     }
