@@ -5,25 +5,24 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-	<!--Path: /people/-->
-  	<servlet>
+	<!-- Path: /people/-->
+  	<!-- <servlet>
 		<servlet-name>TestServlet</servlet-name>
 		<servlet-class>api.TestServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
+	</servlet> -->
+	<!-- <servlet-mapping>
 		<servlet-name>TestServlet</servlet-name>
 		<url-pattern>/test/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 	<!--Path: /database/-->
-	<servlet>
+	<!--<servlet>
 		<servlet-name>DatabaseServlet</servlet-name>
 		<servlet-class>api.DatabaseServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DatabaseServlet</servlet-name>
 		<url-pattern>/database/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 </web-app>
