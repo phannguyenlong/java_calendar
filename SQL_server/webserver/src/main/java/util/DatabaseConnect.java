@@ -16,6 +16,11 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
+/**
+ * Use from make connection to database
+ * Also handling manipulating data from SQL server to JSON and reverse
+ * @author Long Phan
+ */
 public class DatabaseConnect {
     String dbURL;
     String Db_Name;
@@ -28,10 +33,12 @@ public class DatabaseConnect {
         this.Db_Name = Db_Name;
         this.userName = userName;
         this.password = password;
-
-        // this.conn = getConnection();
     }
 
+    /**
+     * Establish connection to SQL server
+     * @return Connection class
+     */
     public Connection getConnection() {
         conn = null;
         dbURL = dbURL + "databaseName=" + Db_Name;
@@ -46,6 +53,12 @@ public class DatabaseConnect {
         return conn;
     }
 
+    /**
+     * Excute query
+     * @param query SQL query
+     * @return Result Set of SQL data
+     * @throws Exception
+     */
     public ResultSet doQuery(String query) throws Exception {
         Statement stmt = conn.createStatement();
         // execute query
@@ -54,10 +67,22 @@ public class DatabaseConnect {
         return rs;
     }
 
+    /**
+     * Close connection to SQL server
+     * @throws Exception
+     */
     public void closeConnect() throws Exception {
         conn.close();
     }
 
+    /**
+     * Translate Result Set return from SQL to List<Map<String,Object>>
+     * The return type can use ObjectMapper from Jackson to send over HTTP with type JSON
+     * . Ex: objectMapper.writeValue(resp.getOutputStream(), json_resp);
+     * @param rs Result set return from SQL query
+     * @return List<Map<String,Object>> can use ObjectMapper from Jackson to send over HTTP with type JSON
+     * @throws SQLException
+     */
     public List<Map<String, Object>> ResultSetToJSON(ResultSet rs) throws SQLException {
         List<Map<String, Object>> rows = new ArrayList<>();
         ResultSetMetaData rsmd = rs.getMetaData();
@@ -77,6 +102,14 @@ public class DatabaseConnect {
         return rows;
     }
 
+    /**
+     * Translate JSON recieve from HTTP into JsonNode
+     * The return type can .path(field_name) to get value of JSON
+     * . Ex: JsonNode id = node.path("id");
+     * @param data Json string recieve from HTTP
+     * @return JsonNode type can .path(field_name) to get value of JSON
+     * @throws IOException
+     */
     public ArrayList<JsonNode> JsonToJsonNode(String data) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<JsonNode> list = new ArrayList<>();

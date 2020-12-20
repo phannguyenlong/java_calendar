@@ -8,9 +8,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 // Other class
 import com.sql_calendar.resources.Student;
 
+/**
+ * This class use for make HTTP /POST request to server
+ * Call makeRequest to use (can recieve ArrayList of Object or single Object)
+ * @author Long Phan
+ */
 public class PostRequestModel {
     private String default_path = "http://localhost:8080/webserver";
 
+    //TODO: Make an Object for handling Parameter
+    /**
+     * Make POST request to server with single Object
+     * @param <T> Any class in src/resources
+     * @param path api path
+     * @param Object Object need to pass to server
+     * @return status code response from server
+     * @throws IOException
+     */
     public <T> int makeRequest(String path, T Object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         System.out.println("Connecting to server");
@@ -22,6 +36,7 @@ public class PostRequestModel {
         URL url = new URL(default_path + path + "?" + parameter);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
+        // Handle post data
         String postData = "data=" + "[" + mapper.writeValueAsString(Object) + "]";
 
         // Config connection
@@ -29,13 +44,14 @@ public class PostRequestModel {
         conn.setRequestMethod("POST");
         conn.setRequestProperty("User-Agent", "Java client");
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
+        
+        // Send post data to server
         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
         out.write(postData);
         out.flush();
-
         int responseCode = conn.getResponseCode();
-
+        
+        // Read reply from server
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String inputLine;
@@ -53,6 +69,14 @@ public class PostRequestModel {
         return responseCode;
     }
 
+    /**
+     * Make POST request to server with List of Object
+     * @param <T> Object in src/resources
+     * @param path api path
+     * @param list List of Object need to pass to server
+     * @return status code response from server
+     * @throws IOException
+     */
     public <T> int makeRequest(String path, ArrayList<T> list) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         System.out.println("Connecting to server");
@@ -78,12 +102,15 @@ public class PostRequestModel {
         conn.setRequestProperty("User-Agent", "Java client");
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
+        // Send post data to server
         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
         out.write(postData);
         out.flush();
 
+        // Response code
         int responseCode = conn.getResponseCode();
-
+        
+        // Read reply from server
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String inputLine;
@@ -107,7 +134,7 @@ public class PostRequestModel {
         list.add(new Student(5, "long", "HCM"));
         list.add(new Student(6, "thao", "q9"));
         list.add(new Student(7, "duy", "Binh tho"));
-        
+
         PostRequestModel resquest = new PostRequestModel();
         int res_code = resquest.makeRequest("/database", list);
         if (res_code == 200) {

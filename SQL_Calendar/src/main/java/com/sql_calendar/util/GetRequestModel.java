@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sql_calendar.resources.Student;
 
-
 /**
- * The class is use for make request to the server
+ * The class is use for make HTTP /GET request to the server
  * Call makeRequest funciton to use
  * @author Long Phan
  */
