@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -71,5 +75,19 @@ public class DatabaseConnect {
         }
 
         return rows;
+    }
+
+    public ArrayList<JsonNode> JsonToJsonNode(String data) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        ArrayList<JsonNode> list = new ArrayList<>();
+        
+        String[] jsons = new String(data.substring(1, data.length() - 1)).split("},");
+        for (int i = 0; i < jsons.length - 1; i++)
+            jsons[i] = jsons[i] + "}";
+
+        for (String json : jsons) 
+            list.add(mapper.readTree(json));
+
+        return list;
     }
 }

@@ -16,9 +16,10 @@ import com.sql_calendar.resources.Student;
  * Call makeRequest funciton to use
  * @author Long Phan
  */
-public class GetRequest {
+public class GetRequestModel {
     private String default_path = "http://localhost:8080/webserver";
 
+    //TODO: Make an Object for handling Parameter
     /**
      * Use for make a request
      * @param <T> All type in src/resouces
@@ -32,8 +33,17 @@ public class GetRequest {
         ObjectMapper mapper = new ObjectMapper();
 
         System.out.println("New Get Request was created");
-        URL url = new URL(this.default_path + path);
+
+        // Handle parameter
+        String parameter = "name=toom&age=18";
+
+        // Make connection
+        URL url = new URL(this.default_path + path + "?" + parameter);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        // Config Connection
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("User-Agent", "Java client");
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         
         BufferedReader in = null;
         try {
@@ -61,7 +71,7 @@ public class GetRequest {
     }
     
     public static void main(String[] args) throws IOException {
-        GetRequest resquest = new GetRequest();
+        GetRequestModel resquest = new GetRequestModel();
         
         ArrayList<Student> res = resquest.makeRequest("/database", Student.class);
         for (Student std : res) {
