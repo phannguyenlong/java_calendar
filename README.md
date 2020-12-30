@@ -5,9 +5,11 @@
 
 ## HOW TO RUN THE SERVER
 1. go to ./SQL_server/webserver
-2. run "mvn clean package"
+2. run "mvn clean package cargo:redeploy"
 3. access to ./SQL_server/webseverver/target
 4. run file ".war" on Tomcat server
+OR
+3. Start Tomcat server from D://stuff/tomcat.../bin/startup
 
 
 ## HOW TO LIVE DEBUG THE SERVER
