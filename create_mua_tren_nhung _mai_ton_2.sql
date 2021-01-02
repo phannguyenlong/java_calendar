@@ -123,7 +123,9 @@ insert into item (itemName, Price) values ('Chicken - Whole Fryers', '$6.31');
 -- CREATE EVENT TABLE
 insert into event (eventName, startDate, startTime, endDate, endTime, eventType) values ('Event 1', '12/23/2020', '7:00', '12/30/2020', '23:00', 'daily');
 insert into event (eventName, startDate, startTime, endDate, endTime, eventType) values ('Event 2', '12/20/2020', '7:00', '1/9/2021', '13:00', 'weekly');
-insert into event (eventName, startDate, startTime, endDate, endTime, eventType) values ('Event 3', '12/20/2020', '13:00', '1/9/2021', '23:00', 'monthly');
+--insert into event (eventName, startDate, startTime, endDate, endTime, eventType) values ('Event 3', '12/20/2020', '13:00', '1/9/2021', '23:00', 'monthly');
+insert into event (eventName, startDate, startTime, endDate, endTime, eventType) values ('Event 4', '1/4/2021', '7:00', '1/11/2021', '23:00', 'daily');
+insert into event (eventName, startDate, startTime, endDate, endTime, eventType) values ('Event 5', '1/7/2021', '13:00', '1/7/2021', '23:00', 'no repeat');
 
 -- CREATE EVENT_INSTANCE
 -- staff
@@ -588,3 +590,57 @@ JOIN (
 ON orderList.orderID = magic_table.orderID;
 
 select date, sum(totalPrice) from orderList group by date;
+
+-- CREATE FUNCTION
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION GetLastDayWeek
+(
+	-- Add the parameters for the function here
+	@InputDate DateTime
+)
+RETURNS DateTime
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE @Result DateTime
+
+	-- Add the T-SQL statements to compute the return value here
+	-- 1 -> Sunday, 7 -> Saturday
+	SELECT @Result = DATEADD(DAY, 7- DATEPART(DW, @InputDate), @InputDate)
+
+	-- Return the result of the function
+	RETURN @Result
+
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION GetFirstDayWeek
+(
+	-- Add the parameters for the function here
+	@InputDate DateTime
+)
+RETURNS DateTime
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE @Result DateTime
+
+	-- Add the T-SQL statements to compute the return value here
+	-- 1 -> Sunday, 7 -> Saturday
+	SELECT @Result = DATEADD(DAY, 1- DATEPART(DW, @InputDate), @InputDate)
+
+	-- Return the result of the function
+	RETURN @Result
+
+END
+GO
+
