@@ -38,7 +38,7 @@ RIGHT JOIN event ev ON (evI.eventID = ev.eventID)
 
 -- add new employee to event
 -- input name
-SELECT ssn, (fname + ' ' + lname) as name, sex, type, phone
+SELECT ssn, (fname + ' ' + lname) as name, bdate, address, sex, type, phone
 FROM employee
 WHERE fname + ' '  + lname LIKE '%in%';
 -- add new employee into eventInstance (input ssn, evendID, date, status = null)
@@ -83,6 +83,9 @@ WHERE essn = '' AND eventID = '' AND date = '';
 -- Delete Event (input eventID)
 DELETE FROM event
 WHERE eventID = 1;
+-- Add new Event (input Event Object To String)
+INSERT INTO event (eventName, startDate, endDate, startTime, endTime, eventType)
+VALUES ('','','','','','');
 
 -- ===============Manager Employee Management===============
 -- Get all emplopyee
