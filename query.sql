@@ -2,9 +2,10 @@ USE SQLCalendar
 
 -- ===============Login===============
 -- input username + password
-SELECT ssn, (fname + ' '  + lname) as name, type
+SELECT ssn, (fname + ' '  + lname) as name, sex, bdate, address, type, phone
 FROM employee
 	WHERE username = 'mpudana' AND password = '8Z68tj';
+
 
 -- ===============Manager Calendar Management===============
 
@@ -42,7 +43,7 @@ SELECT ssn, (fname + ' ' + lname) as name, bdate, address, sex, type, phone
 FROM employee
 WHERE fname + ' '  + lname LIKE '%in%';
 -- add new employee into eventInstance (input ssn, evendID, date, status = null)
-insert into eventInstance (essn, eventID, date, status) values ('765-59-1185', 1, '12/28/2020', 'present');
+insert into eventInstance (essn, eventID, date, status) values ('765-59-1185', 1, '12/28/2020', NULL);
 
 -- Delete employee from event (input ssn, event, date)
 DELETE FROM eventInstance WHERE essn = '765-59-1185' AND eventID = 1 AND date = '12/28/2020';

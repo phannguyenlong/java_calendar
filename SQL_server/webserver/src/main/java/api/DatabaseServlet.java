@@ -23,10 +23,6 @@ import util.DatabaseConnect;
 @WebServlet(urlPatterns = "/database")
 public class DatabaseServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    private static String DB_URL = "jdbc:sqlserver://localhost:1433;";
-    private static String Db_Name = "Test";
-    private static String USER_NAME = "sa";
-    private static String PASSWORD = "123";
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,7 +35,7 @@ public class DatabaseServlet extends HttpServlet{
         System.out.println(req.getParameter("age"));
 
         try {
-            DatabaseConnect DB = new DatabaseConnect(DB_URL, Db_Name, USER_NAME, PASSWORD);
+            DatabaseConnect DB = new DatabaseConnect();
             DB.getConnection();
             ResultSet res = DB.doQuery("select * from student");
             // Display data
@@ -70,7 +66,7 @@ public class DatabaseServlet extends HttpServlet{
 
         // Translate from JSON to SQL server
         try {
-            DatabaseConnect DB = new DatabaseConnect(DB_URL, Db_Name, USER_NAME, PASSWORD);
+            DatabaseConnect DB = new DatabaseConnect();
             ArrayList<JsonNode> list = DB.JsonToJsonNode(data);
             for (JsonNode node : list) {
                 JsonNode id = node.path("id");

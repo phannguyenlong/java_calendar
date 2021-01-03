@@ -33,7 +33,7 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 
 `GET` **/manager/calendar/month?month=' '**
 - **input:** month that need to view
-- **output:** Object(date, dayIncome, monthIncome)
+- **output:** MonthView(date, dayIncome, monthIncome)
 - *monthIncome is cumsum format, get last value to get total sum*
 
 **2. Week view**

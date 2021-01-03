@@ -14,7 +14,7 @@ public class App {
         // GET Request
         System.out.println("Make request to server");
         GetRequestModel request = new GetRequestModel();
-        ArrayList<Student> res = request.makeRequest("/database", Student.class);
+        ArrayList<Student> res = request.makeRequest("/database", Student.class, "");
 
         for (Student std : res) {
             System.out.println(std);

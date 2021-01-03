@@ -8,7 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sql_calendar.resources.Student;
+import com.sql_calendar.resources.Employee;
+import com.sql_calendar.resources.EventInstance;
 
 /**
  * The class is use for make HTTP /GET request to the server
@@ -18,7 +19,6 @@ import com.sql_calendar.resources.Student;
 public class GetRequestModel {
     private String default_path = "http://localhost:8080/webserver";
 
-    //TODO: Make an Object for handling Parameter
     /**
      * Use for make a request
      * @param <T> All type in src/resouces
@@ -27,14 +27,11 @@ public class GetRequestModel {
      * @return Arraylist<T>
      * @throws IOException
      */
-    public <T> ArrayList<T> makeRequest(String path, Class<T> clazz) throws IOException {
+    public <T> ArrayList<T> makeRequest(String path, Class<T> clazz, String parameter) throws IOException {
         ArrayList<T> list = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
 
         System.out.println("New Get Request was created");
-
-        // Handle parameter
-        String parameter = "name=toom&age=18";
 
         // Make connection
         URL url = new URL(this.default_path + path + "?" + parameter);
@@ -51,13 +48,16 @@ public class GetRequestModel {
             System.out.println("Message recieved from server: ");
             inputLine = in.readLine();
 
-            String[] jsons = new String(inputLine.substring(1, inputLine.length() - 1)).split("},");
+            // System.out.println(inputLine);
+            if (!inputLine.equals("[]")) {
+                String[] jsons = new String(inputLine.substring(1, inputLine.length() - 1)).split("},");
 
-            for (int i = 0; i < jsons.length - 1; i++) 
-                jsons[i] = jsons[i] + "}";
+                for (int i = 0; i < jsons.length - 1; i++)
+                    jsons[i] = jsons[i] + "}";
 
-            for (String json : jsons) 
-                list.add(mapper.readValue(json, clazz));
+                for (String json : jsons)
+                    list.add(mapper.readValue(json, clazz));
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,9 +72,14 @@ public class GetRequestModel {
     public static void main(String[] args) throws IOException {
         GetRequestModel resquest = new GetRequestModel();
         
-        ArrayList<Student> res = resquest.makeRequest("/database", Student.class);
-        for (Student std : res) {
+        String parameter = "name=in";
+        ArrayList<Employee> res = resquest.makeRequest("/manager/employee", Employee.class, parameter);
+        for (Employee std : res) {
             System.out.println(std);
+        }
+
+        if (res.isEmpty()) { // if list return nothing
+            System.out.println("Nothing here");
         }
     }
 }

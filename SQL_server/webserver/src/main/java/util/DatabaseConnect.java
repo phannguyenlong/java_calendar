@@ -22,18 +22,13 @@ import java.sql.DriverManager;
  * @author Long Phan
  */
 public class DatabaseConnect {
-    String dbURL;
-    String Db_Name;
-    String userName;
-    String password;
+    String dbURL = "jdbc:sqlserver://localhost:1433;";
+    String Db_Name = "SQLCalendar";
+    String userName = "sa";
+    String password = "123";
     Connection conn;
 
-    public DatabaseConnect(String dbURL, String Db_Name, String userName, String password) {
-        this.dbURL = dbURL;
-        this.Db_Name = Db_Name;
-        this.userName = userName;
-        this.password = password;
-    }
+    public DatabaseConnect() {}
 
     /**
      * Establish connection to SQL server
