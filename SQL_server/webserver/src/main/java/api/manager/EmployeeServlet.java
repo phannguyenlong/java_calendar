@@ -50,4 +50,69 @@ public class EmployeeServlet extends HttpServlet {
             ex.printStackTrace();
         }
     }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String ssn = req.getParameter("ssn");
+        String fname = req.getParameter("fname");
+        String lname = req.getParameter("lname");
+        String address = req.getParameter("address");
+        String bdate = req.getParameter("bdate");
+        String phone = req.getParameter("phone");
+        String type = req.getParameter("type");
+
+        String query = "UPDATE employee SET fname = '" + fname + "', lname = '" + lname + "', address = '" + address
+                + "', bdate = '" + bdate + "', phone = '" + phone + "', type = '" + type + "' WHERE ssn = '" + ssn
+                + "';";
+
+        System.out.println(query);
+
+        try {
+            DatabaseConnect DB = new DatabaseConnect();
+            DB.getConnection();
+            DB.doQuery(query);
+
+            DB.closeConnect();
+        } catch (Exception e) {
+            if (e.getLocalizedMessage().equals("The statement did not return a result set.")) {
+                resp.setStatus(200);
+            } else {
+                resp.setStatus(500);
+            }
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String ssn = req.getParameter("ssn");
+        String fname = req.getParameter("fname");
+        String lname = req.getParameter("lname");
+        String address = req.getParameter("address");
+        String bdate = req.getParameter("bdate");
+        String phone = req.getParameter("phone");
+        String type = req.getParameter("type");
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String sex = req.getParameter("sex");
+
+        String query = "INSERT INTO employee (ssn, fname, lname, bdate, address, sex, phone, type, username, password)"
+                + "VALUES ('" + ssn + "','" + fname + "','" + lname + "','" + bdate + "','" + address + "','" + sex
+                + "','" + phone + "','" + type + "','" + username + "','" + password + "');";
+
+        System.out.println(query);
+
+        try {
+            DatabaseConnect DB = new DatabaseConnect();
+            DB.getConnection();
+            DB.doQuery(query);
+
+            DB.closeConnect();
+        } catch (Exception e) {
+            if (e.getLocalizedMessage().equals("The statement did not return a result set.")) {
+                resp.setStatus(200);
+            } else {
+                resp.setStatus(500);
+            }
+        }
+    }
 }
