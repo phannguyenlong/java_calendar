@@ -35,7 +35,7 @@ public class WeekViewServlet extends HttpServlet {
             "	WHERE DATEPART(week, '"+ date + "') = DATEPART(week, date)" +
             "	OR (ev.eventType = 'no repeat' AND DATEPART(week, '" + date + "') = DATEPART(week, ev.startDate))\n" +
             "	OR (ev.eventType = 'daily' AND '" + date + "' <= ev.endDate AND ev.startDate <= '" + date + "')\n" +
-            "	OR (ev.eventType = 'weekly' AND dbo.GetLastDayWeek('" + date + "') <= ev.endDate AND ev.startDate <= dbo.GetFirstDayWeek('1/5/2021'))";
+            "	OR (ev.eventType = 'weekly' AND dbo.GetLastDayWeek('" + date + "') <= ev.endDate AND ev.startDate <= dbo.GetFirstDayWeek('" + date + "'))";
 
         System.out.println(query);
 

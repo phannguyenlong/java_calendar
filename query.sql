@@ -59,7 +59,7 @@ HAVING date = '12/23/2020';
 -- Shift incomes (input date, start time, end time)
 SELECT SUM(totalPrice) as shiftIncome
 FROM orderList
-WHERE time <= '23:00' AND time >= '7:00'
+WHERE time <= '23:00' AND time >= '7:00' AND date = '12/23/2020'
 -- Get list of event of that date (input current date)
 SET DATEFIRST 1;
 SELECT 
@@ -72,7 +72,7 @@ JOIN employee e ON (evI.essn = e.ssn)
 RIGHT JOIN event ev ON (evI.eventID = ev.eventID)
 	WHERE '1/7/2021' = date
 	OR (ev.eventType = 'no repeat' AND '1/7/2021' = ev.startDate)
-	OR (ev.eventType = 'daily' AND '1/5/2021' <= ev.endDate AND ev.startDate <= '1/7/2021')
+	OR (ev.eventType = 'daily' AND '1/7/2021' <= ev.endDate AND ev.startDate <= '1/7/2021')
 	OR (ev.eventType = 'weekly' 
 		AND DATEPART(dw, '1/7/2021') = DATEPART(dw, date) 
 		AND dbo.GetLastDayWeek('1/7/2021') <= ev.endDate

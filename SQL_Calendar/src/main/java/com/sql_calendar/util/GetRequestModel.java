@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sql_calendar.resources.Employee;
 import com.sql_calendar.resources.EventInstance;
+import com.sql_calendar.resources.HourlyIncome;
+import com.sql_calendar.resources.ShiftIncome;
 
 /**
  * The class is use for make HTTP /GET request to the server
@@ -72,9 +74,9 @@ public class GetRequestModel {
     public static void main(String[] args) throws IOException {
         GetRequestModel resquest = new GetRequestModel();
         
-        String parameter = "name=in";
-        ArrayList<Employee> res = resquest.makeRequest("/manager/employee", Employee.class, parameter);
-        for (Employee std : res) {
+        String parameter = "date=12/23/2020&startTime=7:00&endTime=23:00";
+        ArrayList<ShiftIncome> res = resquest.makeRequest("/manager/calendar/day/shift", ShiftIncome.class, parameter);
+        for (ShiftIncome std : res) {
             System.out.println(std);
         }
 

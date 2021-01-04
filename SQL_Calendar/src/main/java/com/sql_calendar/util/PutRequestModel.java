@@ -3,19 +3,20 @@ package com.sql_calendar.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DeleteRequestModel {
+public class PutRequestModel {
     private String default_path = "http://localhost:8080/webserver";
     
-    public int makeRequest(String path, String parameter) throws IOException {
-        URL url = new URL(default_path + path + "?" + parameter);
+    public int makeRequest(String path, String postData) throws IOException {
+        URL url = new URL(default_path + path + "?" + postData);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         // Config connection
         conn.setDoOutput(true);
-        conn.setRequestMethod("DELETE");
+        conn.setRequestMethod("PUT");
         conn.setRequestProperty("User-Agent", "Java client");
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
@@ -39,13 +40,13 @@ public class DeleteRequestModel {
 
         return responseCode;
     }
-    
-    public static void main(String[] args) {
-        DeleteRequestModel resquest = new DeleteRequestModel();
 
-        String parameter = "eventID=7";
+    public static void main(String[] args) {
+        PutRequestModel resquest = new PutRequestModel();
+
+        String parameter = "date=12/29/2020&essn=504-06-2817&eventID=1&status=present";
         try {
-            int res_code = resquest.makeRequest("/manager/calendar/event/action", parameter);
+            int res_code = resquest.makeRequest("/manager/calendar/day/shift", parameter);
             if (res_code == 200) {
                 System.out.println("Successfull make request");
             } else {
@@ -55,4 +56,5 @@ public class DeleteRequestModel {
             System.out.println("Error from server");
         }
     }
+
 }

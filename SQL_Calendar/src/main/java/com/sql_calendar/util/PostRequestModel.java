@@ -178,9 +178,9 @@ public class PostRequestModel {
         // list.add(new Student(6, "thao", "q9"));
         // list.add(new Student(7, "duy", "Binh tho"));
 
-        String parameter = "date=12/28/2020&ssn=765-59-1185&eventID=1";
+        String parameter = "eventName=Event6&startDate=12/3/2020&endDate=1/10/2021&startTime=7:00&endTime=11:00&eventType=daily";
         try {
-            int res_code = resquest.makeRequest("/manager/calendar/event", parameter);
+            int res_code = resquest.makeRequest("/manager/calendar/event/action", parameter);
             if (res_code == 200) {
                 System.out.println("Successfull make request");
             } else {
