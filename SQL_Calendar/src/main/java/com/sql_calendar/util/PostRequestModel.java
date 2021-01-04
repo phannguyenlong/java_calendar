@@ -4,7 +4,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.io.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.sql_calendar.resources.OrderItem;
 // Other class
 import com.sql_calendar.resources.Student;
 
@@ -76,12 +76,9 @@ public class PostRequestModel {
      * @return status code response from server
      * @throws IOException
      */
-    public <T> int makeRequest(String path, ArrayList<T> list) throws IOException {
+    public <T> int makeRequest(String path, ArrayList<T> list, String parameter) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         System.out.println("Connecting to server");
-
-        // Handle parameter
-        String parameter = "name=" + URLEncoder.encode("Nguyen Long", "UTF-8");
 
         // Make connection
         URL url = new URL(default_path + path + "?" + parameter);
@@ -171,16 +168,16 @@ public class PostRequestModel {
     }
 
     public static void main(String[] args) throws IOException {
-        ArrayList<Student> list = new ArrayList<>();
+        ArrayList<OrderItem> list = new ArrayList<>();
         PostRequestModel resquest = new PostRequestModel();
 
-        // list.add(new Student(5, "long", "HCM"));
-        // list.add(new Student(6, "thao", "q9"));
-        // list.add(new Student(7, "duy", "Binh tho"));
+        list.add(new OrderItem("5", "1"));
+        list.add(new OrderItem("6", "1"));
+        list.add(new OrderItem("2", "2"));
 
-        String parameter = "eventName=Event6&startDate=12/3/2020&endDate=1/10/2021&startTime=7:00&endTime=11:00&eventType=daily";
+        String parameter = "date=12/2/2020&time=7:00&essn=369-60-6431";
         try {
-            int res_code = resquest.makeRequest("/manager/calendar/event/action", parameter);
+            int res_code = resquest.makeRequest("/cashier/order/new", list, parameter);
             if (res_code == 200) {
                 System.out.println("Successfull make request");
             } else {

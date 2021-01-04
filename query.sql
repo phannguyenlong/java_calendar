@@ -113,10 +113,14 @@ SELECT * FROM item;
 -- Create new Order (inser date, time, essn, list of orderItem(itemID, quantity))
 -- new orderList
 INSERT INTO orderList (date, time, essn)
-VALUES ('12/2/2020', '7:00', '369-60-6431');
+VALUES ('12/3/2020', '7:00', '369-60-6431');
 -- insert order ITEM (make a for loop to run through list of orderItem)
+declare @temp TINYINT;
+SET @temp = (SELECT max(orderID) from orderList);
 INSERT INTO orderItem(orderID, itemID, quantity)
-VALUES ('116','7','1');
+VALUES (@temp, '3', '3');
+INSERT INTO orderItem(orderID, itemID, quantity)
+VALUES (@temp, '2', '3');
 -- update total price from orderList (input orderID)
 UPDATE orderList
 SET totalPrice = magic_table.total
@@ -127,9 +131,9 @@ JOIN (
 	JOIN item i
 		ON o.itemID = i.itemID
 		GROUP BY orderID
-	HAVING orderID = '116'
+	HAVING orderID = @temp
 ) magic_table
-ON orderList.orderID = '116';
+ON orderList.orderID = @temp;
 
 -- ===============Cashier Order History===============
 -- Get all order

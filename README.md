@@ -145,7 +145,7 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 
  **2. Make new Order**
 
- `POST` **/cashier/order/new?date=' ',&time=' '&essn=' '&listOrderItme=' '**
+ `POST` **/cashier/order/new?date=' ',&time=' '&essn=' '&listOrderItem=' '**
  - **input:** date, time, essn and list of OrderItem
 
 ### V. Cashier Order History

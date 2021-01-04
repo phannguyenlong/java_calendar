@@ -11,6 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sql_calendar.resources.Employee;
 import com.sql_calendar.resources.EventInstance;
 import com.sql_calendar.resources.HourlyIncome;
+import com.sql_calendar.resources.Item;
+import com.sql_calendar.resources.Order;
+import com.sql_calendar.resources.OrderItem;
 import com.sql_calendar.resources.ShiftIncome;
 
 /**
@@ -74,9 +77,9 @@ public class GetRequestModel {
     public static void main(String[] args) throws IOException {
         GetRequestModel resquest = new GetRequestModel();
         
-        String parameter = "date=12/23/2020&startTime=7:00&endTime=23:00";
-        ArrayList<ShiftIncome> res = resquest.makeRequest("/manager/calendar/day/shift", ShiftIncome.class, parameter);
-        for (ShiftIncome std : res) {
+        String parameter = "orderID=116";
+        ArrayList<OrderItem> res = resquest.makeRequest("/cashier/order", OrderItem.class, parameter);
+        for (OrderItem std : res) {
             System.out.println(std);
         }
 

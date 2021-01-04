@@ -36,6 +36,7 @@ public class EventServlet extends HttpServlet {
                 resp.setStatus(200);
             } else {
                 resp.setStatus(500);
+                e.printStackTrace();
             }
         }
     }
