@@ -115,4 +115,27 @@ public class EmployeeServlet extends HttpServlet {
             }
         }
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String ssn = req.getParameter("ssn");
+
+        String query = "DELETE FROM employee WHERE ssn = '" + ssn + "';";
+
+        System.out.println(query);
+
+        try {
+            DatabaseConnect DB = new DatabaseConnect();
+            DB.getConnection();
+            DB.doQuery(query);
+
+            DB.closeConnect();
+        } catch (Exception e) {
+            if (e.getLocalizedMessage().equals("The statement did not return a result set.")) {
+                resp.setStatus(200);
+            } else {
+                resp.setStatus(500);
+            }
+        }
+    }
 }
