@@ -77,9 +77,9 @@ public class GetRequestModel {
     public static void main(String[] args) throws IOException {
         GetRequestModel resquest = new GetRequestModel();
         
-        String parameter = "date=12/23/2020";
-        ArrayList<EventInstance> res = resquest.makeRequest("/manager/calendar/week", EventInstance.class, parameter);
-        for (EventInstance std : res) {
+        String parameter = "name=all";
+        ArrayList<Employee> res = resquest.makeRequest("/manager/employee", Employee.class, parameter);
+        for (Employee std : res) {
             System.out.println(std);
         }
 

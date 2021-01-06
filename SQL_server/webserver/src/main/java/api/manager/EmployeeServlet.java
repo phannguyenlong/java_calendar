@@ -25,7 +25,7 @@ public class EmployeeServlet extends HttpServlet {
         String query;
 
         if (name.equals("all")) {
-            query = "SELECT * FROM Employee";
+            query = "SELECT ssn, (fname + ' ' + lname) as name, bdate, address, sex, type, phone FROM Employee";
         } else {
             query = "SELECT ssn, (fname + ' ' + lname) as name, bdate, address, sex, type, phone\n" + "FROM employee\n"
                     + "WHERE fname + ' '  + lname LIKE '%" + name + "%';";
