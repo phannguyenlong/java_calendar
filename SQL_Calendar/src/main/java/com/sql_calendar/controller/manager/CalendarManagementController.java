@@ -1,15 +1,15 @@
-package com.sql_calendar.controller;
+package com.sql_calendar.controller.manager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class FinanceReportController implements Initializable {
+public class CalendarManagementController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Finance report");
+        System.out.println("Calendar management");
     }
-    
+
 }

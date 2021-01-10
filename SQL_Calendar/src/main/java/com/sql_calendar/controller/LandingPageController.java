@@ -14,9 +14,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class LandingPageController implements Initializable, EventHandler<ActionEvent> {
@@ -29,7 +31,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
     @FXML
     VBox menuContainer;
     @FXML
-    AnchorPane contentContainer;
+    AnchorPane contentContainer, rootPane;
 
     public Employee getUser() {
         return user;
@@ -50,7 +52,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
 
         menuStrings = user.getType().equalsIgnoreCase("manager")
                 ? new String[] { "Calendar Management", "Employee Management", "Finance Report", "Sign out" }
-                : new String[] { "Cashing", "Order History" };
+                : new String[] { "Cashing", "Order History", "Sign out" };
 
         for (String str : menuStrings) {
             JFXButton button = new JFXButton(str);
@@ -62,7 +64,9 @@ public class LandingPageController implements Initializable, EventHandler<Action
         }
         menuButtons.get(0).setUnderline(true);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../calendarManagement.fxml"));
+        FXMLLoader loader = user.getType().equalsIgnoreCase("manager") ? 
+            new FXMLLoader(getClass().getResource("../manager/calendarManagement.fxml")) :
+            new FXMLLoader(getClass().getResource("../cashier/cashing.fxml")) ;
         try {
             VBox container = loader.load();
             contentContainer.getChildren().add(container);
@@ -91,15 +95,15 @@ public class LandingPageController implements Initializable, EventHandler<Action
             btn.setUnderline(false);
         if (event.getSource() == menuButtons.get(0)) {
             menuButtons.get(0).setUnderline(true);
-            loader = new FXMLLoader(getClass().getResource("../calendarManagement.fxml"));
+            loader = new FXMLLoader(getClass().getResource("../manager/calendarManagement.fxml"));
         } else if (event.getSource() == menuButtons.get(1)) {
             menuButtons.get(1).setUnderline(true);
-            loader = new FXMLLoader(getClass().getResource("../employeeManagement.fxml"));
+            loader = new FXMLLoader(getClass().getResource("../manager/employeeManagement.fxml"));
         } else if (event.getSource() == menuButtons.get(2)) {
             menuButtons.get(2).setUnderline(true);
-            loader = new FXMLLoader(getClass().getResource("../financeReport.fxml"));
+            loader = new FXMLLoader(getClass().getResource("../manager/financeReport.fxml"));
         } else if (event.getSource() == menuButtons.get(3)) {
-            menuButtons.get(3).setUnderline(true);
+            handleLogout();
         }
 
         try {
@@ -112,15 +116,43 @@ public class LandingPageController implements Initializable, EventHandler<Action
     }
 
     private void handleCashier(ActionEvent event) {
+        FXMLLoader loader = null;
+        contentContainer.getChildren().clear();
+        makeFadeout();
         for (JFXButton btn : menuButtons)
             btn.setUnderline(false);
         if (event.getSource() == menuButtons.get(0)) {
+            loader = new FXMLLoader(getClass().getResource("../cashier/cashing.fxml"));
             menuButtons.get(0).setUnderline(true);
         } else if (event.getSource() == menuButtons.get(1)) {
+            loader = new FXMLLoader(getClass().getResource("../cashier/orderHistory.fxml"));
             menuButtons.get(1).setUnderline(true);
+        } else if (event.getSource() == menuButtons.get(2)) {
+            handleLogout();
+        }
+
+        try {
+            VBox container = loader.load();
+            makeFadeback();
+            contentContainer.getChildren().add(container);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
+    private void handleLogout() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../login.fxml"));
+            Scene newScene = new Scene(loader.load());
+            Stage currentStage = (Stage) rootPane.getScene().getWindow();
+            currentStage.setScene(newScene);
+            currentStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Function for making animation
     private void makeFadeout() {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(500));
