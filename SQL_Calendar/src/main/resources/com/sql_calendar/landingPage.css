@@ -1,0 +1,7 @@
+.menuButton {
+    -fx-padding: 0.7em 0.57em;
+    -fx-font-size: 14;
+    -fx-text-fill: #919399;
+    -fx-font-weight: bold;
+    -fx-alignment: LEFT;
+}

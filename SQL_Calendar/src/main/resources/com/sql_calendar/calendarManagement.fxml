@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.CalendarManagementController">
+   <children>
+      <HBox prefHeight="46.0" prefWidth="1004.0">
+         <VBox.margin>
+            <Insets bottom="20.0" top="20.0" />
+         </VBox.margin>
+         <children>
+            <Label prefHeight="46.0" prefWidth="351.0" text="Calendar Management ">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Line endX="899.2929077148438" endY="-6.854534149169922E-5" startX="-100.0" stroke="#c0c3cc" />
+   </children>
+</VBox>
