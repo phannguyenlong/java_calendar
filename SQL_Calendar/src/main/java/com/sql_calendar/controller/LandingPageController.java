@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.sql_calendar.resources.Employee;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class LandingPageController implements Initializable, EventHandler<ActionEvent> {
     private Employee user;
@@ -84,6 +86,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
     private void handleManager(ActionEvent event) {
         FXMLLoader loader = null;
         contentContainer.getChildren().clear();
+        makeFadeout();
         for (JFXButton btn : menuButtons)
             btn.setUnderline(false);
         if (event.getSource() == menuButtons.get(0)) {
@@ -101,6 +104,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
 
         try {
             VBox container = loader.load();
+            makeFadeback();
             contentContainer.getChildren().add(container);
         } catch (IOException e) {
             e.printStackTrace();
@@ -116,5 +120,22 @@ public class LandingPageController implements Initializable, EventHandler<Action
             menuButtons.get(1).setUnderline(true);
         }
     }
-    
+
+    private void makeFadeout() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(500));
+        fadeTransition.setNode(contentContainer);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.play();
+    }
+
+    private void makeFadeback() {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.millis(500));
+        fadeTransition.setNode(contentContainer);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+    }
 }

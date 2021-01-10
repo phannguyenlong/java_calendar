@@ -9,7 +9,7 @@ public class CalendarManagementController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.print("calendar management");
+        System.out.println("Calendar management");
     }
 
 }
