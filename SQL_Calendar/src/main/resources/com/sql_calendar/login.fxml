@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: E9E9EA; -fx-alignment: center;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.LoginController">
+   <children>
+      <VBox style="-fx-alignment: center;">
+         <children>
+            <AnchorPane prefHeight="523.0" prefWidth="747.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <effect>
+                  <DropShadow color="#00000040" offsetX="5.0" offsetY="5.0" radius="12.425" spread="0.35" width="30.7" />
+               </effect>
+               <children>
+                  <ImageView fx:id="loadingIcon" fitHeight="150.0" fitWidth="200.0" layoutX="278.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/user.png" />
+                     </image>
+                  </ImageView>
+                  <HBox layoutY="182.0" prefHeight="316.0" prefWidth="706.0" style="-fx-alignment: center;">
+                     <children>
+                        <VBox prefHeight="316.0" prefWidth="259.0" style="-fx-alignment: center;">
+                           <children>
+                              <JFXTextField fx:id="username" focusColor="#009688" labelFloat="true" promptText="Username">
+                                 <font>
+                                    <Font name="Times New Roman" size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <JFXPasswordField fx:id="password" focusColor="#009688" labelFloat="true" promptText="Password">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Times New Roman" size="16.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <JFXButton fx:id="submitButton" onAction="#handleSubmit" prefHeight="35.0" prefWidth="146.0" ripplerFill="#0a0a0a" style="-fx-background-color: #009688; -fx-background-radius: 9;" text="SIGN IN" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Times New Roman" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <ImageView fx:id="loadingIcon" fitHeight="64.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/loading.gif" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>
