@@ -3,10 +3,13 @@ package com.sql_calendar.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.sql_calendar.resources.Employee;
+
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -53,12 +56,26 @@ public class LandingPageController implements Initializable, EventHandler<Action
         menuStrings = user.getType().equalsIgnoreCase("manager")
                 ? new String[] { "Calendar Management", "Employee Management", "Finance Report", "Sign out" }
                 : new String[] { "Cashing", "Order History", "Sign out" };
+        HashMap<String, String> menuIcons = new HashMap<String, String>();
+        menuIcons.put("Calendar Management", "mdi-calendar-multiple");
+        menuIcons.put("Employee Management", "mdi-account-card-details");
+        menuIcons.put("Finance Report", "mdi-newspaper");
+        menuIcons.put("Cashing", "mdi-calculator");
+        menuIcons.put("Order History", "mdi-history");
+        menuIcons.put("Sign out", "mdi-logout");
 
         for (String str : menuStrings) {
+            // Create Button
             JFXButton button = new JFXButton(str);
             button.prefWidthProperty().bind(menuContainer.prefWidthProperty());
-            button.getStyleClass().add("menuButton");
+            button.getStyleClass().addAll("menuButton");
             button.addEventHandler(ActionEvent.ACTION, this);
+
+            // Set Icon
+            FontIcon icon = new FontIcon(menuIcons.get(str));
+            icon.getStyleClass().add("menuIcon");
+
+            button.setGraphic(icon);
             menuContainer.getChildren().add(button);
             menuButtons.add(button);
         }

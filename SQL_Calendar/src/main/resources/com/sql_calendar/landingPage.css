@@ -5,3 +5,8 @@
     -fx-font-weight: bold;
     -fx-alignment: LEFT;
 }
+
+.menuIcon {
+    -fx-icon-color: #919399;
+    -fx-icon-size: 20;
+}

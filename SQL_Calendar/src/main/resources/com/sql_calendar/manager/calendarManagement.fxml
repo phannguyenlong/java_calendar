@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.CalendarManagementController">
+<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.CalendarManagementController">
    <children>
       <HBox prefHeight="46.0" prefWidth="1004.0">
          <VBox.margin>
@@ -23,8 +29,36 @@
                   <Font name="Segoe UI Bold" size="30.0" />
                </font>
             </Label>
+            <Region prefHeight="46.0" prefWidth="339.0" />
+            <JFXComboBox focusColor="#009688" promptText="View" style="-fx-background-color: white; -fx-border-color: black;">
+               <HBox.margin>
+                  <Insets left="10.0" right="20.0" top="12.0" />
+               </HBox.margin>
+               <unFocusColor>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </unFocusColor>
+            </JFXComboBox>
+            <JFXButton prefHeight="37.0" prefWidth="213.0" style="-fx-background-color: #009688;" text="Create  New Event" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="30.0" top="7.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi-calendar-plus" iconSize="25" />
+               </graphic>
+            </JFXButton>
          </children>
       </HBox>
       <Line endX="899.2929077148438" endY="-6.854534149169922E-5" startX="-100.0" stroke="#c0c3cc" />
    </children>
+   <effect>
+      <DropShadow color="#00000040" />
+   </effect>
 </VBox>
