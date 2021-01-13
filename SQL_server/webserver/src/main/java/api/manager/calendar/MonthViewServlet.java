@@ -21,7 +21,7 @@ public class MonthViewServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String month = req.getParameter("month");
+        String date = req.getParameter("date");
 
         String query = "SELECT * , SUM(temp.dayIncome) OVER (ORDER BY date) as monthIncome\n"
                 + "FROM (\n"
@@ -29,7 +29,8 @@ public class MonthViewServlet extends HttpServlet {
 	            + "date,\n" 
 	            + "SUM(totalPrice) as dayIncome\n"
                 + "FROM orderList\n"
-	            + "WHERE Month(date) = " + month + "\n"
+                + "WHERE Month(date) = Month('" + date + "') AND\n"
+                + "Year(date) = Year('" + date + "')\n"
 	            + "GROUP BY date\n"
                 +") AS temp;";
 

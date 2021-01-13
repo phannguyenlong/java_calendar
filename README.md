@@ -25,14 +25,15 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 
 `GET` **/auth?username=' '&password=' '**
 - **input:** user name and password
-- **output:** Student (ssn, name, type)
+- **output:** Employee
+-  *Employee(essn, name, sex, bdate, address, type, phone)*
 
 ### II. Manager Calendar Management
 
 **1. Month view**
 
-`GET` **/manager/calendar/month?month=' '**
-- **input:** month that need to view
+`GET` **/manager/calendar/month?date=' '**
+- **input:** date in that month
 - **output:** MonthView(date, dayIncome, monthIncome)
 - *monthIncome is cumsum format, get last value to get total sum*
 
