@@ -11,7 +11,6 @@ import com.sql_calendar.resources.Employee;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,7 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
+import com.sql_calendar.util.Animation;
 
 public class LandingPageController implements Initializable, EventHandler<ActionEvent> {
     private Employee user;
@@ -81,9 +81,9 @@ public class LandingPageController implements Initializable, EventHandler<Action
         }
         menuButtons.get(0).setUnderline(true);
 
-        FXMLLoader loader = user.getType().equalsIgnoreCase("manager") ? 
-            new FXMLLoader(getClass().getResource("../manager/calendarManagement.fxml")) :
-            new FXMLLoader(getClass().getResource("../cashier/cashing.fxml")) ;
+        FXMLLoader loader = user.getType().equalsIgnoreCase("manager")
+                ? new FXMLLoader(getClass().getResource("../manager/calendarManagement.fxml"))
+                : new FXMLLoader(getClass().getResource("../cashier/cashing.fxml"));
         try {
             VBox container = loader.load();
             contentContainer.getChildren().add(container);
@@ -107,7 +107,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
     private void handleManager(ActionEvent event) {
         FXMLLoader loader = null;
         contentContainer.getChildren().clear();
-        makeFadeout();
+        Animation.makeFadeout(contentContainer);
         for (JFXButton btn : menuButtons)
             btn.setUnderline(false);
         if (event.getSource() == menuButtons.get(0)) {
@@ -125,7 +125,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
 
         try {
             VBox container = loader.load();
-            makeFadeback();
+            Animation.makeFadeback(contentContainer);
             contentContainer.getChildren().add(container);
         } catch (IOException e) {
             e.printStackTrace();
@@ -135,7 +135,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
     private void handleCashier(ActionEvent event) {
         FXMLLoader loader = null;
         contentContainer.getChildren().clear();
-        makeFadeout();
+        Animation.makeFadeout(contentContainer);
         for (JFXButton btn : menuButtons)
             btn.setUnderline(false);
         if (event.getSource() == menuButtons.get(0)) {
@@ -150,7 +150,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
 
         try {
             VBox container = loader.load();
-            makeFadeback();
+            Animation.makeFadeback(contentContainer);
             contentContainer.getChildren().add(container);
         } catch (IOException e) {
             e.printStackTrace();
@@ -167,24 +167,5 @@ public class LandingPageController implements Initializable, EventHandler<Action
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    // Function for making animation
-    private void makeFadeout() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(contentContainer);
-        fadeTransition.setFromValue(1);
-        fadeTransition.setToValue(0);
-        fadeTransition.play();
-    }
-
-    private void makeFadeback() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(500));
-        fadeTransition.setNode(contentContainer);
-        fadeTransition.setFromValue(0);
-        fadeTransition.setToValue(1);
-        fadeTransition.play();
     }
 }
