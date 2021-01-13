@@ -2,6 +2,8 @@ package com.sql_calendar.controller.manager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -15,6 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 public class CalendarManagementController implements Initializable {
+    protected static String date;
+    // FXML varibale
     @FXML
     JFXComboBox<Label> viewOption;
     @FXML
@@ -27,6 +31,12 @@ public class CalendarManagementController implements Initializable {
         viewOption.getItems().add(new Label("Week"));
         viewOption.getItems().add(new Label("Day"));
         viewOption.getSelectionModel().selectFirst();
+
+        // get current Date
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");  
+        date = dtf.format(LocalDateTime.now());
+        System.out.println(date);
+        
         handleViewOption();
     }
 
@@ -35,7 +45,7 @@ public class CalendarManagementController implements Initializable {
         viewContainer.getChildren().clear();
         Animation.makeFadeout(viewContainer);
         String option = (String) viewOption.getValue().getText();
-        System.out.println(option);
+        System.out.println(date);
 
         if (option.equals("Month"))
             loader = new FXMLLoader(getClass().getResource("../../manager/monthView.fxml"));
@@ -50,8 +60,6 @@ public class CalendarManagementController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-
     }
 
 }

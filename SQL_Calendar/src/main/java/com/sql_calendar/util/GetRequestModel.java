@@ -9,16 +9,15 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sql_calendar.resources.Employee;
-import com.sql_calendar.resources.EventInstance;
-import com.sql_calendar.resources.HourlyIncome;
-import com.sql_calendar.resources.Item;
-import com.sql_calendar.resources.Order;
-import com.sql_calendar.resources.OrderItem;
-import com.sql_calendar.resources.ShiftIncome;
+
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
- * The class is use for make HTTP /GET request to the server
- * Call makeRequest funciton to use
+ * The class is use for make HTTP /GET request to the server Call makeRequest
+ * funciton to use
+ * 
  * @author Long Phan
  */
 public class GetRequestModel {
@@ -26,26 +25,34 @@ public class GetRequestModel {
 
     /**
      * Use for make a request
-     * @param <T> All type in src/resouces
-     * @param path api path
+     * 
+     * @param <T>   All type in src/resouces
+     * @param path  api path
      * @param clazz Class type of Object, ex: Student.class
      * @return Arraylist<T>
      * @throws IOException
      */
-    public <T> ArrayList<T> makeRequest(String path, Class<T> clazz, String parameter) throws IOException {
+    public <T> ArrayList<T> makeRequest(String path, Class<T> clazz, String parameter) {
         ArrayList<T> list = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
 
         System.out.println("New Get Request was created");
+        HttpURLConnection conn = null;
 
         // Make connection
-        URL url = new URL(this.default_path + path + "?" + parameter);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        // Config Connection
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("User-Agent", "Java client");
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        
+        try {
+            URL url = new URL(this.default_path + path + "?" + parameter);
+            conn = (HttpURLConnection) url.openConnection();
+            // Config Connection
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("User-Agent", "Java client");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        } catch (IOException e) {
+            Platform.runLater(new Runnable(){
+                public void run() { renderErrorBox(e); };
+            });
+            e.printStackTrace();
+        }
         BufferedReader in = null;
         try {
             in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -63,20 +70,31 @@ public class GetRequestModel {
                 for (String json : jsons)
                     list.add(mapper.readValue(json, clazz));
             }
-
+            in.close();
         } catch (IOException e) {
+            Platform.runLater(new Runnable() {
+                public void run() { renderErrorBox(e); };
+            });
             e.printStackTrace();
         } finally {
             conn.disconnect();
-            in.close();
         }
 
         return list;
     }
-    
+
+    public void renderErrorBox(Exception e) {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Error");
+        alert.setHeaderText("There is an error when connecting to server");
+        alert.setContentText("Error: " + e.getMessage());
+
+        alert.showAndWait();
+    }
+
     public static void main(String[] args) throws IOException {
         GetRequestModel resquest = new GetRequestModel();
-        
+
         String parameter = "name=all";
         ArrayList<Employee> res = resquest.makeRequest("/manager/employee", Employee.class, parameter);
         for (Employee std : res) {

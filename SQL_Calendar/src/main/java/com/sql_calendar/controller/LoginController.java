@@ -11,12 +11,17 @@ import com.sql_calendar.resources.Employee;
 import com.sql_calendar.util.GetRequestModel;
 
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -51,34 +56,25 @@ public class LoginController implements Initializable {
     }
 
     public void handleSubmit() {
-        GetRequestModel request = new GetRequestModel();
-        String parameter = "username=" + username.getText() + "&password=" + password.getText();
-
         Thread makeRequest = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    loadingIcon.setVisible(true); // show loading icon
-                    ArrayList<Employee> list = request.makeRequest("/auth", Employee.class, parameter);
-                    if (list.isEmpty()) {
-                        System.out.println("Wrong");
-                        username.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
-                        password.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
-                    } else {
-                        System.out.println(list.get(0).toString());
-                        System.out.println("Welcome");
-                        makeFadeout(list.get(0));
-                    }
-                } catch (IOException e) {
-                    System.out.println("Error connect to server");
-                    e.printStackTrace();
-                } finally {
-                    loadingIcon.setVisible(false);
+                GetRequestModel request = new GetRequestModel();
+                String parameter = "username=" + username.getText() + "&password=" + password.getText();
+                loadingIcon.setVisible(true); // show loading icon
+                ArrayList<Employee> list = request.makeRequest("/auth", Employee.class, parameter);
+                if (list.isEmpty()) {
+                    username.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
+                    password.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
+                } else {
+                    System.out.println(list.get(0).toString());
+                    makeFadeout(list.get(0));
                 }
+
+                loadingIcon.setVisible(false);
             }
         });
         makeRequest.start();
-
     }
 
     @Override
@@ -93,7 +89,7 @@ public class LoginController implements Initializable {
         fadeTransition.setFromValue(1);
         fadeTransition.setToValue(0);
         fadeTransition.play();
-        
+
         fadeTransition.setOnFinished(event -> renderNewScene(employee));
     }
 
@@ -104,7 +100,7 @@ public class LoginController implements Initializable {
             Parent newView = loader.load();
 
             LandingPageController controller = loader.getController();
-            controller.setUser(employee);;
+            controller.setUser(employee);
 
             Scene newScene = new Scene(newView);
             Stage currentStage = (Stage) rootPane.getScene().getWindow();
