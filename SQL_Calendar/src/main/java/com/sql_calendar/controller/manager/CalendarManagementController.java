@@ -15,10 +15,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 
+/**
+ * Calendar management Tab Controller
+ * @author Long Phan
+ */
 public class CalendarManagementController implements Initializable {
-    protected static String date;
+    protected static String date; // make this item static
     // FXML varibale
     @FXML
     JFXComboBox<Label> viewOption;
@@ -48,6 +51,7 @@ public class CalendarManagementController implements Initializable {
         String option = (String) viewOption.getValue().getText();
         System.out.println(date);
 
+        // Handle each view option to load proper fxml
         if (option.equals("Month"))
             loader = new FXMLLoader(getClass().getResource("../../manager/monthView.fxml"));
         else if (option.equals("Week"))

@@ -4,6 +4,10 @@ import javafx.animation.FadeTransition;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
+/**
+ * Class for making Fading animation
+ * @author Long Phan
+ */
 public class Animation {
     public static void makeFadeout(Node node) {
         FadeTransition fadeTransition = new FadeTransition();

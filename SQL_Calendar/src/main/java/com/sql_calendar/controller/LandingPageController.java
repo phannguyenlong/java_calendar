@@ -24,9 +24,14 @@ import javafx.stage.Stage;
 
 import com.sql_calendar.util.Animation;
 
+/**
+ * Controller for landing page of application
+ * @author Long Phan
+ */
 public class LandingPageController implements Initializable, EventHandler<ActionEvent> {
     private Employee user;
     ArrayList<JFXButton> menuButtons;
+    // FXML variable
     @FXML
     Label userName;
     @FXML
@@ -40,6 +45,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
         return user;
     }
 
+    // Will be call by Login controller and recieve Object of user
     public void setUser(Employee user) {
         this.user = user;
 
@@ -49,10 +55,12 @@ public class LandingPageController implements Initializable, EventHandler<Action
         init();
     }
 
+    // Main function to render landing view
     private void init() {
         menuButtons = new ArrayList<JFXButton>();
         String[] menuStrings;
-
+        
+        // Setting up text for Menu component
         menuStrings = user.getType().equalsIgnoreCase("manager")
                 ? new String[] { "Calendar Management", "Employee Management", "Finance Report", "Sign out" }
                 : new String[] { "Cashing", "Order History", "Sign out" };
@@ -64,6 +72,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
         menuIcons.put("Order History", "mdi-history");
         menuIcons.put("Sign out", "mdi-logout");
 
+        // Create Menu
         for (String str : menuStrings) {
             // Create Button
             JFXButton button = new JFXButton(str);
@@ -81,6 +90,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
         }
         menuButtons.get(0).setUnderline(true);
 
+        // Load the First page (which is also first option of menu)
         FXMLLoader loader = user.getType().equalsIgnoreCase("manager")
                 ? new FXMLLoader(getClass().getResource("../manager/calendarManagement.fxml"))
                 : new FXMLLoader(getClass().getResource("../cashier/cashing.fxml"));
@@ -96,6 +106,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    // Compare type of User to use proper handle Event Function
     @Override
     public void handle(ActionEvent event) {
         if (user.getType().equalsIgnoreCase("manager"))
@@ -104,6 +115,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
             handleCashier(event);
     }
 
+    // Handle Button Click for Manager Menu
     private void handleManager(ActionEvent event) {
         FXMLLoader loader = null;
         contentContainer.getChildren().clear();
@@ -132,6 +144,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
         }
     }
 
+    // Handle Button click for Cashier Menu
     private void handleCashier(ActionEvent event) {
         FXMLLoader loader = null;
         contentContainer.getChildren().clear();

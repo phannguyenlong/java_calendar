@@ -22,6 +22,10 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Controller for Logging Action
+ * @author Long Phan
+ */
 public class LoginController implements Initializable {
     @FXML
     Button submitButton;
@@ -50,18 +54,20 @@ public class LoginController implements Initializable {
         this.password = password;
     }
 
+    // Action happen when click Button "Sign In"
     public void handleSubmit() {
         Thread makeRequest = new Thread(new Runnable() {
+            // Make request to server
             @Override
             public void run() {
                 GetRequestModel request = new GetRequestModel();
                 String parameter = "username=" + username.getText() + "&password=" + password.getText();
                 loadingIcon.setVisible(true); // show loading icon
                 ArrayList<Employee> list = request.makeRequest("/auth", Employee.class, parameter);
-                if (list.isEmpty()) {
+                if (list.isEmpty()) { // If wrong ==> Set all to "red" color
                     username.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
                     password.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
-                } else {
+                } else { // If success ==> Fade out then open LandingPage.fxml
                     System.out.println(list.get(0).toString());
                     makeFadeout(list.get(0));
                 }
@@ -74,9 +80,10 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadingIcon.setVisible(false);
+        loadingIcon.setVisible(false); // hide loading Icon
     }
 
+    // Fade out function then open landingPage.fxml
     private void makeFadeout(Employee employee) {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.millis(1000));
@@ -88,6 +95,7 @@ public class LoginController implements Initializable {
         fadeTransition.setOnFinished(event -> renderNewScene(employee));
     }
 
+    // Function handle open new Scene (which is landingPage.fxml)
     private void renderNewScene(Employee employee) {
         System.out.println("new scene");
         try {

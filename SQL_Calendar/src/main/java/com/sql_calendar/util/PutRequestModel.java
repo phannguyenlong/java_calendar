@@ -9,9 +9,19 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Class for make HTTP PUT resquest to server
+ * @author Long Phan
+ */
 public class PutRequestModel {
     private String default_path = "http://localhost:8080/webserver";
 
+    /**
+     * Make request with custom postData
+     * @param path
+     * @param postData
+     * @return status code from server
+     */
     public int makeRequest(String path, String postData) {
         int responseCode = 500;
         try {

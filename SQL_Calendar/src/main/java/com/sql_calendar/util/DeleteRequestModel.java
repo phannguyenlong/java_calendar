@@ -9,9 +9,19 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Class use for making HTTP DELETE Request to server
+ * @author Long Phan
+ */
 public class DeleteRequestModel {
     private String default_path = "http://localhost:8080/webserver";
 
+    /**
+     * Make HTTP DELETE Request with custom parameter
+     * @param path
+     * @param parameter
+     * @return status code from server
+     */
     public int makeRequest(String path, String parameter) {
         int responseCode = 500;
         try {
