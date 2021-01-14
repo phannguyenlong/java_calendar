@@ -1,10 +1,15 @@
 package com.sql_calendar.util;
 
+import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * This class use to store some function in order to deal with data
+ * @author Long Phan
+ */
 public class Tool {
     public static Date convertStringtoDate(String date) {
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
@@ -15,6 +20,12 @@ public class Tool {
             return null;
         }
     }
+
+    public static String convertDateToString(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        return sdf.format(date);
+    }
+
     public static Date getFirstDateOfMonth(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -47,6 +58,30 @@ public class Tool {
         return cal.get(Calendar.WEEK_OF_MONTH);
     }
 
+    public static Date getFirstDayofNextMonth(Date date) {
+        Calendar today = Calendar.getInstance();
+        today.clear();
+        today.setTime(date);
+        Calendar next = Calendar.getInstance();
+        next.clear();
+        next.set(Calendar.YEAR, today.get(Calendar.YEAR));
+        next.set(Calendar.MONTH, today.get(Calendar.MONTH) + 1);
+        next.set(Calendar.DAY_OF_MONTH, 1); // optional, default: 1, our need
+        return next.getTime();
+    }
+
+    public static Date getFirstDayofPrevMonth(Date date) {
+        Calendar today = Calendar.getInstance();
+        today.clear();
+        today.setTime(date);
+        Calendar next = Calendar.getInstance();
+        next.clear();
+        next.set(Calendar.YEAR, today.get(Calendar.YEAR));
+        next.set(Calendar.MONTH, today.get(Calendar.MONTH) - 1);
+        next.set(Calendar.DAY_OF_MONTH, 1); // optional, default: 1, our need
+        return next.getTime();
+    }
+
     /**
      * This will return int array (day, month, year) of object date
      * @param date Object day
@@ -56,5 +91,15 @@ public class Tool {
         c.setTime(date);
         int[] arr = { c.get(Calendar.DATE), c.get(Calendar.MONTH), c.get(Calendar.YEAR) };
         return arr;
+    }
+
+    public static String getMonthName(int num) {
+        String month = "wrong";
+        DateFormatSymbols dfs = new DateFormatSymbols();
+        String[] months = dfs.getMonths();
+        if (num >= 0 && num <= 11 ) {
+            month = months[num];
+        }
+        return month;
     }
 }

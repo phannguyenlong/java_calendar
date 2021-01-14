@@ -1,0 +1,11 @@
+.dayText {
+    -fx-label-padding: 2 5 0 0;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+}
+
+.incomeText {
+    -fx-label-padding: 0 0 5 0;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+}
