@@ -16,7 +16,9 @@ SELECT
 	date, 
 	SUM(totalPrice) as dayIncome
 FROM orderList
-	WHERE Month(date) = '12'
+	WHERE 
+		Month(date) = Month('12/23/2020') AND
+		Year(date) = Year('12/23/2020')
 	GROUP BY date
 ) AS temp;
 
