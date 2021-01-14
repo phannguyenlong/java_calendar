@@ -12,6 +12,7 @@ import com.sql_calendar.util.Animation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -54,7 +55,7 @@ public class CalendarManagementController implements Initializable {
         else if (option.equals("Day"))
             loader = new FXMLLoader(getClass().getResource("../../manager/dayView.fxml"));
         try {
-            FlowPane container = loader.load();
+            Parent container = loader.load();
             Animation.makeFadeback(viewContainer);
             viewContainer.getChildren().add(container);
         } catch (IOException e) {

@@ -1,10 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="950.0" style="-fx-background-radius: 20; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.MonthViewController">
+<VBox fillWidth="false" prefHeight="530.0" prefWidth="950.0" style="-fx-background-radius: 20; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.MonthViewController">
    <effect>
       <DropShadow color="#00000040" offsetX="2.0" offsetY="2.0" spread="0.11" />
    </effect>
-</FlowPane>
+   <children>
+      <HBox prefHeight="50.0" prefWidth="950.0">
+         <children>
+            <Label prefHeight="32.0" prefWidth="95.0" text="January">
+               <font>
+                  <Font name="Segoe UI Bold" size="25.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="46.0" text="2021" textFill="#232a3e">
+               <font>
+                  <Font name="Segoe UI" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </HBox.margin>
+            </Label>
+            <Region prefHeight="50.0" prefWidth="629.0" />
+            <JFXButton prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-left" iconSize="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+               <graphic>
+                  <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-right" iconSize="25" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children></HBox>
+      <GridPane prefWidth="900.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <VBox.margin>
+            <Insets left="25.0" right="25.0" />
+         </VBox.margin>
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="131.0" text="Sunday" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="129.0" text="Monday" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="129.0" text="Tuesday" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="129.0" text="Wednesday" GridPane.columnIndex="3">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="129.0" text="Thursday" GridPane.columnIndex="4">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="129.0" text="Friday" GridPane.columnIndex="5">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="129.0" text="Saturday" GridPane.columnIndex="6">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane fx:id="calendarContainer" gridLinesVisible="true" prefHeight="400.0" prefWidth="900.0" style="-fx-background-color: white;">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <VBox.margin>
+            <Insets left="25.0" right="25.0" />
+         </VBox.margin>
+      </GridPane>
+   </children>
+</VBox>
