@@ -102,11 +102,15 @@ public class WeekViewController implements Initializable {
                             }
                         });
                     }
+                    System.out.println("run here");
 
                     loadingIcon.setVisible(false);
                     jsp.setDisable(false);
                     // Add data to UI
                     renderEventBox();
+                } else {
+                    loadingIcon.setVisible(false);
+                    jsp.setDisable(false);
                 }
             }
         });
@@ -120,7 +124,9 @@ public class WeekViewController implements Initializable {
             @Override
             public void run() {
                 for (int i = 0; i < 7; i++) {
+                    if (dayLists.get(i).isEmpty()) continue;
                     ArrayList<EventInstance> event = new ArrayList<>();
+                    // event.add(dayLists.get(i).get(index))
                     for (int j = 0; j < dayLists.get(i).size(); j++) {
                         EventInstance eventInstances = dayLists.get(i).get(j);
                         if (j != 0)
@@ -133,10 +139,10 @@ public class WeekViewController implements Initializable {
                                     controller.setEventData(event);
                                     dayContainers[i].getChildren().add(eventBox);
                                 } catch (IOException e) {
-                                    System.out.println(i + "\t" + j);
                                     e.printStackTrace();
                                 } finally {
                                     event.clear();
+                                    event.add(eventInstances);
                                 }
                             } else {
                                 event.add(eventInstances);

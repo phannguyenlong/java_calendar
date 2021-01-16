@@ -24,7 +24,7 @@ FROM orderList
 
 -- Week view
 -- get list of event of that week (input date atm)
-SET DATEFIRST 1;
+SET DATEFIRST 7;
 SELECT 
 	essn, ev.eventID, ev.eventName, startDate, date, 
 	FORMAT(startTime, 'hh\:mm') as startTime, 
@@ -63,7 +63,7 @@ SELECT SUM(totalPrice) as shiftIncome
 FROM orderList
 WHERE time <= '23:00' AND time >= '7:00' AND date = '12/23/2020'
 -- Get list of event of that date (input current date)
-SET DATEFIRST 1;
+SET DATEFIRST 7;
 SELECT 
 	essn, ev.eventID, ev.eventName, startDate, date, 
 	FORMAT(startTime, 'hh\:mm') as startTime, 
@@ -169,7 +169,7 @@ FROM
 	HAVING date = '12/23/2020'
 ) as matric_table;
 -- Week View (input current date)
-SET DATEFIRST 5;
+SET DATEFIRST 7;
 SELECT date, SUM(totalPrice) as total
 FROM orderList
 GROUP BY date

@@ -136,6 +136,6 @@ public class Tool {
     }
 
     public static void main(String[] args) {
-        System.out.println(plusOrMinusDay(getFirstDayofWeek(convertStringtoDate("1/16/2021")), 2, 0));
+        System.out.println(convertStringToTime("7:00"));
     }
 }

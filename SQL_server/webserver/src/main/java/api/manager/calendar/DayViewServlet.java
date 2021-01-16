@@ -26,7 +26,7 @@ public class DayViewServlet extends HttpServlet {
         String query = null;
 
         if (url.equals("/webserver/manager/calendar/day")) {
-            query = "SET DATEFIRST 1;\r\n" + "SELECT \r\n" + "	essn, ev.eventID, ev.eventName, startDate, date, \r\n"
+            query = "SET DATEFIRST 7;\r\n" + "SELECT \r\n" + "	essn, ev.eventID, ev.eventName, startDate, date, \r\n"
                     + "	FORMAT(startTime, 'hh\\:mm') as startTime, \r\n"
                     + "	FORMAT(endTime, 'hh\\:mm') as endTime, \r\n"
                     + "	(fname + ' ' + lname) AS name, phone, sex, type, eventType, status\r\n"

@@ -23,7 +23,7 @@ public class WeekViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String date = req.getParameter("date");
 
-        String query = "SET DATEFIRST 1;" +
+        String query = "SET DATEFIRST 7;" +
             "SELECT " +
             "	essn, ev.eventID, ev.eventName, startDate, date, " +
             "	FORMAT(startTime, 'hh\\:mm') as startTime, " +
