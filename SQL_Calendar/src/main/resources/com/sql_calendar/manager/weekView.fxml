@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <VBox fillWidth="false" prefHeight="530.0" prefWidth="950.0" style="-fx-background-color: white; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.WeekViewController">
    <effect>
       <DropShadow color="#00000040" offsetX="2.0" offsetY="2.0" spread="0.11" />
@@ -21,7 +20,7 @@
    <children>
       <HBox prefHeight="50.0" prefWidth="950.0">
          <children>
-            <Label prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center-right;" text="Week 1">
+            <Label fx:id="weekLabel" prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center-right;" text="Week 1">
                <HBox.margin>
                   <Insets left="20.0" top="10.0" />
                </HBox.margin>
@@ -29,7 +28,7 @@
                   <Font name="Segoe UI Bold" size="25.0" />
                </font>
             </Label>
-            <Label prefHeight="19.0" prefWidth="116.0" text="(12/23 - 12/30)">
+            <Label fx:id="periodLabel" prefHeight="22.0" prefWidth="252.0" text="(12/23 - 12/30)">
                <font>
                   <Font name="Segoe UI" size="17.0" />
                </font>
@@ -37,14 +36,14 @@
                   <Insets top="15.0" />
                </HBox.margin>
             </Label>
-            <Region prefHeight="50.0" prefWidth="232.0" />
-            <ImageView fitHeight="50.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+            <Region prefHeight="50.0" prefWidth="186.0" />
+            <ImageView fx:id="loadingIcon" fitHeight="50.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/loading.gif" />
                </image>
             </ImageView>
-            <Region prefHeight="50.0" prefWidth="249.0" />
-            <JFXButton prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+            <Region prefHeight="50.0" prefWidth="168.0" />
+            <JFXButton fx:id="prevButton" onAction="#handleChangeWeek" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
                <graphic>
                   <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-left" iconSize="25" />
                </graphic>
@@ -52,7 +51,7 @@
                   <Insets top="10.0" />
                </HBox.margin>
             </JFXButton>
-            <JFXButton prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+            <JFXButton fx:id="nextButton" onAction="#handleChangeWeek" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
                <graphic>
                   <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-right" iconSize="25" />
                </graphic>
@@ -62,7 +61,7 @@
             </JFXButton>
          </children>
       </HBox>
-      <ScrollPane prefHeight="450.0" prefWidth="920.0" style="-fx-background-color: transparent;">
+      <ScrollPane fx:id="jsp" prefHeight="450.0" prefWidth="920.0" style="-fx-background-color: transparent;">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="10.0" />
          </VBox.margin>
@@ -138,7 +137,7 @@
                   </HBox>
                   <HBox prefHeight="464.0" prefWidth="920.0">
                      <children>
-                        <VBox fx:id="sunday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
+                        <VBox fx:id="sunday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" spacing="10.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
                         <VBox fx:id="monday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
                         <VBox fx:id="tuesday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
                         <VBox fx:id="webnesday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />

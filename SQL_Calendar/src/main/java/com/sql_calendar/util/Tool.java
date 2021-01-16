@@ -1,5 +1,7 @@
 package com.sql_calendar.util;
 
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,6 +46,13 @@ public class Tool {
         cal.setTime(date);
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
         return cal.getTime();
+    }
+
+    public static Date getFirstDayofWeek(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.set(Calendar.DAY_OF_WEEK, c.getFirstDayOfWeek());
+        return c.getTime();
     }
 
     public static int getNumberOfDayInMonth(Date date) {
@@ -97,9 +106,36 @@ public class Tool {
         String month = "wrong";
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
-        if (num >= 0 && num <= 11 ) {
+        if (num >= 0 && num <= 11) {
             month = months[num];
         }
         return month;
+    }
+
+    public static Time convertStringToTime(String t) {
+        DateFormat formatter = new SimpleDateFormat("HH:mm");
+        try {
+            return new Time(formatter.parse(t).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Use for add or subtract x day
+     * @param x number of day
+     * @param option 1 for plus, 0 for minus
+     */
+    public static Date plusOrMinusDay(Date date, int x, int option) {
+        Calendar c = Calendar.getInstance(); 
+        c.setTime(date);
+        x = option == 1 ? x : -x;
+        c.add(Calendar.DATE, x);
+        return c.getTime();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(plusOrMinusDay(getFirstDayofWeek(convertStringtoDate("1/16/2021")), 2, 0));
     }
 }

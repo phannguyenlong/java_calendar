@@ -90,23 +90,24 @@ public class MonthViewController implements Initializable {
                         "date=" + CalendarManagementController.date);
                 loadingIcon.setVisible(false);
                 calendarContainer.setDisable(false);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (MonthView data : datas) {
-                            // System.out.println(data);
-                            Date d = new Date(Long.parseLong(data.getDate()));
-                            Label income = new Label(
-                                    "Day Income: " + Math.round(Float.parseFloat(data.getDayIncome())) + " $");
-                            income.getStyleClass().addAll("incomeText");
-                            GridPane.setHalignment(income, HPos.CENTER);
-                            GridPane.setValignment(income, VPos.BOTTOM);
-                            calendarContainer.add(income, Tool.getDayofWeek(d) - 1, Tool.getWeekofMonth(d) - 1);
+                if (!datas.isEmpty())
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (MonthView data : datas) {
+                                // System.out.println(data);
+                                Date d = new Date(Long.parseLong(data.getDate()));
+                                Label income = new Label(
+                                        "Day Income: " + Math.round(Float.parseFloat(data.getDayIncome())) + " $");
+                                income.getStyleClass().addAll("incomeText");
+                                GridPane.setHalignment(income, HPos.CENTER);
+                                GridPane.setValignment(income, VPos.BOTTOM);
+                                calendarContainer.add(income, Tool.getDayofWeek(d) - 1, Tool.getWeekofMonth(d) - 1);
+                            }
+                            monthIncome.setText(
+                                    Math.round(Float.parseFloat(datas.get(datas.size() - 1).getMonthIncome())) + " $");
                         }
-                        monthIncome.setText(
-                                Math.round(Float.parseFloat(datas.get(datas.size() - 1).getMonthIncome())) + " $");
-                    }
-                });
+                    });
             }
         });
         makeRequest.start();
