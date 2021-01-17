@@ -80,7 +80,7 @@ public class WeekViewController implements Initializable {
                     for (EventInstance data : datas) {
                         // Derived into 7 array
                         Date d = data.getDate() == null ? data.getStartDate() : data.getDate();
-                        if (data.getEventType().equals("daily")) {
+                        if (data.getEventType().equals("daily") && data.getDate() == null) {
                             dayLists.forEach(day -> day.add(data));
                         } else {
                             dayLists.get(Tool.getDayofWeek(d) - 1).add(data);
@@ -102,7 +102,6 @@ public class WeekViewController implements Initializable {
                             }
                         });
                     }
-                    System.out.println("run here");
 
                     loadingIcon.setVisible(false);
                     jsp.setDisable(false);

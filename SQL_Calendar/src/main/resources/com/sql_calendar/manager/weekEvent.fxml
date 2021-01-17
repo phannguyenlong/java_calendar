@@ -31,6 +31,12 @@
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
+         <content>
+            <VBox fx:id="employeeList" fillWidth="false" prefHeight="25.0" prefWidth="115.0" spacing="5.0">
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding></VBox>
+         </content>
       </ScrollPane>
       <JFXButton style="-fx-background-color: #009688;" text="Add Employee" textFill="WHITE">
          <graphic>
