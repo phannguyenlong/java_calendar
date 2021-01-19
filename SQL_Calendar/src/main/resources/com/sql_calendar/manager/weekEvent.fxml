@@ -9,6 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
+
 <VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="120.0" style="-fx-background-color: #E9E9EA; -fx-border-color: black; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.WeekViewEventBoxController">
    <effect>
       <DropShadow color="#00000040" />
@@ -27,18 +28,19 @@
             <Font name="Segoe UI Bold" size="12.0" />
          </font>
       </Label>
-      <ScrollPane prefHeight="157.0" prefWidth="127.0">
+      <ScrollPane fitToWidth="true" prefHeight="157.0" prefWidth="127.0">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
          <content>
             <VBox fx:id="employeeList" fillWidth="false" prefHeight="25.0" prefWidth="115.0" spacing="5.0">
                <padding>
-                  <Insets left="5.0" top="5.0" />
-               </padding></VBox>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
          </content>
       </ScrollPane>
-      <JFXButton style="-fx-background-color: #009688;" text="Add Employee" textFill="WHITE">
+      <JFXButton onAction="#handleAddEmployee" style="-fx-background-color: #009688;" text="Add Employee" textFill="WHITE">
          <graphic>
             <FontIcon iconColor="WHITE" iconLiteral="mdi-account-plus" iconSize="12" />
          </graphic>

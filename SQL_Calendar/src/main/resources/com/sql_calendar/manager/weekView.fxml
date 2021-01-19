@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
@@ -61,94 +62,98 @@
             </JFXButton>
          </children>
       </HBox>
-      <ScrollPane fx:id="jsp" prefHeight="450.0" prefWidth="920.0" style="-fx-background-color: transparent;">
+      <StackPane fx:id="stackPane">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="10.0" />
          </VBox.margin>
-         <content>
-            <VBox prefHeight="450.0" prefWidth="920.0" style="-fx-background-color: white;">
-               <children>
-                  <HBox fillHeight="false" prefHeight="70.0" prefWidth="920.0" style="-fx-background-color: white;">
+         <children>
+            <ScrollPane fx:id="jsp" prefHeight="450.0" prefWidth="920.0" style="-fx-background-color: transparent;">
+               <content>
+                  <VBox prefHeight="450.0" prefWidth="920.0" style="-fx-background-color: white;">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                        <HBox fillHeight="false" prefHeight="70.0" prefWidth="920.0" style="-fx-background-color: white;">
                            <children>
-                              <Label text="Sunday">
-                                 <font>
-                                    <Font name="Segoe UI Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                                 <children>
+                                    <Label text="Sunday">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                                 <children>
+                                    <Label text="Monday">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                                 <children>
+                                    <Label text="Tuesday">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                                 <children>
+                                    <Label text="Webnesday">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                                 <children>
+                                    <Label text="Thursday">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                                 <children>
+                                    <Label text="Friday">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent  transparent #C0C3CC transparent;">
+                                 <children>
+                                    <Label text="Saturday">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
                            </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
+                        </HBox>
+                        <HBox prefHeight="464.0" prefWidth="920.0">
                            <children>
-                              <Label text="Monday">
-                                 <font>
-                                    <Font name="Segoe UI Bold" size="15.0" />
-                                 </font>
-                              </Label>
+                              <VBox fx:id="sunday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" spacing="10.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
+                              <VBox fx:id="monday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
+                              <VBox fx:id="tuesday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
+                              <VBox fx:id="webnesday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
+                              <VBox fx:id="thursday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
+                              <VBox fx:id="friday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
+                              <VBox fx:id="saturday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparen transparent transparent transparent;" />
                            </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
-                           <children>
-                              <Label text="Tuesday">
-                                 <font>
-                                    <Font name="Segoe UI Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
-                           <children>
-                              <Label text="Webnesday">
-                                 <font>
-                                    <Font name="Segoe UI Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
-                           <children>
-                              <Label text="Thursday">
-                                 <font>
-                                    <Font name="Segoe UI Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC #C0C3CC transparent;">
-                           <children>
-                              <Label text="Friday">
-                                 <font>
-                                    <Font name="Segoe UI Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="28.0" prefWidth="131.0" style="-fx-border-color: transparent  transparent #C0C3CC transparent;">
-                           <children>
-                              <Label text="Saturday">
-                                 <font>
-                                    <Font name="Segoe UI Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox prefHeight="464.0" prefWidth="920.0">
-                     <children>
-                        <VBox fx:id="sunday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" spacing="10.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
-                        <VBox fx:id="monday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
-                        <VBox fx:id="tuesday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
-                        <VBox fx:id="webnesday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
-                        <VBox fx:id="thursday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
-                        <VBox fx:id="friday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparent #C0C3CC transparent transparent;" />
-                        <VBox fx:id="saturday" alignment="TOP_CENTER" fillWidth="false" prefWidth="131.0" style="-fx-border-color: transparen transparent transparent transparent;" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </StackPane>
    </children>
 </VBox>

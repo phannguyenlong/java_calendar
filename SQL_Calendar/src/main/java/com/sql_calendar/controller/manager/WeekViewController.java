@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class WeekViewController implements Initializable {
@@ -29,6 +30,8 @@ public class WeekViewController implements Initializable {
     private ScrollPane jsp;
     @FXML
     private Label weekLabel, periodLabel;
+    @FXML
+    public StackPane stackPane;
     @FXML
     private JFXButton nextButton, prevButton;
     @FXML
@@ -125,7 +128,6 @@ public class WeekViewController implements Initializable {
                 for (int i = 0; i < 7; i++) {
                     if (dayLists.get(i).isEmpty()) continue;
                     ArrayList<EventInstance> event = new ArrayList<>();
-                    // event.add(dayLists.get(i).get(index))
                     for (int j = 0; j < dayLists.get(i).size(); j++) {
                         EventInstance eventInstances = dayLists.get(i).get(j);
                         if (j != 0)
@@ -136,6 +138,8 @@ public class WeekViewController implements Initializable {
                                     VBox eventBox = loader.load();
                                     WeekViewEventBoxController controller = loader.getController();
                                     controller.setEventData(event);
+                                    controller.setStackPane(stackPane);
+                                    controller.setWeekDay(i); // 0 is sunday, 6 is saturday
                                     dayContainers[i].getChildren().add(eventBox);
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -155,6 +159,8 @@ public class WeekViewController implements Initializable {
                         VBox eventBox = loader.load();
                         WeekViewEventBoxController controller = loader.getController();
                         controller.setEventData(event);
+                        controller.setStackPane(stackPane);
+                        controller.setWeekDay(i); // 0 is sunday, 6 is saturday
                         dayContainers[i].getChildren().add(eventBox);
                     } catch (IOException e) {
                         e.printStackTrace();

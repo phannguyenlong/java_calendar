@@ -1,6 +1,6 @@
 package com.sql_calendar.resources;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,6 +19,24 @@ public class EventInstance {
     private String type;
     private String eventType;
     private String status;
+
+    public EventInstance deepCopy() {
+        EventInstance p = new EventInstance();
+        p.setEssn(essn);
+        p.setEventID(eventID);
+        p.setEventName(eventName);
+        p.setStartDate(startDate);
+        p.setDate(date);
+        p.setStartTime(startTime);
+        p.setEndTime(endTime);
+        p.setName(name);
+        p.setPhone(phone);
+        p.setSex(sex);
+        p.setType(type);
+        p.setEventType(eventType);
+        p.setStatus(status);
+        return p;
+    }
 
     public String getEssn() {
         return essn;
