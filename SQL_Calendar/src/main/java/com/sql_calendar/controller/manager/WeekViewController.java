@@ -25,6 +25,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Controller class for Week View Frame
+ * @author Long Phan
+ */
 public class WeekViewController implements Initializable {
     @FXML
     private ScrollPane jsp;

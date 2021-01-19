@@ -32,6 +32,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 
+/**
+ * Class for render each event box inside Week View Frame
+ * @author Long Phan
+ */
 public class WeekViewEventBoxController implements Initializable {
     private ArrayList<EventInstance> eventData;
     private JFXDialog dialog;
@@ -165,7 +169,7 @@ public class WeekViewEventBoxController implements Initializable {
                     if (eventData.size() > 1) // prevent empty event
                         if (eventData.stream().filter(e -> e.getEssn() != null).anyMatch(e -> e.getEssn().equals(data.getSsn())))
                             continue;
-                    Label empName = new Label(data.getName());
+                    Label empName = new Label(data.getName() + " - " + data.getType());
                     empName.setPrefWidth(300);
                     empName.setAlignment(Pos.CENTER_LEFT);
 
