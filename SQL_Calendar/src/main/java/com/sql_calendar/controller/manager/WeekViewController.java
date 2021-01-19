@@ -85,6 +85,7 @@ public class WeekViewController implements Initializable {
                 if (!datas.isEmpty()) {
                     // devide recieving data to arrays of day
                     ArrayList<Integer> dailyEvent = new ArrayList<>();
+                    ArrayList<Integer> weeklyEvent = new ArrayList<>();
                     for (EventInstance data : datas) {
                         // Derived into 7 array
                         Date d = data.getDate() == null ? data.getStartDate() : data.getDate();
@@ -95,17 +96,13 @@ public class WeekViewController implements Initializable {
                                     : Tool.getDayofWeek(data.getEndDate());
                             int start = Tool.getWeekofMonth(data.getStartDate()) != Tool.getWeekofMonth(date) ? 1
                                     : Tool.getDayofWeek(data.getStartDate());
-                            for (int i = start; i <= stop ; i++)
-                                dayLists.get(i-1).add(data);
+                            for (int i = start; i <= stop; i++)
+                                dayLists.get(i - 1).add(data);
+                        } else if (data.getEventType().equals("weekly") && data.getDate() == null) {
+                            dayLists.get(Tool.getDayofWeek(data.getStartDate()) - 1).add(data);
                         } else {
                             if (data.getEventType().equals("daily") && !dailyEvent.contains(data.getEventID())) {
-                                EventInstance e = new EventInstance();
-                                e.setStartDate(data.getStartDate());
-                                e.setStartTime(data.getStartTime());
-                                e.setEndTime(data.getEndTime());
-                                e.setEventID(data.getEventID());
-                                e.setEventName(data.getEventName());
-                                e.setEventType(data.getEventType());
+                                EventInstance e = data.makeSampleEvent();
                                 dailyEvent.add(data.getEventID());
                                 // dayLists.forEach(day -> day.add(e));
                                 int stop = Tool.getWeekofMonth(data.getEndDate()) != Tool.getWeekofMonth(date) ? 7
@@ -116,8 +113,20 @@ public class WeekViewController implements Initializable {
                                     dayLists.get(i - 1).add(e);
                                 if (Tool.getWeekofMonth(data.getDate()) != Tool.getWeekofMonth(date))
                                     continue;
+                            } 
+                            else if (data.getEventType().equals("weekly") && !weeklyEvent.contains(data.getEventID())) {
+                                EventInstance e = data.makeSampleEvent();
+                                weeklyEvent.add(data.getEventID());
+                                // dayLists.forEach(day -> day.add(e));
+                                dayLists.get(Tool.getDayofWeek(data.getStartDate()) - 1).add(e);
+                                if (Tool.getWeekofMonth(data.getDate()) != Tool.getWeekofMonth(date))
+                                    continue;
+                            } else if (data.getEventType().equals("no repeat")) {
+                                dayLists.get(Tool.getDayofWeek(d) - 1).add(data);
+                                continue;
                             }
-                            dayLists.get(Tool.getDayofWeek(d) - 1).add(data);
+                            if (Tool.getWeekofMonth(data.getDate()) == Tool.getWeekofMonth(date))
+                                dayLists.get(Tool.getDayofWeek(d) - 1).add(data);
                         }
                     }
 

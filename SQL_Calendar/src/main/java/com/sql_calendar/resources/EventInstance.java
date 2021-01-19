@@ -151,6 +151,19 @@ public class EventInstance {
         this.status = status;
     }
 
+
+    public EventInstance makeSampleEvent() {
+        EventInstance e = new EventInstance();
+        e.setStartDate(this.getStartDate());
+        e.setStartTime(this.getStartTime());
+        e.setEndTime(this.getEndTime());
+        e.setEventID(this.getEventID());
+        e.setEventName(this.getEventName());
+        e.setEventType(this.getEventType());
+
+        return e;
+    }
+
     @Override
     public String toString() {
         ObjectMapper mapper = new ObjectMapper();
