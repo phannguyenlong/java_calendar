@@ -44,7 +44,7 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 `GET` **/manager/calendar/week?date=' '**
 - **input:** any day in week that need to view
 - **output:** List of EventInstance 
--  *EventInstance (essn, eventID, eventName, startDate, date, StartTime, endTime, name, phone, sex, type, eventType, status)*
+-  *EventInstance (essn, eventID, eventName, startDate, endDate, date, StartTime, endTime, name, phone, sex, type, eventType, status)*
 
  **b. find employee with name**
 
@@ -72,7 +72,7 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 `GET` **/manager/calendar/day?date=' '**
 - **input:** day that need to view
 - **output:** List of EventInstance 
--  *EventInstance (essn, eventID, eventName, startDate, date, StartTime, endTime, name, phone, sex, type, eventType, status)*
+-  *EventInstance (essn, eventID, eventName, startDate, endDate, date, StartTime, endTime, name, phone, sex, type, eventType, status)*
 
 **b. Count hourly income**
 

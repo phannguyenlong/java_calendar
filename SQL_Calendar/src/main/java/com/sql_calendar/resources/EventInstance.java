@@ -10,6 +10,7 @@ public class EventInstance {
     private int eventID;
     private String eventName;
     private Date startDate;
+    private Date endDate;
     private Date date;
     private String startTime;
     private String endTime;
@@ -68,6 +69,14 @@ public class EventInstance {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public Date getDate() {

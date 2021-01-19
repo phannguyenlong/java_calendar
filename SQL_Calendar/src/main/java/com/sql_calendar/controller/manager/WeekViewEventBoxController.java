@@ -1,7 +1,6 @@
 package com.sql_calendar.controller.manager;
 
 import java.net.URL;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -164,7 +163,7 @@ public class WeekViewEventBoxController implements Initializable {
                     temp.setPadding(new Insets(5));
                     temp.setStyle("-fx-background-color: white;-fx-background-radius: 10;");
                     if (eventData.size() > 1) // prevent empty event
-                        if (eventData.stream().anyMatch(e -> e.getEssn().equals(data.getSsn())))
+                        if (eventData.stream().filter(e -> e.getEssn() != null).anyMatch(e -> e.getEssn().equals(data.getSsn())))
                             continue;
                     Label empName = new Label(data.getName());
                     empName.setPrefWidth(300);

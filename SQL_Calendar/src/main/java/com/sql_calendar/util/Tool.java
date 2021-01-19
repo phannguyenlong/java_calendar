@@ -136,6 +136,6 @@ public class Tool {
     }
 
     public static void main(String[] args) {
-        System.out.println(convertStringToTime("7:00"));
+        System.out.println(Tool.getDayofWeek(Tool.convertStringtoDate("01/23/2021")));
     }
 }

@@ -25,7 +25,7 @@ public class WeekViewServlet extends HttpServlet {
 
         String query = "SET DATEFIRST 7;" +
             "SELECT " +
-            "	essn, ev.eventID, ev.eventName, startDate, date, " +
+            "	essn, ev.eventID, ev.eventName, startDate, endDate, date, " +
             "	FORMAT(startTime, 'hh\\:mm') as startTime, " +
             "	FORMAT(endTime, 'hh\\:mm') as endTime, " +
             "	(fname + ' ' + lname) AS name, phone, sex, type, eventType, status\n" +
@@ -34,7 +34,9 @@ public class WeekViewServlet extends HttpServlet {
             "RIGHT JOIN event ev ON (evI.eventID = ev.eventID)\n" +
             "	WHERE DATEPART(week, '"+ date + "') = DATEPART(week, date)" +
             "	OR (ev.eventType = 'no repeat' AND DATEPART(week, '" + date + "') = DATEPART(week, ev.startDate))\n" +
-            "	OR (ev.eventType = 'daily' AND '" + date + "' <= ev.endDate AND ev.startDate <= '" + date + "')\n" +
+            "	OR (ev.eventType = 'daily' AND '" + date + "' <= ev.endDate AND ev.startDate <= '" + date + "' AND DATEPART(week, '"+ date + "') = DATEPART(week, date))\n" +
+            "   OR (ev.eventType = 'daily' AND DATEPART(week, '" + date + "') <= DATEPART(week, ev.endDate) AND DATEPART(week, ev.startDate) <= DATEPART(week, '" + date + "') AND date IS NULL)\n" +
+            "   OR (ev.eventType = 'daily' AND DATEPART(week, '" + date + "') <= DATEPART(week, ev.endDate) AND DATEPART(week, ev.startDate) <= DATEPART(week, '" + date + "') AND NOT EXISTS ( SELECT * FROM eventInstance WHERE eventID = ev.eventID AND DATEPART(week, date) = DATEPART(week, '" + date + "')))\n" + 
             "	OR (ev.eventType = 'weekly' AND dbo.GetLastDayWeek('" + date + "') <= ev.endDate AND ev.startDate <= dbo.GetFirstDayWeek('" + date + "'))";
 
         System.out.println(query);

@@ -26,17 +26,19 @@ FROM orderList
 -- get list of event of that week (input date atm)
 SET DATEFIRST 7;
 SELECT 
-	essn, ev.eventID, ev.eventName, startDate, date, 
+	essn, ev.eventID, ev.eventName, startDate, endDate, date, 
 	FORMAT(startTime, 'hh\:mm') as startTime, 
 	FORMAT(endTime, 'hh\:mm') as endTime, 
 	(fname + ' ' + lname) AS name, phone, sex, type, eventType, status
 FROM eventInstance evI
 JOIN employee e ON (evI.essn = e.ssn)
 RIGHT JOIN event ev ON (evI.eventID = ev.eventID)
-	WHERE DATEPART(week, '1/5/2021') = DATEPART(week, date)
-	OR (ev.eventType = 'no repeat' AND DATEPART(week, '1/5/2021') = DATEPART(week, ev.startDate))
-	OR (ev.eventType = 'daily' AND '1/5/2021' <= ev.endDate AND ev.startDate <= '1/5/2021')
-	OR (ev.eventType = 'weekly' AND dbo.GetLastDayWeek('1/5/2021') <= ev.endDate AND ev.startDate <= dbo.GetFirstDayWeek('1/5/2021'))
+	WHERE DATEPART(week, '1/10/2021') = DATEPART(week, date)
+	OR (ev.eventType = 'no repeat' AND DATEPART(week, '1/10/2021') = DATEPART(week, ev.startDate))
+	OR (ev.eventType = 'daily' AND DATEPART(week, '1/10/2021') <= DATEPART(week, ev.endDate) AND DATEPART(week, ev.startDate) <= DATEPART(week, '1/10/2021') AND DATEPART(week, '1/10/2021') = DATEPART(week, date))
+	OR (ev.eventType = 'daily' AND DATEPART(week, '1/10/2021') <= DATEPART(week, ev.endDate) AND DATEPART(week, ev.startDate) <= DATEPART(week, '1/10/2021') AND date IS NULL)
+	OR (ev.eventType = 'daily' AND DATEPART(week, '1/10/2021') <= DATEPART(week, ev.endDate) AND DATEPART(week, ev.startDate) <= DATEPART(week, '1/10/2021') AND NOT EXISTS ( SELECT * FROM eventInstance WHERE eventID = ev.eventID AND DATEPART(week, date) = DATEPART(week, '1/10/2021')))
+	OR (ev.eventType = 'weekly' AND dbo.GetLastDayWeek('1/10/2021') <= ev.endDate AND ev.startDate <= dbo.GetFirstDayWeek('1/10/2021'));
 	-- OR (ev.eventType = 'monthly' AND '12/27/2020' <= ev.endDate);
 
 -- add new employee to event
