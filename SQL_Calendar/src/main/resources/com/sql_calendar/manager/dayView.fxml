@@ -1,10 +1,407 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="950.0" style="-fx-background-radius: 20; -fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.DayViewController">
+<VBox fillWidth="false" prefHeight="530.0" prefWidth="950.0" style="-fx-background-color: white; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.DayViewController">
    <effect>
       <DropShadow color="#00000040" offsetX="2.0" offsetY="2.0" spread="0.11" />
    </effect>
-</FlowPane>
+   <children>
+      <HBox prefHeight="50.0" prefWidth="950.0">
+         <children>
+            <Label fx:id="weekdayLabel" prefHeight="32.0" prefWidth="100.0" style="-fx-alignment: center-right;" text="Week 1">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="dayLabel" prefHeight="22.0" prefWidth="252.0" text="(12/23 - 12/30)">
+               <font>
+                  <Font name="Segoe UI" size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+            <Region prefHeight="50.0" prefWidth="86.0" />
+            <ImageView fx:id="loadingIcon" fitHeight="50.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/loading.gif" />
+               </image>
+            </ImageView>
+            <Region prefHeight="50.0" prefWidth="253.0" />
+            <JFXButton fx:id="prevButton" onAction="#handleChangeDay" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+               <graphic>
+                  <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-left" iconSize="25" />
+               </graphic>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="nextButton" onAction="#handleChangeDay" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+               <graphic>
+                  <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-right" iconSize="25" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+      <ScrollPane prefHeight="470.0" prefWidth="920.0" style="-fx-background-color: white;">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" />
+         </VBox.margin>
+         <content>
+            <StackPane alignment="TOP_LEFT" centerShape="false" prefWidth="1920.0" scaleShape="false" style="-fx-background-color: white;">
+               <children>
+                  <VBox prefWidth="1950.0">
+                     <children>
+                        <HBox minWidth="2100.0" prefHeight="20.0" prefWidth="2100.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="6:00">
+                                 <HBox.margin>
+                                    <Insets left="55.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="7:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="8:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label layoutX="236.0" layoutY="10.0" prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="9:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="10:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="11:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="12:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="13:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="14:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="15:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="16:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="17:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="18:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="19:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="20:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="21:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="22:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="23:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="00:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="1:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="2:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="3:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="4:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="50.0" style="-fx-alignment: bottom-center;" text="5:00">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="400.0" prefWidth="200.0">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="80.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator layoutX="262.0" layoutY="10.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0">
+                                 <HBox.margin>
+                                    <Insets left="79.0" />
+                                 </HBox.margin>
+                              </Separator>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fillWidth="false" maxHeight="300.0" maxWidth="2100.0" prefHeight="300.0" prefWidth="192.0" style="-fx-background-color: black;">
+                     <StackPane.margin>
+                        <Insets top="20.0" />
+                     </StackPane.margin>
+                  </VBox>
+               </children>
+            </StackPane>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

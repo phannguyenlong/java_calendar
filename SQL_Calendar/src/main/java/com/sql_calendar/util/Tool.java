@@ -128,14 +128,26 @@ public class Tool {
      * @param option 1 for plus, 0 for minus
      */
     public static Date plusOrMinusDay(Date date, int x, int option) {
-        Calendar c = Calendar.getInstance(); 
+        Calendar c = Calendar.getInstance();
         c.setTime(date);
         x = option == 1 ? x : -x;
         c.add(Calendar.DATE, x);
         return c.getTime();
     }
 
+    public static boolean isSameWeek(Date date1, Date date2) {
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTime(date1);
+        int week = currentCalendar.get(Calendar.WEEK_OF_YEAR);
+        int year = currentCalendar.get(Calendar.YEAR);
+        Calendar targetCalendar = Calendar.getInstance();
+        targetCalendar.setTime(date2);
+        int targetWeek = targetCalendar.get(Calendar.WEEK_OF_YEAR);
+        int targetYear = targetCalendar.get(Calendar.YEAR);
+        return week == targetWeek && year == targetYear;
+    }
+
     public static void main(String[] args) {
-        System.out.println(Tool.getDayofWeek(Tool.convertStringtoDate("01/23/2021")));
+        System.out.println(Tool.convertStringtoDate("12/23/2020").compareTo(Tool.convertStringtoDate("12/24/2020")));
     }
 }
