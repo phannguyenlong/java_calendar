@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.sql_calendar.controller.cashier.CashingController;
+import com.sql_calendar.controller.cashier.OrderHistoryController;
 import com.sql_calendar.resources.Employee;
 
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -96,6 +98,10 @@ public class LandingPageController implements Initializable, EventHandler<Action
                 : new FXMLLoader(getClass().getResource("../cashier/cashing.fxml"));
         try {
             VBox container = loader.load();
+            if (user.getType().equals("cashier")) {
+                CashingController controller = loader.getController();
+                controller.setUser(user);
+            }
             contentContainer.getChildren().add(container);
         } catch (IOException e) {
             e.printStackTrace();
@@ -133,6 +139,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
             loader = new FXMLLoader(getClass().getResource("../manager/financeReport.fxml"));
         } else if (event.getSource() == menuButtons.get(3)) {
             handleLogout();
+            return; // exit function
         }
 
         try {
@@ -147,6 +154,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
     // Handle Button click for Cashier Menu
     private void handleCashier(ActionEvent event) {
         FXMLLoader loader = null;
+        boolean isCashingTab = true;
         contentContainer.getChildren().clear();
         Animation.makeFadeout(contentContainer);
         for (JFXButton btn : menuButtons)
@@ -157,12 +165,21 @@ public class LandingPageController implements Initializable, EventHandler<Action
         } else if (event.getSource() == menuButtons.get(1)) {
             loader = new FXMLLoader(getClass().getResource("../cashier/orderHistory.fxml"));
             menuButtons.get(1).setUnderline(true);
+            isCashingTab = false;
         } else if (event.getSource() == menuButtons.get(2)) {
             handleLogout();
+            return; // exit function
         }
 
         try {
             VBox container = loader.load();
+            if (isCashingTab) {
+                CashingController controller = loader.getController();
+                controller.setUser(user);
+            } else {
+                OrderHistoryController controller = loader.getController();
+                controller.setUser(user);
+            }
             Animation.makeFadeback(contentContainer);
             contentContainer.getChildren().add(container);
         } catch (IOException e) {
