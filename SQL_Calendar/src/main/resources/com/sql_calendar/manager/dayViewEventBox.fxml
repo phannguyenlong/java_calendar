@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: #E9E9EA; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.DayViewEventBoxController">
+   <children>
+      <HBox prefHeight="30.0" prefWidth="200.0">
+         <children>
+            <Label text="Employee">
+               <font>
+                  <Font name="Segoe UI Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+            <Label prefHeight="15.0" prefWidth="50.0" style="-fx-alignment: center; -fx-background-color: #FF584D; -fx-background-radius: 20;" text="Ended" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="7.0" />
+               </HBox.margin>
+            </Label>
+            <Region prefHeight="30.0" prefWidth="175.0" />
+            <JFXButton prefHeight="23.0" prefWidth="69.0" style="-fx-background-color: #960000;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+      <FlowPane prefHeight="141.0" prefWidth="400.0">
+         <children>
+            <Label text="Label" />
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </FlowPane>
+      <Separator prefWidth="200.0" />
+      <Label text="Incomes">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="10.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" fillHeight="false" prefHeight="47.0" prefWidth="400.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="132.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="80.0" text="Shift Income:">
+                     <font>
+                        <Font name="Segoe UI Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="14.0" text="0$" textFill="#c0c3cc">
+                     <font>
+                        <Font name="Segoe UI Bold Italic" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

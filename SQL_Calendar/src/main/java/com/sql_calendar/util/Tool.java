@@ -147,7 +147,26 @@ public class Tool {
         return week == targetWeek && year == targetYear;
     }
 
+    public static double converTimeStringToDouble(String t) {
+        String[] temp = t.split(":");
+        double m = Double.parseDouble(temp[1]) / 60;
+        return Double.parseDouble(temp[0]) + m;
+    }
+
+    /**
+     * t1 - t2
+     * @param t1
+     * @param t2
+     * @return
+     */
+    public static double compare2Time(Time t1, Time t2) {
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+        String time1 = df.format(t1.getTime());
+        String time2 = df.format(t2.getTime());
+        return converTimeStringToDouble(time1) - converTimeStringToDouble(time2);
+    }
+
     public static void main(String[] args) {
-        System.out.println(Tool.convertStringtoDate("12/23/2020").compareTo(Tool.convertStringtoDate("12/24/2020")));
+        System.out.println(compare2Time(convertStringToTime("13:00"), convertStringToTime("6:45")));
     }
 }
