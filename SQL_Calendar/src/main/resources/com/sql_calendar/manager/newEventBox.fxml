@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.NewEventBoxController">
+   <children>
+      <JFXTextField fx:id="eventName" focusColor="#009688" labelFloat="true" prefHeight="28.0" prefWidth="323.0" promptText="Event Name" style="-fx-background-color: #E9E9EA;" unFocusColor="#919399">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <HBox prefHeight="140.0" prefWidth="400.0">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <children>
+            <VBox prefHeight="140.0" prefWidth="275.0">
+               <children>
+                  <HBox prefHeight="67.0" prefWidth="243.0">
+                     <children>
+                        <Label text="From">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="startDate" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: #E9E9EA;">
+                           <HBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                        <JFXTextField fx:id="startTimeHour" alignment="CENTER" focusColor="#009688" labelFloat="true" prefHeight="25.0" prefWidth="25.0" promptText="hh" style="-fx-background-color: #E9E9EA;" text="7">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <Label text=":">
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="startTimeMinute" alignment="CENTER" focusColor="#009688" labelFloat="true" prefHeight="25.0" prefWidth="31.0" promptText="mm" style="-fx-background-color: #E9E9EA;" text="30">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="67.0" prefWidth="243.0">
+                     <children>
+                        <Label text="To">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="13.0" />
+                           </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="endDate" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: #E9E9EA;">
+                           <HBox.margin>
+                              <Insets left="23.0" top="10.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                        <JFXTextField fx:id="endTimeHour" alignment="CENTER" focusColor="#009688" labelFloat="true" prefHeight="25.0" prefWidth="25.0" promptText="hh" style="-fx-background-color: #E9E9EA;" text="7">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <Label text=":">
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="endTimeMinute" alignment="CENTER" focusColor="#009688" labelFloat="true" prefHeight="25.0" prefWidth="31.0" promptText="mm" style="-fx-background-color: #E9E9EA;" text="30">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </VBox>
+            <JFXComboBox fx:id="typeOption" focusColor="#009688" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #E9E9EA;">
+               <HBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </HBox.margin>
+            </JFXComboBox>
+         </children>
+      </HBox>
+      <JFXButton onAction="#createNewEvent" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #009688; -fx-background-radius: 10;" text="Create" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</VBox>

@@ -26,6 +26,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Render Day View section
+ * @author Long Phan
+ */
 public class DayViewController implements Initializable {
     @FXML
     private ScrollPane jsp;

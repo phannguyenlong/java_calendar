@@ -13,20 +13,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  * Calendar management Tab Controller
+ * 
  * @author Long Phan
  */
 public class CalendarManagementController implements Initializable {
     protected static String date; // make this item static
+    public Stage stage;
     // FXML varibale
     @FXML
     JFXComboBox<Label> viewOption;
     @FXML
     AnchorPane viewContainer;
+    @FXML
+    StackPane stackPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,10 +44,11 @@ public class CalendarManagementController implements Initializable {
         viewOption.getSelectionModel().selectFirst();
 
         // get current Date
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");  
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         date = dtf.format(LocalDateTime.now());
         System.out.println(date);
-        
+
+        initScreen();
         handleViewOption();
     }
 
@@ -62,6 +70,22 @@ public class CalendarManagementController implements Initializable {
             Parent container = loader.load();
             Animation.makeFadeback(viewContainer);
             viewContainer.getChildren().add(container);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleNewEvent() {
+        stage.show();
+    }
+
+    // Generate new screen for adding new event
+    private void initScreen() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../manager/newEventBox.fxml"));
+        try {
+            stage = new Stage();
+            stage.setTitle("New Event");
+            stage.setScene(new Scene(loader.load(), 400, 250));
         } catch (IOException e) {
             e.printStackTrace();
         }

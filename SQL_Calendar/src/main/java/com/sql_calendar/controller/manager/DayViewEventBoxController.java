@@ -29,6 +29,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
+/**
+ * For render each event box inside Day View
+ * @author Long Phan
+ */
 public class DayViewEventBoxController implements Initializable {
     private ArrayList<EventInstance> eventData;
     @FXML
