@@ -6,45 +6,48 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: #E9E9EA; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.DayViewEventBoxController">
+<VBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: #E9E9EA; -fx-border-color: black; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.DayViewEventBoxController">
    <children>
       <HBox prefHeight="30.0" prefWidth="200.0">
          <children>
-            <Label text="Employee">
+            <Label fx:id="eventNameLabel" prefHeight="19.0" text="Event 1">
                <font>
                   <Font name="Segoe UI Bold" size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" top="5.0" />
-               </HBox.margin>
-            </Label>
-            <Label prefHeight="15.0" prefWidth="50.0" style="-fx-alignment: center; -fx-background-color: #FF584D; -fx-background-radius: 20;" text="Ended" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="12.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" top="7.0" />
                </HBox.margin>
             </Label>
-            <Region prefHeight="30.0" prefWidth="175.0" />
-            <JFXButton prefHeight="23.0" prefWidth="69.0" style="-fx-background-color: #960000;" text="Delete" textFill="WHITE">
+            <Label fx:id="periodLabel" text="(7:30 - 13:00)">
+               <font>
+                  <Font name="Segoe UI Bold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <JFXButton onAction="#onDeleteEvent" prefHeight="23.0" prefWidth="69.0" style="-fx-background-color: #960000;" text="Delete" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Bold" size="12.0" />
                </font>
                <HBox.margin>
-                  <Insets top="5.0" />
+                  <Insets left="5.0" top="5.0" />
                </HBox.margin>
             </JFXButton>
+            <Label fx:id="endedLabel" prefHeight="15.0" prefWidth="50.0" style="-fx-alignment: center; -fx-background-color: #FF584D; -fx-background-radius: 20;" text="Ended" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="9.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
-      <FlowPane prefHeight="141.0" prefWidth="400.0">
-         <children>
-            <Label text="Label" />
-         </children>
+      <FlowPane fx:id="employeeContainer" prefHeight="141.0" prefWidth="400.0">
          <padding>
             <Insets left="5.0" right="5.0" top="5.0" />
          </padding>
@@ -67,7 +70,7 @@
                         <Font name="Segoe UI Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="14.0" text="0$" textFill="#c0c3cc">
+                  <Label fx:id="shiftIncomeLabel" prefHeight="30.0" prefWidth="14.0" text="0$" textFill="#c0c3cc">
                      <font>
                         <Font name="Segoe UI Bold Italic" size="12.0" />
                      </font>

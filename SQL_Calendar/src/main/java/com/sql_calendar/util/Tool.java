@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -157,7 +158,7 @@ public class Tool {
      * t1 - t2
      * @param t1
      * @param t2
-     * @return
+     * @return t1 - t2
      */
     public static double compare2Time(Time t1, Time t2) {
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
@@ -167,6 +168,6 @@ public class Tool {
     }
 
     public static void main(String[] args) {
-        System.out.println(compare2Time(convertStringToTime("13:00"), convertStringToTime("6:45")));
+        System.out.println(compare2Time(Time.valueOf(LocalTime.now()), convertStringToTime("23:00")));
     }
 }
