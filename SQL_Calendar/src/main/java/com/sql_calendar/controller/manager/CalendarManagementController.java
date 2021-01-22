@@ -68,6 +68,25 @@ public class CalendarManagementController implements Initializable {
             loader = new FXMLLoader(getClass().getResource("../../manager/dayView.fxml"));
         try {
             Parent container = loader.load();
+            if (option.equals("Month")) {
+                ((MonthViewController) loader.getController()).setParentController(this);
+            }
+            Animation.makeFadeback(viewContainer);
+            viewContainer.getChildren().add(container);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleViewOptionforChild() {
+        viewOption.getSelectionModel().selectLast();
+
+        FXMLLoader loader = null;
+        viewContainer.getChildren().clear();
+        Animation.makeFadeout(viewContainer);
+        loader = new FXMLLoader(getClass().getResource("../../manager/dayView.fxml"));
+        try {
+            Parent container = loader.load();
             Animation.makeFadeback(viewContainer);
             viewContainer.getChildren().add(container);
         } catch (IOException e) {

@@ -10,8 +10,12 @@ import com.sql_calendar.resources.MonthView;
 import com.sql_calendar.util.GetRequestModel;
 import com.sql_calendar.util.Tool;
 
+import org.kordamp.ikonli.javafx.FontIcon;
+
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
@@ -22,6 +26,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -29,6 +34,7 @@ import javafx.scene.shape.Rectangle;
  * @author Long Phan
  */
 public class MonthViewController implements Initializable {
+    private CalendarManagementController parentController;
     @FXML
     VBox container;
     @FXML
@@ -40,15 +46,20 @@ public class MonthViewController implements Initializable {
     @FXML
     ImageView loadingIcon;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void setParentController(CalendarManagementController parentController) {
+        this.parentController = parentController;
+
         renderMonthView();
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {}
 
     private void renderMonthView() {
         loadingIcon.setVisible(true);
         calendarContainer.setDisable(true);
-        Date date = Tool.convertStringtoDate(CalendarManagementController.date);
+        Date date = Tool.getFirstDateOfMonth(Tool.convertStringtoDate(CalendarManagementController.date));
+        // date = Tool.getFirstDateOfMonth(date);
 
         // Set value for Lable in Header and Footer
         monthLabel.setText(Tool.getMonthName(Tool.getDayMonthYear(date)[1]));
@@ -72,6 +83,31 @@ public class MonthViewController implements Initializable {
             GridPane.setHalignment(day, HPos.RIGHT);
             GridPane.setValignment(day, VPos.TOP);
             calendarContainer.add(day, (i - 1) % 7, (i - 1) / 7);
+            FontIcon icon = new FontIcon("mdi-open-in-app");
+            icon.setFill(Paint.valueOf("#009688"));
+            icon.setIconSize(22);
+
+            JFXButton goTo = new JFXButton("");
+            goTo.setPrefSize(127, 40);
+            goTo.hoverProperty().addListener((ChangeListener<Boolean>) (observable, oldValue, newValue) -> {
+                if (newValue) {
+                    goTo.setGraphic(icon);
+                } else {
+                    goTo.setGraphic(null);
+                }
+            });
+            goTo.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+                @Override
+                public void handle(ActionEvent event) {
+                    String newDate = Tool.convertDateToString(Tool.plusOrMinusDay(date, Integer.parseInt(day.getText()) - 1, 1));
+                    CalendarManagementController.date = newDate;
+                    parentController.handleViewOptionforChild();
+                }
+            });;
+
+            GridPane.setHalignment(goTo, HPos.CENTER);
+            GridPane.setValignment(goTo, VPos.CENTER);
+            calendarContainer.add(goTo, (i - 1) % 7, (i - 1) / 7);
         }
 
         // Fill unused weekdays after last dat with grey background
