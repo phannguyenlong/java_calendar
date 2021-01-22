@@ -8,7 +8,9 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.sql_calendar.resources.EventInstance;
+import com.sql_calendar.resources.ShiftIncome;
 import com.sql_calendar.util.DeleteRequestModel;
+import com.sql_calendar.util.GetRequestModel;
 import com.sql_calendar.util.PutRequestModel;
 import com.sql_calendar.util.Tool;
 
@@ -31,6 +33,7 @@ import javafx.scene.paint.Paint;
 
 /**
  * For render each event box inside Day View
+ * 
  * @author Long Phan
  */
 public class DayViewEventBoxController implements Initializable {
@@ -59,6 +62,19 @@ public class DayViewEventBoxController implements Initializable {
     private void renderUI() {
         eventNameLabel.setText(eventData.get(0).getEventName());
         periodLabel.setText(String.format("(%s - %s)", eventData.get(0).getStartTime(), eventData.get(0).getEndTime()));
+
+        // request to server to get shift income
+        if (eventData.size() > 1) {
+            GetRequestModel request = new GetRequestModel();
+            String parameter = String.format("date=%s&startTime=%s&endTime=%s",
+                    Tool.convertDateToString(eventData.get(1).getDate()), eventData.get(1).getStartTime(),
+                    eventData.get(1).getEndTime());
+            ArrayList<ShiftIncome> income = request.makeRequest("/manager/calendar/day/shift", ShiftIncome.class,
+                    parameter);
+
+            String shiftIncome = income.get(0).getShiftIncome() != null ? income.get(0).getShiftIncome() + "$" : "0$";
+            shiftIncomeLabel.setText(shiftIncome);
+        }
 
         if (Tool.compare2Time(Time.valueOf(LocalTime.now()),
                 Tool.convertStringToTime(eventData.get(0).getEndTime())) < 0)
@@ -135,12 +151,12 @@ public class DayViewEventBoxController implements Initializable {
             }
         }).start();
     }
-    
+
     public void onDeleteEvent() {
         container.getChildren().clear();
         ((HBox) container.getParent()).getChildren().remove(container);
-        
-        new Thread(new Runnable(){
+
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 DeleteRequestModel request = new DeleteRequestModel();

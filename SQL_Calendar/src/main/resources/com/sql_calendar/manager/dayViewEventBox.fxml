@@ -63,14 +63,14 @@
       </Label>
       <HBox alignment="CENTER" fillHeight="false" prefHeight="47.0" prefWidth="400.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="132.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="179.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                <children>
                   <Label prefHeight="30.0" prefWidth="80.0" text="Shift Income:">
                      <font>
                         <Font name="Segoe UI Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="shiftIncomeLabel" prefHeight="30.0" prefWidth="14.0" text="0$" textFill="#c0c3cc">
+                  <Label fx:id="shiftIncomeLabel" prefHeight="30.0" prefWidth="71.0" text="0$" textFill="#c0c3cc">
                      <font>
                         <Font name="Segoe UI Bold Italic" size="12.0" />
                      </font>
