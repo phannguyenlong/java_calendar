@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -44,7 +48,12 @@
                   <Image url="@../../../img/loading.gif" />
                </image>
             </ImageView>
-            <Region prefHeight="50.0" prefWidth="253.0" />
+            <Region prefHeight="50.0" prefWidth="174.0" />
+            <JFXComboBox fx:id="viewOption" focusColor="#009688" onAction="#handleOption">
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" top="10.0" />
+               </HBox.margin>
+            </JFXComboBox>
             <JFXButton fx:id="prevButton" onAction="#handleChangeDay" prefHeight="33.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
                <graphic>
                   <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-left" iconSize="25" />
@@ -70,6 +79,17 @@
          <content>
             <StackPane alignment="TOP_LEFT" centerShape="false" prefWidth="1920.0" scaleShape="false" style="-fx-background-color: white;">
                <children>
+                  <AreaChart fx:id="chart" createSymbols="false" legendVisible="false" maxWidth="2021.0" prefHeight="450.0">
+                    <xAxis>
+                      <CategoryAxis gapStartAndEnd="false" side="BOTTOM" tickLabelsVisible="false" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <StackPane.margin>
+                        <Insets left="-19.0" top="20.0" />
+                     </StackPane.margin>
+                  </AreaChart>
                   <VBox prefWidth="1950.0">
                      <children>
                         <HBox minWidth="2100.0" prefHeight="20.0" prefWidth="2100.0">

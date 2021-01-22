@@ -10,7 +10,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.sql_calendar.resources.EventInstance;
+import com.sql_calendar.resources.HourlyIncome;
 import com.sql_calendar.util.GetRequestModel;
 import com.sql_calendar.util.Tool;
 
@@ -20,6 +22,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -28,6 +32,7 @@ import javafx.scene.layout.VBox;
 
 /**
  * Render Day View section
+ * 
  * @author Long Phan
  */
 public class DayViewController implements Initializable {
@@ -43,6 +48,10 @@ public class DayViewController implements Initializable {
     VBox contentContainer;
     @FXML
     HBox lineContainer;
+    @FXML
+    AreaChart<String, Number> chart;
+    @FXML
+    JFXComboBox<Label> viewOption;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,7 +62,43 @@ public class DayViewController implements Initializable {
             jsp.setVvalue(jsp.getVvalue() - deltaY);
             jsp.setHvalue(jsp.getHvalue() - deltaX);
         });
+        chart.setVisible(false);
+
+        viewOption.getItems().add(new Label("Event"));
+        viewOption.getItems().add(new Label("Chart"));
+        viewOption.getSelectionModel().selectFirst();
+
+        renderChart();
         renderUI();
+    }
+
+    private void renderChart() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                GetRequestModel request = new GetRequestModel();
+                ArrayList<HourlyIncome> datas = request.makeRequest("/manager/calendar/day/hour", HourlyIncome.class,
+                        "date=" + CalendarManagementController.date);
+
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        XYChart.Series<String, Number> serires = new XYChart.Series<String, Number>();
+                        int dataCounter = 0;
+                        for (int i = 0; i < 24; i++) {
+                            int t = i > 18 ? i - 18 : i + 6;
+                            if (datas.get(dataCounter).getOnHour().equals(String.valueOf(t))) {
+                                serires.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), Double.parseDouble(datas.get(dataCounter).getHourlyIncome())));
+                                dataCounter += dataCounter == datas.size() - 1 ? 0 : 1;
+                            } else {
+                                serires.getData().add(new XYChart.Data<String, Number>(String.valueOf(i), 0));
+                            }
+                        }
+                        chart.getData().add(serires);
+                    }
+                });
+            }
+        }).run();
     }
 
     private void renderUI() {
@@ -61,9 +106,10 @@ public class DayViewController implements Initializable {
         jsp.setDisable(true);
         lineContainer.setPrefHeight(430);
 
-        String[] weekdays = { "Sunday" ,"Monday", "Tuesday", "Webnesday", "Thursday", "Friday", "Saturday" };
+        String[] weekdays = { "Sunday", "Monday", "Tuesday", "Webnesday", "Thursday", "Friday", "Saturday" };
         dayLabel.setText(CalendarManagementController.date);
-        weekdayLabel.setText(weekdays[Tool.getDayofWeek(Tool.convertStringtoDate(CalendarManagementController.date)) - 1 ]);
+        weekdayLabel
+                .setText(weekdays[Tool.getDayofWeek(Tool.convertStringtoDate(CalendarManagementController.date)) - 1]);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -94,7 +140,7 @@ public class DayViewController implements Initializable {
                             if (data.getDate().compareTo(date) != 0) {
                                 toRemove.add(data);
                             }
-                        } 
+                        }
                     }
                     datas.removeAll(toRemove);
                     datas.addAll(toAdd);
@@ -181,13 +227,20 @@ public class DayViewController implements Initializable {
 
     public void handleChangeDay(ActionEvent e) {
         Date date = Tool.convertStringtoDate(CalendarManagementController.date);
-        date = e.getSource() == nextButton ? Tool.plusOrMinusDay(date, 1, 1)
-                : Tool.plusOrMinusDay(date, 1, 0);
+        date = e.getSource() == nextButton ? Tool.plusOrMinusDay(date, 1, 1) : Tool.plusOrMinusDay(date, 1, 0);
         CalendarManagementController.date = Tool.convertDateToString(date);
         System.out.println(CalendarManagementController.date);
         // cleaning
         contentContainer.getChildren().clear();
+        chart.getData().clear();
         // rerender
+        renderChart();
         renderUI();
+    }
+
+    public void handleOption() {
+        String option = (String) viewOption.getValue().getText();
+        contentContainer.setVisible(option.equals("Event"));
+        chart.setVisible(option.equals("Chart"));
     }
 }
