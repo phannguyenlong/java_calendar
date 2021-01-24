@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="700.0" style="-fx-background-radius: 20; -fx-background-color: #C4C4C4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="96.0" text="Product:  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Lemonade">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="101.0" text="Quantity:  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" prefHeight="31.0" prefWidth="72.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" text="2">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="78.0" text="Price:  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="100">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label text=" €">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</HBox>

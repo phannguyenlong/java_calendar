@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="record" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="700.0" style="-fx-background-radius: 20; -fx-background-color: #C4C4C4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.cashier.HBoxOrderHistoryController">
+   <children>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="113.0" text="Order:  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" prefHeight="31.0" prefWidth="245.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="08:00 am 01/02/2021">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="89.0" text="Total: ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="100">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label prefHeight="21.0" prefWidth="66.0" text=" €">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton onAction="#more" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #009688; -fx-background-radius: 20;" text="More" textFill="WHITE" />
+   </children>
+</HBox>

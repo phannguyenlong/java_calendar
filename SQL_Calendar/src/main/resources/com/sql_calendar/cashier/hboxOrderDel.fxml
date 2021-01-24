@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="fuck" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="700.0" style="-fx-background-radius: 20; -fx-background-color: #C4C4C4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.cashier.HBoxOrderDelController">
+   <children>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="107.0" text="Product:  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="itemTag" alignment="CENTER" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Lemonade">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="99.0" text="Quantity:  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="quantityTag" alignment="CENTER" prefHeight="31.0" prefWidth="72.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" text="2">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="66.0" text="Price:  ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceTag" alignment="CENTER" prefHeight="31.0" prefWidth="58.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="100">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label text=" €">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton onAction="#delete" style="-fx-background-color: #FF0000; -fx-background-radius: 20;" text="X" textFill="WHITE">
+         <HBox.margin>
+            <Insets left="25.0" />
+         </HBox.margin>
+      </JFXButton>
+   </children>
+</HBox>
