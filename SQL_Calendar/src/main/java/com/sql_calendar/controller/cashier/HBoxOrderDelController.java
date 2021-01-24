@@ -19,24 +19,29 @@ public class HBoxOrderDelController implements Initializable {
 	@FXML
 	HBox fuck;
 	
+	// Cashing VBox
 	private VBox parentVbox;
+	
+	// call CashingController
 	private CashingController parentController;
 
-
+	// setParentVbox
     public void setParentVbox(VBox box) {
     	this.parentVbox = box;
     }
     
+    // setParentController
     public void setParentController(CashingController parentController) {
         this.parentController = parentController;
     }
     
+    // set initialize 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("order selected");
-		
 	}
 	
+	// setTag - take productName + quantity + price = as Text
 	public void setTag(String productName, int quantity,double price) {
 		System.out.println(price);
 		itemTag.setText(productName);
@@ -44,10 +49,12 @@ public class HBoxOrderDelController implements Initializable {
 		priceTag.setText(String.valueOf(price));
 	}
 	
+	// "Delete" RED button Clicked
 	public void delete() {
+		// take quantity,price => deduce Total
 		double sum = Integer.parseInt(quantityTag.getText()) * Double.parseDouble(priceTag.getText());
 		parentController.minusTotal(sum);
-
+		// remove HBox item
 		parentVbox.getChildren().remove(fuck);
 		
 	}

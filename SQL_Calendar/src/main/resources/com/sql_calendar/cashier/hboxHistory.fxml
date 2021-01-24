@@ -13,7 +13,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="31.0" prefWidth="245.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="08:00 am 01/02/2021">
+      <Label fx:id="orderTag" alignment="CENTER" prefHeight="31.0" prefWidth="245.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="08:00 am 01/02/2021">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -26,7 +26,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="100">
+      <Label fx:id="totalTag" alignment="CENTER" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="100">
          <padding>
             <Insets bottom="5.0" top="5.0" />
          </padding>

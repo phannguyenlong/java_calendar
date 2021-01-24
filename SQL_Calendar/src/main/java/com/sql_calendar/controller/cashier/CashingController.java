@@ -18,40 +18,44 @@ import javafx.stage.Stage;
 public class CashingController implements Initializable {
     private Employee user;
     public Stage stage;
+    double sum;
     @FXML 
     VBox box;
 	@FXML
 	Label total;
 	
+	// Round total
 	private static DecimalFormat df = new DecimalFormat("0.00");
 
+	// setUser = take User (essn...) table
     public void setUser(Employee user) {
         this.user = user;
         System.out.println(this.user);        
     }
-
+    
+    // run initialize (load initScreen)
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Cashing controller");
         initScreen();
     }
 
-    //Generate new screen for adding new event
+    // Generate Popup-New-Item scene = load popup + load ParentController + ParentVBox
 	private void initScreen() {
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../cashier/popupNewItem.fxml"));
         stage = new Stage();
         stage.setTitle("New Event");
 	    try {
 	        stage.setScene(new Scene(loader.load()));
-//	        NewItemPopupController controller = loader.getController();
-	        ((NewItemPopupController) loader.getController()).setParentController(this);
-	        ((NewItemPopupController) loader.getController()).setParentVbox(box);
+	        NewItemPopupController controller = loader.getController();
+	        controller.setParentController(this);
+	        controller.setParentVbox(box);
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
 	}
 	
-	//New item button has been clicked
+	// "New item" button Clicked = render Popup
 	public void newItemButtonClick() {
 		System.out.println("Code error!!!!!");
 //		System.out.print(user.getSsn());
@@ -59,18 +63,26 @@ public class CashingController implements Initializable {
 		
 	}
 	
-	//After comfirm an item
-	public void changeTotal(double sum) {
+	// Total after "confirm" an item in Popup-New-Item (rounded decimal)
+	public void changeTotal(double plussum) {
+		sum += plussum;
 		total.setText("Total: " + df.format(sum) + " euro");
 	}
 	
-	//Delete an item
+	// Total after Del an HBox item
 	public void minusTotal(double newSum) {
-		String[] result = total.getText().split(" ");
-		System.out.println("minus= "+result[1]);
-		double sum = Double.parseDouble(result[1]) - newSum;
-		System.out.println("newsum= "+sum);
+		sum -= newSum;
+		if(sum<0) sum=0;
 		total.setText("Total: " + df.format(sum) + " euro");
 	};
 	
+	public void cancelButton() {
+		sum = 0;
+		total.setText("Total: " + df.format(sum) + " euro");
+		box.getChildren().clear();
 	}
+	
+	public void confirmOrderButton() {
+		
+	}
+}

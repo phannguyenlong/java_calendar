@@ -49,9 +49,9 @@
                </font></Label>
             <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="1000.0">
                <children>
-                  <JFXButton prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #960000; -fx-background-radius: 20;" text="Cancel" textFill="WHITE" />
+                  <JFXButton onAction="#cancelButton" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #960000; -fx-background-radius: 20;" text="Cancel" textFill="WHITE" />
                   <Pane prefHeight="52.0" prefWidth="20.0" />
-                  <JFXButton prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #009688; -fx-background-radius: 20;" text="Confirm" textFill="WHITE" />
+                  <JFXButton onAction="#confirmOrderButton" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #009688; -fx-background-radius: 20;" text="Confirm" textFill="WHITE" />
                </children>
                <padding>
                   <Insets right="20.0" />
