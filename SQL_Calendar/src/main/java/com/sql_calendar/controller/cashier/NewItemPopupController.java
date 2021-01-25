@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.sql_calendar.resources.Item;
+import com.sql_calendar.resources.OrderItem;
 import com.sql_calendar.util.GetRequestModel;
 
 import javafx.application.Platform;
@@ -22,8 +23,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class NewItemPopupController implements Initializable {
-	String selectedItem;
+	String selectedItem,itemID;
 	double price;
+	ArrayList<Item> list = new ArrayList<>();
+	ArrayList<OrderItem> order = new ArrayList<>(); 
 	@FXML
 	Label quantity;
 	@FXML
@@ -59,52 +62,52 @@ public class NewItemPopupController implements Initializable {
 			@Override
 			public void run() {
 				Platform.runLater(new Runnable() {
-                    public void run() {
+					public void run() {
 						GetRequestModel request = new GetRequestModel();
-											
+												
 						// search parameter all item name
 						String parameter="itemName=all"; 
-						
+							
 						// GET request -all order item 
-				        ArrayList<Item> list = request.makeRequest("/cashier/item/all", Item.class,parameter);
-				        
-				        // run loop for displaying each item name on Popup scene 
-				        for (Item data : list) {
-				        	
-				        	// manually create Button for product Item on Popup scene + getItemName
-				        	JFXButton productName = new JFXButton(data.getItemName());
-				        	productName.setStyle("-fx-background-color:  #7a7b6d;-fx-background-radius:20;-fx-text-fill: white;-fx-font-size: 12");
-				        	productName.setPadding(new Insets(10));
-				        	productName.setPrefSize(300, 20);
-				        	
-				        	// From Button clicked => query another parameter via user/our action
-				            productName.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
-				                
-				            	@Override
-				                public void handle(ActionEvent event) {
-				            	
-				            		// get String to compare in the list/table to get another info (price, in this case)
-				            		selectedItem=productName.getText();
-				            		
-				            		// getPrice (type: double!!)
-				            		for(Item data : list) {
-				            			if(productName.getText()==data.getItemName()) {
-				            				price = Double. parseDouble(data.getPrice());
-				            			}
-				            		}
-				            		
-				                }
-				            });
-				            // add productName into flowPane on the Popup
-				        	flowPane.getChildren().add(productName);
-				        }
-                    }
+					    list = request.makeRequest("/cashier/item/all", Item.class,parameter);
+					        
+					    // run loop for displaying each item name on Popup scene 
+					    for (Item data : list) {
+					        	
+					        // manually create Button for product Item on Popup scene + getItemName
+					        JFXButton productName = new JFXButton(data.getItemName());
+					        productName.setStyle("-fx-background-color:  #7a7b6d;-fx-background-radius:20;-fx-text-fill: white;-fx-font-size: 12");
+					        productName.setPadding(new Insets(10));
+					        productName.setPrefSize(300, 20);
+					        	
+					        // From Button clicked => query another parameter via user/our action
+					        productName.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+					                
+					            @Override
+					            public void handle(ActionEvent event) {
+					            	
+					            	// get String to compare in the list/table to get another info (price, in this case)
+					            	selectedItem=productName.getText();
+					            		
+					            	// getPrice (type: double!!)
+					            	for(Item data : list) {
+					            		if(productName.getText().equals(data.getItemName())) {
+					            			price = Double. parseDouble(data.getPrice());
+					            			itemID = data.getItemID();
+					            		}
+					            	}
+					            }
+					        });
+					        // add productName into flowPane on the Popup
+					        flowPane.getChildren().add(productName);
+					    }
+	                }
 				});
 			}
-        });
-        
-        // start Request
-        makeRequest.start();
+	    });
+	        
+	    // start Request
+	    makeRequest.start();
 	}
     
     
@@ -123,7 +126,10 @@ public class NewItemPopupController implements Initializable {
 	
 	
 	// "Confirm" button = after done with choosing Product + quantity
-	public void confirmButton() {	
+	public void confirmButton() {
+		System.out.println("====== UPDATE ORDER ======");
+		addItemtoOrderList();
+		for (OrderItem data : order) System.out.println(data);
 		
 		// load HBox (into Cashing UI) 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../cashier/hboxOrderDel.fxml"));
@@ -136,6 +142,9 @@ public class NewItemPopupController implements Initializable {
 			// set the selectedProduct + selected quantity + price already query 
 			controller.setTag(selectedItem, Integer.parseInt(quantity.getText()),price);
 			
+			// set Popup controller
+			controller.setPopupController(this);
+			
 			// setParentVBox (where HBox will load into)
 	        controller.setParentVbox(parentVbox);
 	        
@@ -143,7 +152,7 @@ public class NewItemPopupController implements Initializable {
 	        controller.setParentController(parentController);
 	        
 	        
-	        // add the new Hbox = box (already insert info) into parentVBox in Cashing 
+	        // add the new HBox = box (already insert info) into parentVBox in Cashing 
 			parentVbox.getChildren().add(box);
 			
 			// print out "Total: ... euro" = in Cashing tab
@@ -156,6 +165,53 @@ public class NewItemPopupController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	public void addItemtoOrderList() {
+		boolean i = true;
+		if (!order.isEmpty()) {
+			for (OrderItem data : order) {
+				if (itemID.equals(data.getItemID())) {
+					data.setQuantity(String.valueOf(Integer.parseInt(data.getQuantity()) + Integer.parseInt(quantity.getText())));
+					i = false;
+					break;
+				}
+			}
+			if (i) {
+				order.add(new OrderItem(itemID,quantity.getText()));
+			}
+		}
+		else {
+			order.add(new OrderItem(itemID,quantity.getText()));
+		}
+	}
+	
+	public void deleteItemFromOrderList(int quan,String itemName) {
+		System.out.println("====== DELETE ORDER ======");
+		for (Item data : list) {
+			if (itemName.equals(data.getItemName())) {
+				for (OrderItem dataInOrder : order) {
+					if (data.getItemID().equals(dataInOrder.getItemID())) {
+						dataInOrder.setQuantity(String.valueOf(Integer.parseInt(dataInOrder.getQuantity()) - quan));
+						if (dataInOrder.getQuantity().equals("0")) {
+							order.remove(dataInOrder);
+						}
+						break;
+					}
+				}
+			}
+		}
+		for (OrderItem dataInOrder : order) {
+			System.out.println(dataInOrder);
+		}
+	}
+	
+	//cancel button is clicked
+	public void deleteAllItem() {
+		order.removeAll(order);
+	}
+	
+	//send order to cashing controller to send to the server
+	public ArrayList<OrderItem> getOrder()    {
+	    return(order);
+	 }
 }
-
-
