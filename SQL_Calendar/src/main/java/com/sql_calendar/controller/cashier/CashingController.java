@@ -12,7 +12,6 @@ import com.sql_calendar.resources.Employee;
 import com.sql_calendar.resources.OrderItem;
 import com.sql_calendar.util.PostRequestModel;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -98,28 +97,26 @@ public class CashingController implements Initializable {
 		DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");  
 		LocalDateTime now = LocalDateTime.now();  
 		String parameter = "date=" + date.format(now) + "&time=" + time.format(now) + "&essn=" + user.getSsn();
-		System.out.println(date.format(now) + " " + time.format(now));
 		order = ((NewItemPopupController) loader.getController()).getOrder();
-		
-		System.out.println(parameter);
-		ArrayList<OrderItem> sendOrders = new ArrayList<>();
-		for (OrderItem o : order) {
-			sendOrders.add(new OrderItem(o.getItemID(), o.getQuantity()));
-		}
-		Thread makeRequest = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				PostRequestModel request = new PostRequestModel();
-				System.out.println("SIZEW : "  + order.size());
-				int res_code = request.makeRequest("/cashier/order/new", sendOrders , parameter);
-				if (res_code == 200) {
-		            System.out.println("Successfull make request");
-		        } else {
-		            System.out.println("Failed");
-		        }
+		if (order.size()>0) {
+			ArrayList<OrderItem> sendOrders = new ArrayList<>();
+			for (OrderItem o : order) {
+				sendOrders.add(new OrderItem(o.getItemID(), o.getQuantity()));
 			}
-	    });
-		makeRequest.start();
-		cancelButton();
+			Thread makeRequest = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					PostRequestModel request = new PostRequestModel();
+					int res_code = request.makeRequest("/cashier/order/new", sendOrders , parameter);
+					if (res_code == 200) {
+			            System.out.println("Successfull make request");
+			        } else {
+			            System.out.println("Failed");
+			        }
+				}
+		    });
+			makeRequest.start();
+			cancelButton();
+		}
 	}
 }
