@@ -17,6 +17,7 @@ import javafx.scene.control.TextFormatter;
 
 /**
  * A new Scene popup to Add new event
+ * 
  * @author Long Phan
  */
 public class NewEventBoxController implements Initializable {
@@ -71,6 +72,8 @@ public class NewEventBoxController implements Initializable {
                 }
             } else {
                 if (((DatePicker) component).getValue() == null) {
+                    if (component == endDate && typeOption.getValue().getText().equals("no repeat"))
+                        continue;
                     component.setStyle("-fx-background-color: #FF584D");
                     isNull = true;
                 }
@@ -78,11 +81,13 @@ public class NewEventBoxController implements Initializable {
         }
 
         if (!isNull) {
-            if (startDate.getValue().isAfter(endDate.getValue())) {
-                startDate.setStyle("-fx-background-color: #FF584D");
-                endDate.setStyle("-fx-background-color: #FF584D");
-                isNull = true;
-            }
+            if (!typeOption.getValue().getText().equals("no repeat"))
+                if (startDate.getValue().isAfter(endDate.getValue())) {
+                    startDate.setStyle("-fx-background-color: #FF584D");
+                    endDate.setStyle("-fx-background-color: #FF584D");
+                    isNull = true;
+                }
+
             if (Tool.compare2Time(Tool.convertStringToTime(startTimeHour.getText() + ":" + startTimeMinute.getText()),
                     Tool.convertStringToTime(endTimeHour.getText() + ":" + endTimeMinute.getText())) >= 0) {
                 startTimeHour.setStyle("-fx-background-color: #FF584D");
@@ -97,8 +102,9 @@ public class NewEventBoxController implements Initializable {
         if (!isNull) {
             String startDateString = String.format("%d/%d/%d", startDate.getValue().getMonthValue(),
                     startDate.getValue().getDayOfMonth(), startDate.getValue().getYear());
-            String endDateString = String.format("%d/%d/%d", endDate.getValue().getMonthValue(),
-                    endDate.getValue().getDayOfMonth(), endDate.getValue().getYear());
+            String endDateString = typeOption.getValue().getText().equals("no repeat") ? startDateString
+                    : String.format("%d/%d/%d", endDate.getValue().getMonthValue(), endDate.getValue().getDayOfMonth(),
+                            endDate.getValue().getYear());
 
             String parameter = String.format(
                     "eventName=%s&startDate=%s&endDate=%s&startTime=%s:%s&endTime=%s:%s&eventType=%s",
@@ -106,13 +112,21 @@ public class NewEventBoxController implements Initializable {
                     startTimeMinute.getText(), endTimeHour.getText(), endTimeMinute.getText(),
                     typeOption.getValue().getText());
 
-            new Thread(new Runnable(){
+            new Thread(new Runnable() {
                 @Override
                 public void run() {
                     PostRequestModel request = new PostRequestModel();
                     request.makeRequest("/manager/calendar/event/action", parameter);
                 }
-            }).run();;
+            }).run();
+            ;
         }
+    }
+
+    public void handleChangeEventType() {
+        if (typeOption.getValue().getText().equals("no repeat"))
+            endDate.setDisable(true);
+        else
+            endDate.setDisable(false);
     }
 }

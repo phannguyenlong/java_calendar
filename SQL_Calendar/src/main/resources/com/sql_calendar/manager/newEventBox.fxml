@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.NewEventBoxController">
    <children>
       <JFXTextField fx:id="eventName" focusColor="#009688" labelFloat="true" prefHeight="28.0" prefWidth="323.0" promptText="Event Name" style="-fx-background-color: #E9E9EA;" unFocusColor="#919399">
@@ -97,7 +96,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </VBox>
-            <JFXComboBox fx:id="typeOption" focusColor="#009688" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #E9E9EA;">
+            <JFXComboBox fx:id="typeOption" focusColor="#009688" onAction="#handleChangeEventType" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #E9E9EA;">
                <HBox.margin>
                   <Insets left="5.0" top="10.0" />
                </HBox.margin>
