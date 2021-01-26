@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.EmployeeManagementController">
+<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.EmployeeManagementController">
    <children>
       <HBox prefHeight="46.0" prefWidth="1004.0">
          <VBox.margin>
@@ -20,11 +24,45 @@
                   <Insets left="20.0" />
                </HBox.margin>
                <font>
-                  <Font name="Segoe UI Bold" size="30.0" />
+                  <Font name="Arial Bold" size="30.0" />
                </font>
             </Label>
+            <Region prefHeight="46.0" prefWidth="410.0" />
+            <JFXButton onAction="#handleNewEmployee" prefHeight="46.0" prefWidth="194.0" style="-fx-background-color: #009688;" text="Add Employee" textFill="WHITE">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi-account-plus" iconSize="25" />
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXButton>
          </children>
       </HBox>
       <Line endX="899.2929077148438" endY="-6.854534149169922E-5" startX="-100.0" stroke="#c0c3cc" />
+      <HBox style="-fx-background-color: #E9E9EA; -fx-background-radius: 23;">
+         <VBox.margin>
+            <Insets bottom="11.0" left="100.0" right="100.0" top="11.0" />
+         </VBox.margin>
+         <children>
+            <JFXTextField fx:id="searchconcu" onAction="#search" prefHeight="27.0" prefWidth="800.0" />
+            <FontIcon iconLiteral="mdi-account-search" iconSize="29" wrappingWidth="26.0" />
+         </children>
+         <padding>
+            <Insets left="17.0" right="5.0" />
+         </padding>
+      </HBox>
+      <Line endX="899.2929077148438" endY="-6.854534149169922E-5" startX="-100.0" stroke="#c0c3cc" />
+      <ScrollPane prefHeight="470.0" prefWidth="850.0">
+         <VBox.margin>
+            <Insets left="75.0" right="75.0" top="29.0" />
+         </VBox.margin>
+         <content>
+            <VBox fx:id="concu" prefHeight="450.0" prefWidth="795.0" spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
    </children>
 </VBox>

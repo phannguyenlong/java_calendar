@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.AddNewEmployeeController">
+   <children>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="SSN:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="ssn" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Username:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="username" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Password:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXPasswordField fx:id="password" prefHeight="86.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="First Name:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="firstname" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Last Name:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="lastname" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Address:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="address" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Phone:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="phone" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Type:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="type" focusColor="#009688" prefHeight="75.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Sex:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="sex" prefHeight="75.0" prefWidth="320.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="51.0" prefWidth="80.0" text="Birthday:">
+               <HBox.margin>
+                  <Insets left="11.0" top="2.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="birthday" prefHeight="30.0" prefWidth="325.0">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </DatePicker>
+         </children>
+      </HBox>
+      <HBox prefHeight="41.0" prefWidth="389.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="232.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin></Label>
+            <JFXButton onAction="#handleResetButton" ripplerFill="BLACK" style="-fx-background-color: #960000;" text="Reset" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="19.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton onAction="#handleSaveButton" style="-fx-background-color: #009688;" text="Save" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="19.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton onAction="#handleBackButton" style="-fx-background-color: #3BB54A;" text="Back" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="19.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+               </padding>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
