@@ -127,7 +127,7 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 
  **4. Add new employee**
 
-`POST` **/manager/employee?ssn=' '&fname=' '&lname=' '&address=' '&bdate=' '&phone=' '&type=' '&username=' '&password=' '**
+`POST` **/manager/employee?ssn=' '&fname=' '&lname=' '&address=' '&bdate=' '&sex=' '&phone=' '&type=' '&username=' '&password=' '**
 - **input:** input ssn, fname, lname, address, bdate, phone, type, username, password.
 
  **5. Delete employee**
