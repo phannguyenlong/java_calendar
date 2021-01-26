@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="700.0" style="-fx-background-radius: 20; -fx-background-color: #C4C4C4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="OrderInfo" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="700.0" style="-fx-background-radius: 20; -fx-background-color: #C4C4C4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.cashier.HBoxOrderMoreInfoController">
    <children>
       <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="96.0" text="Product:  ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Lemonade">
+      <Label fx:id="itemInfo" alignment="CENTER" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="Lemonade">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -25,7 +25,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="31.0" prefWidth="72.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" text="2">
+      <Label fx:id="quantityInfo" alignment="CENTER" prefHeight="31.0" prefWidth="72.0" style="-fx-background-radius: 20; -fx-background-color: #FFFFFF;" text="2">
          <padding>
             <Insets bottom="5.0" top="5.0" />
          </padding>
@@ -35,7 +35,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="100">
+      <Label fx:id="priceInfo" alignment="CENTER" prefHeight="31.0" prefWidth="70.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" text="100">
          <padding>
             <Insets bottom="5.0" top="5.0" />
          </padding>
