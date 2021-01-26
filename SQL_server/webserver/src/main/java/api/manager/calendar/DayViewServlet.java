@@ -36,7 +36,12 @@ public class DayViewServlet extends HttpServlet {
                     + "	OR (ev.eventType = 'daily' AND '" + date + "' <= ev.endDate AND ev.startDate <= '" + date
                     + "')\r\n" + "	OR (ev.eventType = 'weekly' \r\n" + "		AND DATEPART(dw, '" + date
                     + "') = DATEPART(dw, date) \r\n" + "		AND dbo.GetLastDayWeek('" + date
-                    + "') <= ev.endDate\r\n" + "		AND ev.startDate <= dbo.GetFirstDayWeek('" + date + "'));\r\n";
+                    + "') <= ev.endDate\r\n" + "		AND ev.startDate <= dbo.GetFirstDayWeek('" + date + "'))\r\n"
+                    + "OR (ev.eventType = 'weekly' AND date IS NULL\r\n"
+                    + "		AND DATEPART(dw, '" + date + "') = DATEPART(dw, startDate) \r\n"
+                    + "		AND dbo.GetLastDayWeek('" + date + "') <= ev.endDate\r\n"
+                    + "		AND ev.startDate <= dbo.GetFirstDayWeek('" + date + "'));\r\n";
+            ;
         } else if (url.equals("/webserver/manager/calendar/day/hour")) {
             query = "SELECT DATEPART(hour,time) AS onHour,\r\n" + "       ISNULL(SUM(totalPrice),0) as hourlyIncome\r\n"
                     + "FROM orderList\r\n" + "GROUP BY CAST(date as date),\r\n" + "       DATEPART(hour,time)\r\n"

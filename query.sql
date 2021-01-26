@@ -74,13 +74,17 @@ SELECT
 FROM eventInstance evI
 JOIN employee e ON (evI.essn = e.ssn)
 RIGHT JOIN event ev ON (evI.eventID = ev.eventID)
-	WHERE '1/7/2021' = date
-	OR (ev.eventType = 'no repeat' AND '1/7/2021' = ev.startDate)
-	OR (ev.eventType = 'daily' AND '1/7/2021' <= ev.endDate AND ev.startDate <= '1/7/2021')
+	WHERE '12/27/2020' = date
+	OR (ev.eventType = 'no repeat' AND '12/27/2020' = ev.startDate)
+	OR (ev.eventType = 'daily' AND '12/27/2020' <= ev.endDate AND ev.startDate <= '12/27/2020')
 	OR (ev.eventType = 'weekly' 
-		AND DATEPART(dw, '1/7/2021') = DATEPART(dw, date) 
-		AND dbo.GetLastDayWeek('1/7/2021') <= ev.endDate
-		AND ev.startDate <= dbo.GetFirstDayWeek('1/7/2021'));
+		AND DATEPART(dw, '12/27/2020') = DATEPART(dw, date) 
+		AND dbo.GetLastDayWeek('12/27/2020') <= ev.endDate
+		AND ev.startDate <= dbo.GetFirstDayWeek('12/27/2020'))
+	OR (ev.eventType = 'weekly' AND date IS NULL
+		AND DATEPART(dw, '12/27/2020') = DATEPART(dw, startDate) 
+		AND dbo.GetLastDayWeek('12/27/2020') <= ev.endDate
+		AND ev.startDate <= dbo.GetFirstDayWeek('12/27/2020'));
 -- Timekeeping for employee (input essn, eventID, date, status)
 UPDATE eventInstance
 SET status = 'present'
