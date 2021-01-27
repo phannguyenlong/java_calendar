@@ -148,7 +148,7 @@ ON orderList.orderID = @temp;
 SELECT orderID, date, time, (lname + ' ' + fname) as name, ISNULL(totalPrice, 0) as total
 FROM orderList o
 	JOIN employee e on (o.essn = e.ssn)
-ORDER BY date, time;
+ORDER BY date DESC, time DESC;
 -- Get specific order (input orderID)
 SELECT o.itemID, o.quantity, i.price FROM orderItem o
 	JOIN item i on (o.itemID = i.itemID)

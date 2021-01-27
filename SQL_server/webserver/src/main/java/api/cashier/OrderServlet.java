@@ -27,7 +27,7 @@ public class OrderServlet extends HttpServlet {
 
         if (req.getRequestURI().equals("/webserver/cashier/order/all")) {
             query = "SELECT orderID, date, time, (lname + ' ' + fname) as name, ISNULL(totalPrice, 0) as total\r\n"
-                    + "FROM orderList o\r\n" + "	JOIN employee e on (o.essn = e.ssn)\r\n" + "ORDER BY date, time;";
+                    + "FROM orderList o\r\n" + "	JOIN employee e on (o.essn = e.ssn)\r\n" + "ORDER BY date DESC, time DESC;";
         } else if (req.getRequestURI().equals("/webserver/cashier/order")) {
             String orderID = req.getParameter("orderID");
             query = "SELECT o.itemID, o.quantity, i.price FROM orderItem o\r\n"
