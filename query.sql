@@ -106,7 +106,7 @@ FROM employee
 WHERE fname + ' ' + lname LIKE '%in%';
 -- Update employee (input ssn, fname, lname, address, bdate, phone, type
 UPDATE employee
-SET fname = '', lname = '', address = '', bdate = '', phone = '', type = ''
+SET address = '', phone = '', type = ''
 WHERE ssn = '';
 -- Add employee (input ssn, fname, lname, bdate, address, sex, phone, type, username, password) 
 INSERT INTO employee (ssn, fname, lname, bdate, address, sex, phone, type, username, password)

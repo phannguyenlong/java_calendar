@@ -54,16 +54,12 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String ssn = req.getParameter("ssn");
-        String fname = req.getParameter("fname");
-        String lname = req.getParameter("lname");
         String address = req.getParameter("address");
-        String bdate = req.getParameter("bdate");
         String phone = req.getParameter("phone");
         String type = req.getParameter("type");
 
-        String query = "UPDATE employee SET fname = '" + fname + "', lname = '" + lname + "', address = '" + address
-                + "', bdate = '" + bdate + "', phone = '" + phone + "', type = '" + type + "' WHERE ssn = '" + ssn
-                + "';";
+        String query = "UPDATE employee SET address = '" + address + "', phone = '" + phone + "', type = '" + type
+                + "' WHERE ssn = '" + ssn + "';";
 
         System.out.println(query);
 

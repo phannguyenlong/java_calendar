@@ -122,8 +122,8 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 
  **3. Update employee**
 
-`PUT` **/manager/employee?ssn=' '&fname=' '&lname=' '&address=' '&bdate=' '&phone=' '&type=' '**
-- **input:** input ssn, fname, lname, address, bdate, phone, type (or Employe object to string)
+`PUT` **/manager/employee?ssn=' '&address=' '&phone=' '&type=' '**
+- **input:** input ssn, address, phone, type
 
  **4. Add new employee**
 
