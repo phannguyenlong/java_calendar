@@ -157,8 +157,8 @@ WHERE o.orderID = 116;
 -- ===============Finance Report===============
 -- Day view (input current date)
 -- group by hours
-SELECT DATEPART(hour,time) AS OnHour,
-       ISNULL(SUM(totalPrice),0) as HourlyIncome
+SELECT DATEPART(hour,time) AS number,
+       ISNULL(SUM(totalPrice),0) as total
 FROM orderList
 GROUP BY CAST(date as date),
        DATEPART(hour,time)
@@ -176,12 +176,12 @@ FROM
 ) as matric_table;
 -- Week View (input current date)
 SET DATEFIRST 7;
-SELECT date, SUM(totalPrice) as total
+SELECT DATEPART(week, date) as number, SUM(totalPrice) as total
 FROM orderList
 GROUP BY date
 HAVING DATEPART(week, date) = DATEPART(week, '12/27/2020');
 -- Month View (input current date) - translate to first day and last day of week by java
-SELECT DATEPART(week, date) as week, SUM(TotalPrice) as total
+SELECT (DATEPART(week, date) - DATEPART(WEEK, DATEADD(MM, DATEDIFF(MM,0,'12/27/2020'), 0))+ 1) as number, SUM(TotalPrice) as total
 FROM orderList
 WHERE date <= EOMONTH('12/27/2020') AND date >= (CAST('12/27/2020' as datetime)-DAY('12/27/2020')+1)
 GROUP BY DATEPART(week, date);

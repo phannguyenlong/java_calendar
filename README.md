@@ -173,15 +173,15 @@ refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
 
 `GET` **/finance/day?date=' '**
 - **input:** date need to view
-- **output:** List of hourlyIncome
--  *Order(onHour, HourlyIncome)*
+- **output:** List of FinanceIncome
+-  *FinanceIncome(number, total)*
 
- **b. Get sum, min, max**
- 
-`GET` **/finance/day/status?= date**
+`GET` **/finance/week?date=' '**
 - **input:** date need to view
-- **output:** return sum, mean, max
+- **output:** List of FinanceIncome
+-  *FinanceIncome(number, total)*
 
-
-
-
+`GET` **/finance/month?date=' '**
+- **input:** date need to view
+- **output:** List of FinanceIncome
+-  *FinanceIncome(number, total)*
