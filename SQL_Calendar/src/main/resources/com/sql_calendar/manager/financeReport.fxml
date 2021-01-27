@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.FinanceReportController">
+<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.FinanceReportController">
    <children>
       <HBox prefHeight="46.0" prefWidth="1004.0">
          <VBox.margin>
             <Insets bottom="20.0" top="20.0" />
          </VBox.margin>
          <children>
-            <Label prefHeight="46.0" prefWidth="351.0" text="Finance Report">
+            <Label prefHeight="46.0" prefWidth="225.0" text="Finance Report">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
@@ -23,8 +29,60 @@
                   <Font name="Segoe UI Bold" size="30.0" />
                </font>
             </Label>
+            <Label fx:id="dayLabel" prefHeight="46.0" prefWidth="225.0" style="-fx-alignment: center;" text="Day">
+               <font>
+                  <Font name="Segoe UI Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="125.0" right="125.0" />
+               </HBox.margin>
+            </Label>
+            <JFXComboBox fx:id="typeOption" focusColor="#009688" onAction="#handleChangeOption" prefHeight="25.0" prefWidth="85.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </JFXComboBox>
+            <JFXButton fx:id="prevButton" onAction="#handleChangeDay" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+               <graphic>
+                  <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-left" iconSize="25" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="30.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="nextButton" onAction="#handleChangeDay" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #FCFCFC;" text=" ">
+               <graphic>
+                  <FontIcon iconColor="#a1a4ac" iconLiteral="mdi-arrow-right" iconSize="25" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </HBox.margin>
+            </JFXButton>
          </children>
       </HBox>
       <Line endX="899.2929077148438" endY="-6.854534149169922E-5" startX="-100.0" stroke="#c0c3cc" />
+      <StackPane alignment="TOP_CENTER">
+         <VBox.margin>
+            <Insets left="25.0" right="25.0" top="10.0" />
+         </VBox.margin>
+         <children>
+            <AreaChart fx:id="chart" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="550.0" prefWidth="950.0" verticalZeroLineVisible="false">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </AreaChart>
+            <Label fx:id="sumLabel" prefHeight="41.0" prefWidth="142.0" style="-fx-background-color: white; -fx-alignment: center; -fx-background-radius: 10;" text="Sum: ">
+               <font>
+                  <Font name="Segoe UI Bold Italic" size="14.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets top="20.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
    </children>
 </VBox>
