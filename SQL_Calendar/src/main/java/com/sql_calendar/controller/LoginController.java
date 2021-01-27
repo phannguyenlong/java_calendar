@@ -68,8 +68,13 @@ public class LoginController implements Initializable {
                     username.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
                     password.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
                 } else { // If success ==> Fade out then open LandingPage.fxml
-                    System.out.println(list.get(0).toString());
-                    makeFadeout(list.get(0));
+                    if (list.get(0).getType().equals("staff")) {
+                        username.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
+                        password.setStyle("-jfx-unfocus-color:RED; -jfx-focus-color:RED; -fx-text-inner-color: red;");
+                    } else {
+                        System.out.println(list.get(0).toString());
+                        makeFadeout(list.get(0));
+                    }
                 }
 
                 loadingIcon.setVisible(false);
