@@ -1,8 +1,6 @@
 package com.sql_calendar.controller.manager;
 
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,10 +13,14 @@ import com.sql_calendar.util.PutRequestModel;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * Controller for More Info Employee Box
+ * 
+ * @author Vinh Nguyen
+ */
 public class EmployeeInfoController implements Initializable {
 	@FXML
 	JFXTextField name, address, phone, ssn;

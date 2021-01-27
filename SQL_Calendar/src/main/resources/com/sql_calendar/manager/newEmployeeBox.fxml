@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.AddNewEmployeeController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.AddNewEmployeeController">
    <children>
       <HBox prefHeight="41.0" prefWidth="389.0">
          <children>
@@ -49,7 +49,7 @@
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <JFXPasswordField fx:id="password" prefHeight="86.0" prefWidth="320.0" />
+            <JFXPasswordField fx:id="password" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
          </children>
       </HBox>
       <HBox prefHeight="41.0" prefWidth="389.0">
@@ -127,7 +127,7 @@
                   <Font name="Segoe UI Bold" size="14.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="sex" prefHeight="75.0" prefWidth="320.0" />
+            <JFXComboBox fx:id="sex" focusColor="#009688" prefHeight="75.0" prefWidth="320.0" />
          </children>
       </HBox>
       <HBox prefHeight="41.0" prefWidth="389.0">

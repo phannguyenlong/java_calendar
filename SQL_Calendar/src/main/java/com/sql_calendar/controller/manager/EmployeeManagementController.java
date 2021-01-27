@@ -24,6 +24,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Controller for Employee management Tab
+ * @author Vinh Nguyen
+ */
 public class EmployeeManagementController implements Initializable {
 	private Stage moreInfoScreen, addEmployeeScreen;
 	private EmployeeInfoController moreInfoController;

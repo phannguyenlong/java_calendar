@@ -15,9 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 
+/**
+ * Controller for Add new Employee Box
+ * @author Vinh Nguyen
+ */
 public class AddNewEmployeeController implements Initializable {
 	@FXML
 	JFXTextField username, firstname, lastname, address, phone, ssn;
