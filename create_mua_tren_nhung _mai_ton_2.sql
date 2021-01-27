@@ -17,7 +17,7 @@ CREATE TABLE employee(
 	bdate DATE,
 	address VARCHAR(59),
 	sex CHAR(1),
-	phone CHAR(11),
+	phone CHAR(10),
 	type VARCHAR(19),
 	username VARCHAR(29),
 	password VARCHAR(29),

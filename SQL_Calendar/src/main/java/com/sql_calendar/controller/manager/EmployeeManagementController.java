@@ -26,6 +26,8 @@ import javafx.stage.Stage;
 
 public class EmployeeManagementController implements Initializable {
 	private Stage moreInfoScreen, addEmployeeScreen;
+	private EmployeeInfoController moreInfoController;
+	private ArrayList<Employee> datas = new ArrayList<>();
 	@FXML
 	VBox concu;
 	@FXML
@@ -39,21 +41,22 @@ public class EmployeeManagementController implements Initializable {
 
     public void search() {
     	concu.getChildren().clear();
+    	datas.clear();
     	Thread makeRequest = new Thread(new Runnable() {
     		@Override
             public void run() {
     	        GetRequestModel request = new GetRequestModel();
     	        
-    	        ArrayList<Employee> datas = request.makeRequest("/manager/employee", Employee.class, "name=" + searchconcu.getText());
+    	        datas = request.makeRequest("/manager/employee", Employee.class, "name=" + searchconcu.getText());
     	        Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
-						for(int i = 0; i < datas.size(); i++) {
+						for(Employee data : datas) {
 		    	        	HBox temp = new HBox();
 		                    temp.setPadding(new Insets(11));
 		                    temp.setStyle("-fx-background-color: #E9E9EA;-fx-background-radius: 11;");
 		                    
-		                    Label empName = new Label(datas.get(i).getName() + " - " + datas.get(i).getType().toUpperCase());
+		                    Label empName = new Label(data.getName() + " - " + data.getType().toUpperCase());
 		                    empName.setPrefWidth(670);
 		                    empName.setAlignment(Pos.CENTER_LEFT);
 		                    empName.setStyle("-fx-font-size: 17;-fx-font-weight: bold");
@@ -65,7 +68,7 @@ public class EmployeeManagementController implements Initializable {
 		                    btn.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
 		                    	@Override
 		                        public void handle(ActionEvent event) {
-		                            renderMoreInfo();
+		                            renderMoreInfo(data);
 		                        };
 		                    });
 		                    
@@ -79,7 +82,8 @@ public class EmployeeManagementController implements Initializable {
     	makeRequest.start();
     }
     
-    private void renderMoreInfo() {
+    private void renderMoreInfo(Employee e) {
+    	moreInfoController.setUser(e);
     	moreInfoScreen.show();
     }
     
@@ -94,6 +98,7 @@ public class EmployeeManagementController implements Initializable {
         	moreInfoScreen = new Stage();
         	moreInfoScreen.setTitle("Emloyee Information");
         	moreInfoScreen.setScene(new Scene(loader.load(), 400, 280));
+        	moreInfoController = loader.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }

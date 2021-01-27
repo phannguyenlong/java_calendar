@@ -70,14 +70,18 @@ public class AddNewEmployeeController implements Initializable {
 		}
 		// validate ssn
 		Matcher matcher = pattern.matcher(ssn.getText());
-		if (!matcher.matches())
+		if (!matcher.matches()) {
 			ssn.setStyle("-fx-background-color: #FF584D");
+			isValid = false;
+		}
 		
 		// validate phone
 	    pattern = Pattern.compile("^\\d{10}$");
 	    matcher = pattern.matcher(phone.getText());
-		if (!matcher.matches())
+		if (!matcher.matches()) {
 			phone.setStyle("-fx-background-color: #FF584D");
+			isValid = false;
+		}
 
 		return isValid;
 	}
@@ -106,7 +110,6 @@ public class AddNewEmployeeController implements Initializable {
 					ssn.getText(), firstname.getText(), lastname.getText(), address.getText(), bdate,
 					sex.getValue().getText(), phone.getText(), type.getValue().getText(), username.getText(),
 					password.getText());
-			System.out.println(parameter);
 			
 			new Thread(new Runnable() {
 				@Override
@@ -115,6 +118,8 @@ public class AddNewEmployeeController implements Initializable {
 					request.makeRequest("/manager/employee", parameter);					
 				}	
 			}).run();
+			Stage stage = (Stage) username.getScene().getWindow();
+			stage.close();
 		}
 	}
 

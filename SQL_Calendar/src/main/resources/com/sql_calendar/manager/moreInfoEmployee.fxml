@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="400.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="400.0" spacing="10.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.manager.EmployeeInfoController">
    <children>
       <HBox prefHeight="41.0" prefWidth="389.0">
          <children>
-            <Label prefHeight="51.0" prefWidth="90.0" text="First Name:">
+            <Label prefHeight="51.0" prefWidth="90.0" text="SSN:">
                <HBox.margin>
                   <Insets left="11.0" top="2.0" />
                </HBox.margin>
@@ -21,7 +21,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <JFXTextField focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
+            <JFXTextField fx:id="ssn" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding></JFXTextField>
@@ -29,7 +29,7 @@
       </HBox>
       <HBox prefHeight="41.0" prefWidth="389.0">
          <children>
-            <Label prefHeight="51.0" prefWidth="90.0" text="Last Name:">
+            <Label prefHeight="51.0" prefWidth="90.0" text="Name:">
                <HBox.margin>
                   <Insets left="11.0" top="2.0" />
                </HBox.margin>
@@ -37,7 +37,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <JFXTextField focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
+            <JFXTextField fx:id="name" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding></JFXTextField>
@@ -53,7 +53,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <JFXTextField focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
+            <JFXTextField fx:id="address" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding></JFXTextField>
@@ -69,7 +69,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <JFXTextField focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
+            <JFXTextField fx:id="phone" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding></JFXTextField>
@@ -85,17 +85,13 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <JFXComboBox focusColor="#009688" prefHeight="52.0" prefWidth="320.0" style="-fx-background-color: #E9E9EA; -fx-background-radius: 10;">
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
-            </JFXComboBox>
+            <JFXComboBox fx:id="type" focusColor="#009688" prefHeight="86.0" prefWidth="320.0" />
          </children>
       </HBox>
       <HBox prefHeight="41.0" prefWidth="389.0">
          <children>
             <Label prefHeight="133.0" prefWidth="171.0" />
-            <JFXButton prefHeight="34.0" prefWidth="62.0" ripplerFill="BLACK" style="-fx-background-color: #960000;" text="Delete" textFill="WHITE">
+            <JFXButton onAction="#handleDeleteButton" prefHeight="34.0" prefWidth="62.0" ripplerFill="BLACK" style="-fx-background-color: #960000;" text="Delete" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                </HBox.margin>
@@ -103,7 +99,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="34.0" prefWidth="53.0" style="-fx-background-color: #009688;" text="Save" textFill="WHITE">
+            <JFXButton onAction="#handleSaveButton" prefHeight="34.0" prefWidth="53.0" style="-fx-background-color: #009688;" text="Save" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                </HBox.margin>
@@ -111,7 +107,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="36.0" prefWidth="54.0" style="-fx-background-color: #3BB54A;" text="Back" textFill="WHITE">
+            <JFXButton onAction="#handleBackButton" prefHeight="36.0" prefWidth="54.0" style="-fx-background-color: #3BB54A;" text="Back" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
                </HBox.margin>
