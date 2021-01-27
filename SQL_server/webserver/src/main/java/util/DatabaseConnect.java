@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -28,7 +30,21 @@ public class DatabaseConnect {
     String password = "123";
     Connection conn;
 
-    public DatabaseConnect() {}
+    public DatabaseConnect() {
+        Properties props = new Properties();
+        InputStream input = getClass().getResourceAsStream("../config.properties");
+        
+        try {
+            props.load(input);
+            // this.default_path = props.getProperty("server");
+            this.dbURL = props.getProperty("dbURL");
+            this.Db_Name = props.getProperty("Db_name");
+            this.userName = props.getProperty("username");
+            this.password = props.getProperty("password");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Establish connection to SQL server

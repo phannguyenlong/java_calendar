@@ -2,10 +2,12 @@ package com.sql_calendar.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sql_calendar.resources.Employee;
@@ -21,7 +23,19 @@ import javafx.scene.control.Alert.AlertType;
  * @author Long Phan
  */
 public class GetRequestModel {
-    private String default_path = "http://localhost:8080/webserver";
+    private String default_path;
+
+    public GetRequestModel() {
+        Properties props = new Properties();
+        InputStream input = getClass().getResourceAsStream("../config.properties");
+        
+        try {
+            props.load(input);
+            this.default_path = props.getProperty("server");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Use for make a request

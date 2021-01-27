@@ -1,9 +1,12 @@
 package com.sql_calendar.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Properties;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -15,6 +18,18 @@ import javafx.scene.control.Alert.AlertType;
  */
 public class PutRequestModel {
     private String default_path = "http://localhost:8080/webserver";
+
+    public PutRequestModel() {
+        Properties props = new Properties();
+        InputStream input = getClass().getResourceAsStream("../config.properties");
+        
+        try {
+            props.load(input);
+            this.default_path = props.getProperty("server");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Make request with custom postData

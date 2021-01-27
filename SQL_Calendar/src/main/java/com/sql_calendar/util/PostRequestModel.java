@@ -2,6 +2,7 @@ package com.sql_calendar.util;
 
 import java.net.*;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.io.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sql_calendar.resources.OrderItem;
@@ -18,6 +19,18 @@ import javafx.scene.control.Alert.AlertType;
  */
 public class PostRequestModel {
     private String default_path = "http://localhost:8080/webserver";
+
+    public PostRequestModel() {
+        Properties props = new Properties();
+        InputStream input = getClass().getResourceAsStream("../config.properties");
+        
+        try {
+            props.load(input);
+            this.default_path = props.getProperty("server");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Make POST request to server with single Object
