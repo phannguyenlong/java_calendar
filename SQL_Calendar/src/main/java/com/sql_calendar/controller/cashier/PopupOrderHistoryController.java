@@ -57,8 +57,7 @@ public class PopupOrderHistoryController implements Initializable {
                         for (Item data : itemList) {
                             for (OrderItem dataHistory : orderHistoryList) {
                                 if (data.getItemID().equals(dataHistory.getItemID())) {
-                                    renderHBoxOrderInfo(data.getItemName(), dataHistory.getQuantity(),
-                                            String.valueOf(df.format(Double.parseDouble(dataHistory.getPrice()))));
+                                    renderHBoxOrderInfo(data.getItemName(), dataHistory.getQuantity(), String.valueOf(df.format(Double.parseDouble(dataHistory.getPrice()))));
                                 }
                             }
                         }
@@ -84,7 +83,7 @@ public class PopupOrderHistoryController implements Initializable {
 
     // Set Total, Date, Time, Cashier name
     public void setLabels(String total, String date, String cashierName) {
-        totalHistory.setText("Total: " + total + " €");
+        totalHistory.setText("Total: " + total + " Euro");
         dateHistory.setText("Date: " + date);
         cashierHistory.setText("Cashier: " + cashierName);
     }

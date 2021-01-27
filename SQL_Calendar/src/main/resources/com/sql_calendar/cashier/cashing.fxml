@@ -43,7 +43,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </JFXButton>
-            <Label fx:id="total" contentDisplay="CENTER" prefHeight="86.0" prefWidth="1000.0" style="-fx-alignment: center;" text="Total: 0 $" textAlignment="CENTER">
+            <Label fx:id="total" contentDisplay="CENTER" prefHeight="86.0" prefWidth="1000.0" style="-fx-alignment: center;" text="Total: 0.00 Euro" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font></Label>
