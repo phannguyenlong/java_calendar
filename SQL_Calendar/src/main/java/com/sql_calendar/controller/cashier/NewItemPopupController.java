@@ -29,7 +29,8 @@ import javafx.scene.layout.VBox;
  */
 
 public class NewItemPopupController implements Initializable {
-    String selectedItem, itemID;
+    String selectedItem ="";
+    String itemID;
     double price;
     ArrayList<Item> list = new ArrayList<>();
     ArrayList<OrderItem> order = new ArrayList<>();
@@ -109,25 +110,28 @@ public class NewItemPopupController implements Initializable {
 
     // "Confirm" button in New Item Popup
     public void confirmButton() {
-        System.out.println("====== UPDATE ORDER ======");
-        addItemtoOrderList();
-        for (OrderItem data : order)
-            System.out.println(data);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../cashier/hboxOrderDel.fxml"));
-        try {
-            HBox box = loader.load();
-            HBoxOrderDelController controller = loader.getController();
-            controller.setTag(selectedItem, Integer.parseInt(quantity.getText()), price);
-            controller.setPopupController(this);
-            controller.setParentVbox(parentVbox);
-            controller.setParentController(parentController);
-
-            parentVbox.getChildren().add(box);
-            parentController.changeTotal(price * Integer.parseInt(quantity.getText()));
-            quantity.setText(String.valueOf(1));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    	if (!selectedItem.equals("")) {
+	        System.out.println("====== UPDATE ORDER ======");
+	        addItemtoOrderList();
+	        for (OrderItem data : order)
+	            System.out.println(data);
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../cashier/hboxOrderDel.fxml"));
+	        try {
+	            HBox box = loader.load();
+	            HBoxOrderDelController controller = loader.getController();
+	            controller.setTag(selectedItem, Integer.parseInt(quantity.getText()), price);
+	            controller.setPopupController(this);
+	            controller.setParentVbox(parentVbox);
+	            controller.setParentController(parentController);
+	
+	            parentVbox.getChildren().add(box);
+	            parentController.changeTotal(price * Integer.parseInt(quantity.getText()));
+	            quantity.setText(String.valueOf(1));
+	            selectedItem = "";
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+    	}
     }
 
     public void addItemtoOrderList() {
