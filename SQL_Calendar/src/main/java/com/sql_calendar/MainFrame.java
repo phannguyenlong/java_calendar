@@ -16,7 +16,7 @@ public class MainFrame extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
         Scene scene = new Scene(loader.load());
     
-        primaryStage.setTitle("Convinient Calendar Management");
+        primaryStage.setTitle("Convenient Calendar Management");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("appIcon.png")));
         // primaryStage.setMaximized(true);

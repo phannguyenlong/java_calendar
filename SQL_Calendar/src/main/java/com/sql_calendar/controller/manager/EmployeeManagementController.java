@@ -100,7 +100,7 @@ public class EmployeeManagementController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../manager/moreInfoEmployee.fxml"));
         try {
         	moreInfoScreen = new Stage();
-        	moreInfoScreen.setTitle("Emloyee Information");
+        	moreInfoScreen.setTitle("Employee Information");
         	moreInfoScreen.setScene(new Scene(loader.load(), 400, 280));
         	moreInfoController = loader.getController();
         } catch (IOException e) {
