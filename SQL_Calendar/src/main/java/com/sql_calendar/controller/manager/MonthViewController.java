@@ -19,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -136,6 +137,7 @@ public class MonthViewController implements Initializable {
                                 Label income = new Label(
                                         "Day Income: " + Math.round(Float.parseFloat(data.getDayIncome())) + " $");
                                 income.getStyleClass().addAll("incomeText");
+                                GridPane.setMargin(income, new Insets(0,0,3,0));
                                 GridPane.setHalignment(income, HPos.CENTER);
                                 GridPane.setValignment(income, VPos.BOTTOM);
                                 calendarContainer.add(income, Tool.getDayofWeek(d) - 1, Tool.getWeekofMonth(d) - 1);
