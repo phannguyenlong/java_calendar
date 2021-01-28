@@ -83,7 +83,7 @@ public class PopupOrderHistoryController implements Initializable {
 
     // Set Total, Date, Time, Cashier name
     public void setLabels(String total, String date, String cashierName) {
-        totalHistory.setText("Total: " + total + " Euro");
+        totalHistory.setText("Total: " + total + " $");
         dateHistory.setText("Date: " + date);
         cashierHistory.setText("Cashier: " + cashierName);
     }

@@ -7,7 +7,7 @@
 
 <HBox fx:id="OrderInfo" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="700.0" style="-fx-background-radius: 20; -fx-background-color: #C4C4C4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sql_calendar.controller.cashier.HBoxOrderMoreInfoController">
    <children>
-      <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="86.0" text="Product:  ">
+      <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="97.0" text="Product:  ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -40,7 +40,7 @@
             <Insets bottom="5.0" top="5.0" />
          </padding>
       </Label>
-      <Label prefHeight="22.0" prefWidth="50.0" text=" Euro">
+      <Label prefHeight="22.0" prefWidth="50.0" text=" $">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

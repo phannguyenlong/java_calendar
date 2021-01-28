@@ -78,20 +78,20 @@ public class CashingController implements Initializable {
     // Total after "Confirm" in New Item Popup
     public void changeTotal(double plussum) {
         sum += plussum;
-        total.setText("Total: " + df.format(sum) + " Euro");
+        total.setText("Total: " + df.format(sum) + " $");
     }
 
     // Total after Delete an (HBox) item
     public void minusTotal(int quantity, double price) {
         sum -= quantity * price;
         sum = sum < 0 ? 0 : sum;
-        total.setText("Total: " + df.format(sum) + " Euro");
+        total.setText("Total: " + df.format(sum) + " $");
     };
 
     // "Cancel" button
     public void cancelButton() {
         sum = 0;
-        total.setText("Total: " + df.format(sum) + " Euro");
+        total.setText("Total: " + df.format(sum) + " $");
         ((NewItemPopupController) loader.getController()).deleteAllItem();
         box.getChildren().clear();
     }
