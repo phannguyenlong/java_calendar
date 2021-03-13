@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 
 /**
  * Cashing Tab Controller
- * 
  * @author Hai Yen Le, Phuong Hong Nguyen
  */
 
@@ -30,7 +29,6 @@ public class CashingController implements Initializable {
     private Employee user;
     public Stage stage;
     double sum;
-
     ArrayList<OrderItem> order = new ArrayList<>();
 
     @FXML

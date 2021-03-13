@@ -3,6 +3,11 @@ package com.sql_calendar.resources;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Object to receive query for Item in database
+ * 
+ * @author Vinh Nguyen
+ */
 public class Item {
     private String itemID;
     private String itemName;

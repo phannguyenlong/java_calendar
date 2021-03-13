@@ -43,6 +43,7 @@ public class EmployeeManagementController implements Initializable {
         initScreen();
     }
 
+    // Handle Search function
     public void search() {
     	concu.getChildren().clear();
     	datas.clear();

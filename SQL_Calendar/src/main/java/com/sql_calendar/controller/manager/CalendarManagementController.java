@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class CalendarManagementController implements Initializable {
     protected static String date; // make this item static
     public Stage stage;
-    // FXML varibale
+    // FXML variable
     @FXML
     JFXComboBox<Label> viewOption;
     @FXML
@@ -109,5 +109,4 @@ public class CalendarManagementController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }

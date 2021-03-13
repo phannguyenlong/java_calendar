@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * This class use to store some function in order to deal with data
+ * This class is used to store some functions in order to deal with data in the app
  * @author Long Phan
  */
 public class Tool {
@@ -124,7 +124,7 @@ public class Tool {
     }
 
     /**
-     * Use for add or subtract x day
+     * Is used for add or subtract x day
      * @param x number of day
      * @param option 1 for plus, 0 for minus
      */

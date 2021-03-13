@@ -72,6 +72,7 @@ public class DayViewController implements Initializable {
         renderUI();
     }
 
+    // render Chart
     private void renderChart() {
         new Thread(new Runnable() {
             @Override
@@ -101,6 +102,7 @@ public class DayViewController implements Initializable {
         }).run();
     }
 
+    // render Day view
     private void renderUI() {
         loadingIcon.setVisible(true);
         jsp.setDisable(true);
@@ -193,7 +195,7 @@ public class DayViewController implements Initializable {
         // find which Hbox to pass data in
         int anchor;
         double margin;
-        i = i == 0 ? 1 : i; // standarlize i
+        i = i == 0 ? 1 : i; // standardized i
 
         for (anchor = 0; anchor < endTimeList.size(); anchor++) {
             if (endTimeList.get(anchor).compareTo(Tool.convertStringToTime(datas.get(i - 1).getStartTime())) < 0) {
@@ -233,7 +235,7 @@ public class DayViewController implements Initializable {
         // cleaning
         contentContainer.getChildren().clear();
         chart.getData().clear();
-        // rerender
+        // re-render
         renderChart();
         renderUI();
     }

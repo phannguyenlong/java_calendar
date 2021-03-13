@@ -44,6 +44,7 @@ public class EmployeeInfoController implements Initializable {
 		ssn.setDisable(true);
 	}
 
+	// Employee Information scene
 	private void init() {
 		JFXTextField[] fields = { address, phone };
 		for (JFXTextField node : fields)
@@ -81,7 +82,7 @@ public class EmployeeInfoController implements Initializable {
 			}
 		}
 
-		// validate phone
+		// Validate phone number
 		Pattern pattern = Pattern.compile("^\\d{10}$");
 		Matcher matcher = pattern.matcher(phone.getText());
 		if (!matcher.matches()) {
@@ -117,6 +118,4 @@ public class EmployeeInfoController implements Initializable {
 		Stage stage = (Stage) name.getScene().getWindow();
 		stage.close();
 	}
-	
-
 }

@@ -60,9 +60,8 @@ public class MonthViewController implements Initializable {
         loadingIcon.setVisible(true);
         calendarContainer.setDisable(true);
         Date date = Tool.getFirstDateOfMonth(Tool.convertStringtoDate(CalendarManagementController.date));
-        // date = Tool.getFirstDateOfMonth(date);
 
-        // Set value for Lable in Header and Footer
+        // Set value for Label in Header and Footer
         monthLabel.setText(Tool.getMonthName(Tool.getDayMonthYear(date)[1]));
         yearLabel.setText("" + Tool.getDayMonthYear(date)[2]);
         monthIncome.setText("0 $");
@@ -111,7 +110,7 @@ public class MonthViewController implements Initializable {
             calendarContainer.add(goTo, (i - 1) % 7, (i - 1) / 7);
         }
 
-        // Fill unused weekdays after last dat with grey background
+        // Fill unused weekdays after last date with grey background
         for (int i = firstWeekDay + Tool.getNumberOfDayInMonth(date); i <= 42; i++) {
             Rectangle rect = new Rectangle(127, 65);
             rect.setFill(Color.web("#E9E9E9"));
@@ -132,7 +131,6 @@ public class MonthViewController implements Initializable {
                         @Override
                         public void run() {
                             for (MonthView data : datas) {
-                                // System.out.println(data);
                                 Date d = new Date(Long.parseLong(data.getDate()));
                                 Label income = new Label(
                                         "Day Income: " + Math.round(Float.parseFloat(data.getDayIncome())) + " $");
@@ -151,9 +149,7 @@ public class MonthViewController implements Initializable {
         makeRequest.start();
     }
 
-    /**
-     * Handle when changing the month
-     */
+    // Handle when changing the month
     public void handleChangeMonth(ActionEvent event) {
         Date date = Tool.convertStringtoDate(CalendarManagementController.date);
         CalendarManagementController.date = event.getSource() == nextButton
@@ -173,7 +169,7 @@ public class MonthViewController implements Initializable {
             row.setPercentHeight(16.6);
             calendarContainer.getRowConstraints().add(row);
         }
-
+        
         renderMonthView();
     }
 }

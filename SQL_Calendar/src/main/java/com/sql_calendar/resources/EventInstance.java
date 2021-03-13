@@ -5,6 +5,12 @@ import java.util.Date;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Object to receive query for Event instance in database
+ * 
+ * @author Long Phan
+ */
+
 public class EventInstance {
     private String essn;
     private int eventID;

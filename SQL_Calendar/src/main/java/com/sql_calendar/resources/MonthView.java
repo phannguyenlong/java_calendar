@@ -3,6 +3,11 @@ package com.sql_calendar.resources;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Object to receive query for Month view in database
+ * 
+ * @author Vinh Nguyen
+ */
 public class MonthView {
     private String date;
     private String dayIncome;

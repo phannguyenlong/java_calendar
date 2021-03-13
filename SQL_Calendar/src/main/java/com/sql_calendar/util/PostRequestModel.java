@@ -13,7 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 
 /**
  * This class use for make HTTP /POST request to server Call makeRequest to use
- * (can recieve ArrayList of Object or single Object)
+ * (can receive ArrayList of Object or single Object)
  * 
  * @author Long Phan
  */

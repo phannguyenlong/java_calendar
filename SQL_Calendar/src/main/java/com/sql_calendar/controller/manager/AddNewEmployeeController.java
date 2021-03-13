@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
- * Controller for Add new Employee Box
+ * Controller for the "Add new Employee" Box
  * @author Vinh Nguyen
  */
 public class AddNewEmployeeController implements Initializable {
@@ -71,7 +71,8 @@ public class AddNewEmployeeController implements Initializable {
 				}
 			}
 		}
-		// validate ssn
+		
+		// validate SSN
 		Matcher matcher = pattern.matcher(ssn.getText());
 		if (!matcher.matches()) {
 			ssn.setStyle("-fx-background-color: #FF584D");
@@ -85,7 +86,6 @@ public class AddNewEmployeeController implements Initializable {
 			phone.setStyle("-fx-background-color: #FF584D");
 			isValid = false;
 		}
-
 		return isValid;
 	}
 
@@ -125,5 +125,4 @@ public class AddNewEmployeeController implements Initializable {
 			stage.close();
 		}
 	}
-
 }

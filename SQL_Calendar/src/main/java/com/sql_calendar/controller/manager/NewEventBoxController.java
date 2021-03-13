@@ -59,6 +59,7 @@ public class NewEventBoxController implements Initializable {
         return change;
     }
 
+    // Handle New Event popup
     public void createNewEvent() {
         boolean isNull = false;
         Parent[] arr = { eventName, startTimeHour, startTimeMinute, endTimeHour, endTimeMinute, startDate, endDate };

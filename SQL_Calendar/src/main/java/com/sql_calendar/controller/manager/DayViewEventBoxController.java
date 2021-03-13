@@ -45,6 +45,7 @@ public class DayViewEventBoxController implements Initializable {
     @FXML
     VBox container;
 
+    // Handle Event data of day view 
     public void setEventData(ArrayList<EventInstance> eventData) {
         this.eventData = new ArrayList<>();
         for (EventInstance data : eventData)
@@ -75,14 +76,14 @@ public class DayViewEventBoxController implements Initializable {
             String shiftIncome = income.get(0).getShiftIncome() != null ? income.get(0).getShiftIncome() + "$" : "0$";
             shiftIncomeLabel.setText(shiftIncome);
         }
-
+        
         if (Tool.compare2Time(Time.valueOf(LocalTime.now()),
                 Tool.convertStringToTime(eventData.get(0).getEndTime())) < 0)
             endedLabel.setVisible(false);
 
         for (EventInstance data : eventData) {
             if (data.getEssn() != null) {
-                // Config
+                // Config 
                 HBox employeeBox = new HBox();
                 employeeBox.setStyle("-fx-background-color: white;-fx-background-radius: 10");
                 employeeBox.setPadding(new Insets(5));

@@ -20,8 +20,8 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 
 /**
- * Controller for Fianace report
- * @author Long Phan
+ * Controller for Finance report
+ * @author Vinh Nguyen
  */
 public class FinanceReportController implements Initializable {
     private Date date;
@@ -43,13 +43,15 @@ public class FinanceReportController implements Initializable {
         typeOption.getItems().add(new Label("Month"));
         typeOption.getSelectionModel().selectFirst();
 
-        renderChart("Day");
+        renderChart("Day"); 
     }
 
+    // Change View 
     public void handleChangeOption() {
         renderChart(typeOption.getValue().getText());
     }
 
+    // Change day
     public void handleChangeDay(ActionEvent event) {
         String option = typeOption.getValue().getText();
 

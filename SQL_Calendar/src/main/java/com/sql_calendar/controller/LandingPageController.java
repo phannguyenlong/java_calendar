@@ -47,7 +47,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
         return user;
     }
 
-    // Will be call by Login controller and recieve Object of user
+    // Will be called by Login controller and the app will receive Object of user
     public void setUser(Employee user) {
         this.user = user;
 
@@ -187,6 +187,7 @@ public class LandingPageController implements Initializable, EventHandler<Action
         }
     }
 
+    // Handle Button Click for Log out
     private void handleLogout() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../login.fxml"));

@@ -78,7 +78,6 @@ public class WeekViewEventBoxController implements Initializable {
                     .setText(String.format("%s - %s", eventData.get(0).getStartTime(), eventData.get(0).getEndTime()));
 
             for (EventInstance event : eventData) {
-                // employeeList.getChildren().add(new Label(event.getName()));
                 if (event.getName() != null) {
                     HBox employeBox = new HBox();
                     employeBox.setStyle("-fx-background-color: white;-fx-background-radius: 5;");
@@ -134,7 +133,7 @@ public class WeekViewEventBoxController implements Initializable {
         // body
         VBox bodyConainer = new VBox();
 
-        // Scorll pane
+        // Scroll pane
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
         scrollPane.setPrefSize(400, 300);

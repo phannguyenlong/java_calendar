@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Just a simple class for Testing
+ * Testing class (not for main app)
  */
 public class Student {
     private int id;

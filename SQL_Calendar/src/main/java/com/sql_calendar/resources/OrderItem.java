@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Object to receive query for Order Item in database
+ * 
+ * @author Vinh Nguyen
+ */
 public class OrderItem {
     private String itemID;
     private String quantity;

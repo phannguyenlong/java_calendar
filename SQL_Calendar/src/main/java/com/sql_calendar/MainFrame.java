@@ -19,7 +19,6 @@ public class MainFrame extends Application {
         primaryStage.setTitle("Convenient Calendar Management");
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("appIcon.png")));
-        // primaryStage.setMaximized(true);
         primaryStage.setResizable(false);
         primaryStage.show();
     } 

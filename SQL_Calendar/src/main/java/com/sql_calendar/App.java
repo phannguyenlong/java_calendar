@@ -3,11 +3,13 @@ package com.sql_calendar;
 import java.io.*;
 import java.util.*;
 
-// Other Java Class
 import com.sql_calendar.resources.Student;
 import com.sql_calendar.util.GetRequestModel;
 import com.sql_calendar.util.PostRequestModel;
 
+/**
+* Testing app (not for main app)
+*/
 public class App {
 
     public static void main(String[] args) throws IOException {

@@ -18,7 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 
 /**
  * The class is use for make HTTP /GET request to the server Call makeRequest
- * funciton to use
+ * function to use
  * 
  * @author Long Phan
  */
@@ -74,7 +74,6 @@ public class GetRequestModel {
             System.out.println("Message recieved from server: ");
             inputLine = in.readLine();
 
-            // System.out.println(inputLine);
             if (!inputLine.equals("[]")) {
                 String[] jsons = new String(inputLine.substring(1, inputLine.length() - 1)).split("},");
 

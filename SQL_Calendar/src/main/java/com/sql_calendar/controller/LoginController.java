@@ -23,10 +23,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * Controller for Logging Action
+ * Controller for Log in Action
  * @author Long Phan
  */
 public class LoginController implements Initializable {
+    // FXML variable
     @FXML
     Button submitButton;
     @FXML
@@ -54,7 +55,7 @@ public class LoginController implements Initializable {
         this.password = password;
     }
 
-    // Action happen when click Button "Sign In"
+    // Action happen when clicking Button "Sign In"
     public void handleSubmit() {
         Thread makeRequest = new Thread(new Runnable() {
             // Make request to server
@@ -76,7 +77,6 @@ public class LoginController implements Initializable {
                         makeFadeout(list.get(0));
                     }
                 }
-
                 loadingIcon.setVisible(false);
             }
         });
@@ -100,7 +100,7 @@ public class LoginController implements Initializable {
         fadeTransition.setOnFinished(event -> renderNewScene(employee));
     }
 
-    // Function handle open new Scene (which is landingPage.fxml)
+    // Function handle to open new Scene (which is landingPage.fxml)
     private void renderNewScene(Employee employee) {
         System.out.println("new scene");
         try {

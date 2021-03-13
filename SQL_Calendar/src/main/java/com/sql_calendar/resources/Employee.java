@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Object to recieve query for employee in database
+ * Object to receive query for employee in database
  * 
  * @author Long Phan
  */

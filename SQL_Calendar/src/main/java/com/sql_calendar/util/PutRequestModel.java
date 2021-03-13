@@ -13,7 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 /**
- * Class for make HTTP PUT resquest to server
+ * Class for make HTTP PUT request to server
  * @author Long Phan
  */
 public class PutRequestModel {
