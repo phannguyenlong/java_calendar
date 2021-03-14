@@ -1,3 +1,23 @@
+# Table of Content
+- [WHAT IS CONVINIENT CALENDAR MANAGEMENT for BUSINESS?](#what-is-convinient-calendar-management-for-business-)
+- [INSTALLATION GUIDE](#installation-guide)
+  * [SIMPLE INSTALLTION](#simple-installtion)
+    + [HOW TO DEPLOY THE SERVER](#how-to-deploy-the-server)
+    + [HOW TO RUN APP](#how-to-run-app)
+  * [MANUAL INSTALLATION FROM COMMAND LINE](#manual-installation-from-command-line)
+    + [HOW TO DEPLOY THE SERVER](#how-to-deploy-the-server-1)
+    + [HOW TO RUN APP](#how-to-run-app-1)
+- [API Documentations](#api-documentations)
+    + [I. Login](#i-login)
+    + [II. Manager Calendar Management](#ii-manager-calendar-management)
+    + [III. Manager Employee Management](#iii-manager-employee-management)
+    + [IV. Cashier Order Management](#iv-cashier-order-management)
+    + [V. Cashier Order History](#v-cashier-order-history)
+    + [VI. Finace Report](#vi-finace-report)
+
+# WHAT IS CONVINIENT CALENDAR MANAGEMENT for BUSINESS?
+- 
+
 # INSTALLATION GUIDE
 - For full documentation about installation please access to: https://drive.google.com/drive/folders/1KtcV-3zLrDAOjrmNctejq_deI5UBsnaO?usp=sharing
 - Please clone/download the project and follow the following step
