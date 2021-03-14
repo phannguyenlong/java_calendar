@@ -1,25 +1,39 @@
-## HOW TO BUILD SQL CALENDAR APP
+# INSTALLATION GUIDE
+For full documentation about installation please access to: https://drive.google.com/drive/folders/1KtcV-3zLrDAOjrmNctejq_deI5UBsnaO?usp=sharing
+Please clone/download the project and follow the following step
+There are 2 way for install our project:
+- Simple Installation: simple, fast
+- Maunal Installation from Command Line
+
+## SIMPLE INSTALLTION 
+
+### HOW TO DEPLOY THE SERVER
+1. Config `config.properties`
+2. Run `setup.bat`
+3. Start Tomcat server from D://stuff/tomcat.../bin/startup 
+OR 
+4. run file ".war" on Tomcat server
+
+### HOW TO RUN APP
+1. run `run.bat`
+
+## MANUAL INSTALLATION FROM COMMAND LINE
+
+### HOW TO DEPLOY THE SERVER
+1. Config `config.properties`
+2. go to ./SQL_server/webserver
+3. run "mvn clean package cargo:redeploy"
+4. access to ./SQL_server/webseverver/target
+5. Start Tomcat server from D://stuff/tomcat.../bin/startup 
+OR 
+6. run file ".war" on Tomcat server
+
+### HOW TO RUN APP
 1. go to ./SQL_Calendar
 2. run "mvn package"
 3. run "java -jar target\SQL_Calendar-1.0-SNAPSHOT.jar"
 
-## HOW TO RUN THE SERVER
-1. go to ./SQL_server/webserver
-2. run "mvn clean package cargo:redeploy"
-3. access to ./SQL_server/webseverver/target
-4. run file ".war" on Tomcat server
-OR
-3. Start Tomcat server from D://stuff/tomcat.../bin/startup
-
-
-## HOW TO LIVE DEBUG THE SERVER
-1. go to ./SQL_server/webserver
-2. right click on ./SQL_server/webserver/target/webserver
-3. Choose debbug on Tomcat
-refference: https://www.youtube.com/watch?v=R9mugpHWr14&t=332s
-
-
-## API Documentations
+# API Documentations
 
 ### I. Login
 
