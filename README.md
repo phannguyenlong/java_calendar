@@ -17,10 +17,7 @@
     + [VI. Finace Report](#vi-finace-report)
 
 # WHAT IS CONVENIENT CALENDAR MANAGEMENT for BUSINESS?
-- The project is inspired by Google Calendar, Windows 10 Calendar which is specifically made
-for business' management. In general, there are three main users: manager, cashier, waiter. The
-manager can manage the business' finance and employees. The calendar records all the shifts,
-timekeeping as well as daily income.
+- Convenient Calendar is a productivity tool, best suited for small businesses. In this app, managers can easily organize their work schedule through the calendar by creating events, adding employees into them and checking their appearances. Additionally, it can also make orders in real time scenarios and automatically represent revenue in charts, dividing by weeks, days or hours for better visualization and analysis.
 
 # Our Team
 If you would like any further information, please don't hesitate to contact us.
@@ -45,28 +42,24 @@ If you would like any further information, please don't hesitate to contact us.
 ### HOW TO DEPLOY THE SERVER
 1. Config `config.properties`
 2. Run `setup.bat`
-3. Start Tomcat server from D://stuff/tomcat.../bin/startup 
-OR 
-4. run file ".war" on Tomcat server
+3. Start Tomcat server from `D://stuff/tomcat.../bin/startup`
 
 ### HOW TO RUN APP
-1. run `run.bat`
+1. Run `run.bat`
 
 ## MANUAL INSTALLATION FROM COMMAND LINE
 
 ### HOW TO DEPLOY THE SERVER
 1. Config `config.properties`
-2. go to ./SQL_server/webserver
-3. run "mvn clean package cargo:redeploy"
-4. access to ./SQL_server/webseverver/target
-5. Start Tomcat server from D://stuff/tomcat.../bin/startup 
-OR 
-6. run file ".war" on Tomcat server
+2. Go to `./SQL_server/webserver`
+3. Run `mvn clean package cargo:redeploy`
+4. Then the `.war` file will be store in `./SQL_server/webseverver/target` 
+5. Start Tomcat server from `D://stuff/tomcat.../bin/startup`
 
 ### HOW TO RUN APP
-1. go to ./SQL_Calendar
-2. run "mvn package"
-3. run "java -jar target\SQL_Calendar-1.0-SNAPSHOT.jar"
+1. Go to `./SQL_Calendar`
+2. Run `mvn package`
+3. Run `java -jar target\SQL_Calendar-1.0-SNAPSHOT.jar`
 
 # API Documentations
 
