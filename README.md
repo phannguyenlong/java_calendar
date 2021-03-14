@@ -1,9 +1,9 @@
 # INSTALLATION GUIDE
-For full documentation about installation please access to: https://drive.google.com/drive/folders/1KtcV-3zLrDAOjrmNctejq_deI5UBsnaO?usp=sharing
-Please clone/download the project and follow the following step
-There are 2 way for install our project:
-- Simple Installation: simple, fast
-- Maunal Installation from Command Line
+- For full documentation about installation please access to: https://drive.google.com/drive/folders/1KtcV-3zLrDAOjrmNctejq_deI5UBsnaO?usp=sharing
+- Please clone/download the project and follow the following step
+- There are 2 way for install our project:
+    - Simple Installation: simple, fast
+    - Maunal Installation from Command Line
 
 ## SIMPLE INSTALLTION 
 
