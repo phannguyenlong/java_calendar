@@ -16,26 +16,29 @@
     + [V. Cashier Order History](#v-cashier-order-history)
     + [VI. Finace Report](#vi-finace-report)
 
-# WHAT IS CONVINIENT CALENDAR MANAGEMENT for BUSINESS?
-- 
+# WHAT IS CONVENIENT CALENDAR MANAGEMENT for BUSINESS?
+- The project is inspired by Google Calendar, Windows 10 Calendar which is specifically made
+for business' management. In general, there are three main users: manager, cashier, waiter. The
+manager can manage the business' finance and employees. The calendar records all the shifts,
+timekeeping as well as daily income.
 
 # Our Team
 If you would like any further information, please don't hesitate to contact us.
-- Long Nguyen Phan (Leader)
+- Long Nguyen Phan *(Leader)*
     - Email: `14472@student.vgu.edu.vn` or `phannguyenlong0812@gmail.com`
 - Yen Le Hai
-    - Email: 14952@student.vgu.edu.vn
+    - Email: `14952@student.vgu.edu.vn`
 - Nguyen Phuong Hong
-    - Email: 14939@student.vgu.edu.vn
+    - Email: `14939@student.vgu.edu.vn`
 - Nguyen Le Vinh
-    - Email: 15018@student.vgu.edu.vn
-    
+    - Email: `15018@student.vgu.edu.vn`
+
 # INSTALLATION GUIDE
-- For full documentation about installation please access to: https://drive.google.com/drive/folders/1KtcV-3zLrDAOjrmNctejq_deI5UBsnaO?usp=sharing
+- For full documentation about installation please access: https://drive.google.com/drive/folders/1KtcV-3zLrDAOjrmNctejq_deI5UBsnaO?usp=sharing
 - Please clone/download the project and follow the following step
-- There are 2 way for install our project:
+- There is 2 way for installing our project:
     - Simple Installation: simple, fast
-    - Maunal Installation from Command Line
+    - Manual Installation from Command Line
 
 ## SIMPLE INSTALLTION 
 
@@ -85,27 +88,27 @@ OR
 
 **2. Week view**
 
-**a. Get list of event Instance**
+**a. Get a list of event Instance**
 
 `GET` **/manager/calendar/week?date=' '**
-- **input:** any day in week that need to view
+- **input:** any day in a week that need to view
 - **output:** List of EventInstance 
 -  *EventInstance (essn, eventID, eventName, startDate, endDate, date, StartTime, endTime, name, phone, sex, type, eventType, status)*
 
- **b. find employee with name**
+ **b. find the employee with name**
 
 `GET` **/manager/employee?name=' '**
 - **input:** input name of employee
 - **output:** List of Employee
 -  *Employee(essn, name, sex, bdate, address, type, phone)*
 
-**c. add employee to event**
+**c. add the employee to event**
 
 `POST` **/manager/calendar/event?ssn=' '&eventID=''&date=' '**
 - **input:** ssn, eventID of that event and date
 - *This will make new EventInstance in database*
 
-**d. delete employee from event**
+**d. delete an employee from event**
 
 `DELETE` **/manager/calendar/event?ssn=' '&eventID=' '&date=' '**
 - **input:** ssn, eventID of that event and date
@@ -113,10 +116,10 @@ OR
 
 **3. Day view**
 
-**a. Get list of event Instance**
+**a. Get a list of event Instance**
 
 `GET` **/manager/calendar/day?date=' '**
-- **input:** day that need to view
+- **input:** day that needs to view
 - **output:** List of EventInstance 
 -  *EventInstance (essn, eventID, eventName, startDate, endDate, date, StartTime, endTime, name, phone, sex, type, eventType, status)*
 
@@ -159,7 +162,7 @@ OR
 - **output:** List of Employee
 -  *Employee(essn, name,  bdate, address, sex, type, phone)*
 
- **2. find employee with name**
+ **2. find the employee with name**
 
 `GET` **/manager/employee?name=' '**
 - **input:** input name of employee
@@ -211,11 +214,11 @@ OR
 - **output:** List of OrderItem
 -  *OrderItem(ItemID, quantity,  price)*
 
-### VI. Finace Report
+### VI. Finance Report
 
  **1. Day View**
  
- **a. Get List of hourly income**
+ **a. Get a List of hourly income**
 
 `GET` **/finance/day?date=' '**
 - **input:** date need to view
@@ -230,4 +233,4 @@ OR
 `GET` **/finance/month?date=' '**
 - **input:** date need to view
 - **output:** List of FinanceIncome
--  *FinanceIncome(number, total)*
+-
