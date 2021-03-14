@@ -1,5 +1,6 @@
 # Table of Content
 - [WHAT IS CONVINIENT CALENDAR MANAGEMENT for BUSINESS?](#what-is-convinient-calendar-management-for-business-)
+- [OUR TEAM](#our-team)
 - [INSTALLATION GUIDE](#installation-guide)
   * [SIMPLE INSTALLTION](#simple-installtion)
     + [HOW TO DEPLOY THE SERVER](#how-to-deploy-the-server)
@@ -18,6 +19,17 @@
 # WHAT IS CONVINIENT CALENDAR MANAGEMENT for BUSINESS?
 - 
 
+# Our Team
+If you would like any further information, please don't hesitate to contact us.
+- Long Nguyen Phan (Leader)
+    - Email: `14472@student.vgu.edu.vn` or `phannguyenlong0812@gmail.com`
+- Yen Le Hai
+    - Email: 14952@student.vgu.edu.vn
+- Nguyen Phuong Hong
+    - Email: 14939@student.vgu.edu.vn
+- Nguyen Le Vinh
+    - Email: 15018@student.vgu.edu.vn
+    
 # INSTALLATION GUIDE
 - For full documentation about installation please access to: https://drive.google.com/drive/folders/1KtcV-3zLrDAOjrmNctejq_deI5UBsnaO?usp=sharing
 - Please clone/download the project and follow the following step
